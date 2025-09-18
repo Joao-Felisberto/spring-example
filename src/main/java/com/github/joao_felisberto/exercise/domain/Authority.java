@@ -10,7 +10,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.domain.Persistable;
 
 /**
- * A Authority.
+ * An Authority.
  */
 @Entity
 @Table(name = "jhi_authority")
