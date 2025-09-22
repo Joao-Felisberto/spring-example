@@ -9,8 +9,44 @@ servers:
     description: Development server
   - url: https://localhost:8080/api
     description: Development server with TLS Profile
-paths: {}
+paths:
+  /client:
+    post:
+      summary: Add a new client
+      description: Registers a new Client in the system
+      operationId: putClient
+      requestBody:
+        description: The Client to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+      responses:
+        '200':
+          description: Client added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
 components:
+  schemas:
+    Client:
+      type: object
+      properties:
+        name:
+          type: string
+        nif:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+      required:
+        - name
+        - nif
+        - address
+        - phone
   responses:
     Problem:
       description: error occurred - see status code and problem object for more information.

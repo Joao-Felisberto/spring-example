@@ -48,9 +48,9 @@ public class ClientAsserts {
         assertThat(actual)
             .as("Verify Client relevant properties")
             .satisfies(a -> assertThat(a.getName()).as("check name").isEqualTo(expected.getName()))
+            .satisfies(a -> assertThat(a.getPhone()).as("check phone").isEqualTo(expected.getPhone()))
             .satisfies(a -> assertThat(a.getNif()).as("check nif").isEqualTo(expected.getNif()))
-            .satisfies(a -> assertThat(a.getAddress()).as("check address").isEqualTo(expected.getAddress()))
-            .satisfies(a -> assertThat(a.getPhone()).as("check phone").isEqualTo(expected.getPhone()));
+            .satisfies(a -> assertThat(a.getAddress()).as("check address").isEqualTo(expected.getAddress()));
     }
 
     /**

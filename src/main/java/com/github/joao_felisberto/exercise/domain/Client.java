@@ -1,16 +1,14 @@
 package com.github.joao_felisberto.exercise.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.io.Serializable;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * A Client.
  */
 @Entity
 @Table(name = "client")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
 public class Client implements Serializable {
 
@@ -25,14 +23,15 @@ public class Client implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "nif")
-    private Integer nif;
+    @Column(name = "phone")
+    private String phone;
+
+    @Size(min = 9, max = 9)
+    @Column(name = "nif", length = 9)
+    private String nif;
 
     @Column(name = "address")
     private String address;
-
-    @Column(name = "phone")
-    private Integer phone;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -62,16 +61,29 @@ public class Client implements Serializable {
         this.name = name;
     }
 
-    public Integer getNif() {
+    public String getPhone() {
+        return this.phone;
+    }
+
+    public Client phone(String phone) {
+        this.setPhone(phone);
+        return this;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getNif() {
         return this.nif;
     }
 
-    public Client nif(Integer nif) {
+    public Client nif(String nif) {
         this.setNif(nif);
         return this;
     }
 
-    public void setNif(Integer nif) {
+    public void setNif(String nif) {
         this.nif = nif;
     }
 
@@ -86,19 +98,6 @@ public class Client implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Integer getPhone() {
-        return this.phone;
-    }
-
-    public Client phone(Integer phone) {
-        this.setPhone(phone);
-        return this;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -126,9 +125,9 @@ public class Client implements Serializable {
         return "Client{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", nif=" + getNif() +
+            ", phone='" + getPhone() + "'" +
+            ", nif='" + getNif() + "'" +
             ", address='" + getAddress() + "'" +
-            ", phone=" + getPhone() +
             "}";
     }
 }

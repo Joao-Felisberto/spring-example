@@ -1,6 +1,0 @@
-entity Client {
-  name String
-  nif Integer
-  address String
-  phone Integer
-}

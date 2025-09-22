@@ -2,6 +2,8 @@
 
 This application was generated using JHipster 8.11.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.11.0](https://www.jhipster.tech/documentation-archive/v8.11.0).
 
+This is a "microservice" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
@@ -173,6 +175,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 
 [JHipster Homepage and latest documentation]: https://www.jhipster.tech
 [JHipster 8.11.0 archive]: https://www.jhipster.tech/documentation-archive/v8.11.0
+[Doing microservices with JHipster]: https://www.jhipster.tech/documentation-archive/v8.11.0/microservices-architecture/
 [Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v8.11.0/development/
 [Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v8.11.0/docker-compose
 [Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v8.11.0/production/

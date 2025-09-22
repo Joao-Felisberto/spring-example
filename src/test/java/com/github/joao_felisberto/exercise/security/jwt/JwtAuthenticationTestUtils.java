@@ -32,6 +32,11 @@ public class JwtAuthenticationTestUtils {
     }
 
     @Bean
+    private TestAuthenticationResource authenticationResource() {
+        return new TestAuthenticationResource();
+    }
+
+    @Bean
     private MeterRegistry meterRegistry() {
         return new SimpleMeterRegistry();
     }

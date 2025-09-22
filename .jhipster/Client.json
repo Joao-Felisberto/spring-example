@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20250922142314"
+  },
+  "applications": "*",
+  "clientRootFolder": "exercise",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nif",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "9",
+      "fieldValidateRulesMinlength": "9"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    }
+  ],
+  "microserviceName": "exercise",
+  "name": "Client",
+  "relationships": [],
+  "searchEngine": "no"
+}
