@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/web/rest/ClientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/entity/entity.jdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jhipster/Client.json" beforeDir="false" afterPath="$PROJECT_DIR$/.jhipster/Client.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/CacheConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/CacheConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/SpringDocConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/config/SpringDocConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/domain/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/domain/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/security/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/security/SecurityUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/web/rest/errors/ErrorConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/web/rest/errors/ErrorConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/web/rest/errors/ExceptionTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/joao_felisberto/exercise/web/rest/errors/ExceptionTranslator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/20250922142314_added_entity_Client.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/20250922142314_added_entity_Client.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/fake-data/client.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/fake-data/client.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/swagger/api.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/swagger/api.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/domain/ClientAsserts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/domain/ClientAsserts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/domain/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/domain/ClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/domain/ClientTestSamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/domain/ClientTestSamples.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/SecurityUtilsUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/SecurityUtilsUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/jwt/AuthenticationIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/jwt/AuthenticationIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/jwt/JwtAuthenticationTestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/jwt/JwtAuthenticationTestUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/jwt/TestAuthenticationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/security/jwt/TestAuthenticationResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/web/rest/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/joao_felisberto/exercise/web/rest/TestUtil.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="32sM1axdcE64tKxjNiw1A2bq8Jp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.All in exercise.executor": "Coverage",
+    "Maven. [test].executor": "Run",
+    "Maven. [validate].executor": "Run",
+    "Maven.exercise [-P\"tls,dev\"].executor": "Run",
+    "Maven.exercise [compile].executor": "Run",
+    "Maven.exercise [test].executor": "Run",
+    "Maven.exercise [validate].executor": "Run",
+    "Maven.exercise.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "us1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/dev/ex/src/main/resources/swagger",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\ex\src\main\resources\swagger" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\ex\.mvn" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvnw" />
+      <command value=".\mvnw" />
+      <command value="mvn compile" />
+      <command value="mvn validate" />
+      <command value="mvn test" />
+      <command value="mvn" />
+      <command value="mvn -P&quot;tls,dev&quot;" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="All in exercise" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="exercise" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ex" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ex" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in exercise" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="" />
+      <created>1758204612960</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758204612960</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="us1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

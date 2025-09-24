@@ -1,0 +1,25 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 1,
+    "applicationType": "microservice",
+    "baseName": "microservice",
+    "cacheProvider": "hazelcast",
+    "clientFramework": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableSwaggerCodegen": true,
+    "enableTranslation": false,
+    "entities": ["Client", "Address", "PhoneNumber"],
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "Mzc0YmEyNzJiNDg0MDEwYjQzYWNjNDIwYjNmZGFiNWVjZjJkMzY4MDI1NWI1NjhjMDc5MzM0ODllMWRiNGY3NWE1MjcyOWZlMzhkN2ViYmU0ZDBjNTA5YWRmYjUxYmIyMTlhZWVjODA1Y2Q2MjU1MWU4M2E3YWM1M2RmNTIyNzE=",
+    "lastLiquibaseTimestamp": 1758726367000,
+    "monorepository": true,
+    "packageName": "com.github.joao_felisberto.microservice",
+    "prodDatabaseType": "postgresql",
+    "serverPort": 8081,
+    "serviceDiscoveryType": "consul",
+    "skipClient": true,
+    "skipCommitHook": true,
+    "skipUserManagement": true
+  }
+}

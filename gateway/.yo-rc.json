@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "baseName": "gateway",
+    "cacheProvider": "hazelcast",
+    "clientFramework": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableSwaggerCodegen": true,
+    "enableTranslation": false,
+    "entities": [],
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "Y2Q2YTc3NGY2ZDdiMTc0OWFiOTQ5M2FhMWY4MzhjYTUwYTNmM2M2ZDQxNmU4NTRlYWRjNDFmMTJmMjQ3M2I5M2Q1MWE5Mzg2NDJkMDA0MzU1OTg4ZjU4MGM2YTczZjExZjExMTUwZjY3MDdiYzg1NDQzNGY4MTY5NWY3MTU4Yjk=",
+    "monorepository": true,
+    "packageName": "com.github.joao_felisberto.gateway",
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "serverPort": 8080,
+    "serviceDiscoveryType": "consul",
+    "skipClient": true,
+    "skipCommitHook": true
+  }
+}

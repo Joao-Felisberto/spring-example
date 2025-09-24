@@ -1,0 +1,58 @@
+{
+  "annotations": {
+    "changelogDate": "20250924150507"
+  },
+  "applications": ["microservice"],
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "CountryCode",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PORTUGAL (351),SPAIN (350),UNITED_STATES (1)"
+    },
+    {
+      "fieldName": "postcode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "stateOrProvince",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "streetOne",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "streetTwo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "emailAddress",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "Address",
+  "relationships": [
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "client",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

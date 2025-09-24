@@ -1,0 +1,13 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["gateway", "microservice"],
+    "clusteredDbApps": [],
+    "deploymentType": "docker-compose",
+    "directoryPath": "../",
+    "gatewayType": "SpringCloudGateway",
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "NjI4MDI0NjJkYWUzM2MzNTdkMTI0MjI4ZjYwOGM3ZmUxZTJjNjFiYTg3MmQ4NDBmODdhOTc3Y2JlYWRkODIyNjJmYTlhOWRlNzY0NGViZWViZjAwMWRkNDgzNzJiYjJkZWFhMA==",
+    "monitoring": "no",
+    "serviceDiscoveryType": "consul"
+  }
+}

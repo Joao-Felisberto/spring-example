@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20250924150407"
+  },
+  "applications": ["microservice"],
+  "clientRootFolder": "microservice",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nif",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "microservice",
+  "name": "Client",
+  "relationships": [
+    {
+      "otherEntityName": "phoneNumber",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "phoneNumber",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "address",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

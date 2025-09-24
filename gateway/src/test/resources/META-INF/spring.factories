@@ -1,0 +1,3 @@
+org.springframework.test.context.ContextCustomizerFactory = \
+    com.github.joao_felisberto.gateway.config.\
+    SqlTestContainersSpringContextCustomizerFactory

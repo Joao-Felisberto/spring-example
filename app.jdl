@@ -1,0 +1,80 @@
+deployment {
+  deploymentType docker-compose
+  // monitoring prometheus
+  appsFolders [gateway, microservice]
+}
+
+
+application {
+  config {
+    applicationType microservice
+    baseName microservice
+    cacheProvider hazelcast
+    clientFramework no
+    databaseType sql
+    devDatabaseType h2Disk
+    enableSwaggerCodegen true
+    enableTranslation false
+    packageName com.github.joao_felisberto.microservice
+    prodDatabaseType postgresql
+    serviceDiscoveryType consul
+  }
+
+  entities *
+}
+
+application {
+  config {
+    applicationType gateway
+    baseName gateway
+    cacheProvider hazelcast
+    clientFramework no
+    databaseType sql
+    devDatabaseType h2Disk
+    enableSwaggerCodegen true
+    enableTranslation false
+    packageName com.github.joao_felisberto.gateway
+    prodDatabaseType postgresql
+    serviceDiscoveryType consul
+  }
+}
+
+
+entity Client {
+  name String required // neds more complexity?
+  nif String required // supports any number of numbers AND eventual codes with letters (future proof if not yet real)
+}
+
+// https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/Party_Management.regular.swagger.json
+entity Address {
+  city String required
+  country CountryCode required // TODO: can this be simplified? https://www.postgresql.org/docs/current/datatype-enum.html
+  postcode String required
+  stateOrProvince String required
+  streetOne String required
+  streetTwo String required
+  emailAddress String required // TODO: validate
+}
+
+entity PhoneNumber {
+  countryCode CountryCode required
+  number Long required min(0)
+}
+
+relationship ManyToOne {
+  Client to Address
+}
+
+relationship OneToOne {
+  Client to PhoneNumber // one to one discards some edge cases (home/shared phones),
+                        //but is more important for fraud prevention maybe
+}
+
+// Is an eunm adequate? Hardly ever changes, but still changes
+enum CountryCode {
+  PORTUGAL("351")
+  SPAIN("350")
+  UNITED_STATES("1")
+  // ...
+}
+
