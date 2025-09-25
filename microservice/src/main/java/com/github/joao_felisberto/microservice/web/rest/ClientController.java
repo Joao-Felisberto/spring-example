@@ -1,12 +1,15 @@
 package com.github.joao_felisberto.microservice.web.rest;
 
+import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.Client;
+import com.github.joao_felisberto.microservice.domain.PhoneNumber;
+import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
+import com.github.joao_felisberto.microservice.repository.PhoneNumberRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import com.github.joao_felisberto.microservice.web.api.ClientApiDelegate;
 import com.github.joao_felisberto.microservice.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
-import org.apache.http.protocol.HTTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +45,14 @@ public class ClientController implements ClientApiDelegate {
     private String applicationName;
 
     private final ClientRepository clientRepository;
+    private final AddressRepository addressRepository;
+    private final PhoneNumberRepository phoneNumberRepository;
 
     @Autowired
-    public ClientController(ClientRepository clientRepository) {
+    public ClientController(ClientRepository clientRepository, AddressRepository addressRepository, PhoneNumberRepository phoneNumberRepository) {
         this.clientRepository = clientRepository;
+        this.addressRepository = addressRepository;
+        this.phoneNumberRepository = phoneNumberRepository;
     }
 
     /**
@@ -58,15 +65,22 @@ public class ClientController implements ClientApiDelegate {
      */
     @PostMapping("")
     @Override
-    public ResponseEntity<ClientDTO> putClient(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
-        LOG.debug("AAAAAA I'M DEBOOOOGING!!!");
+    public ResponseEntity<ClientDTO> postClient(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
         LOG.info("Got DTO : {}", clientDTO);
         final Client client = Client.fromDTO(clientDTO);
         LOG.info("POST request to save Client : {}", client);
+
         if (client.getId() != null) {
             LOG.error("A new client cannot already have an ID");
             throw new BadRequestAlertException("A new client cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if (client.getPhoneNumber().getId() != null) {
+            LOG.error("A new phone number cannot already have an ID");
+            throw new BadRequestAlertException("A new phone number cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+
+        final PhoneNumber phoneRes = phoneNumberRepository.save(client.getPhoneNumber());
+        final Address addressRes = addressRepository.save(client.getAddress());
 
         // fixme does this exfiltrate data since relationships are ill encoded in POJO?
         final Client clientRes = clientRepository.save(client);

@@ -14,7 +14,7 @@ paths:
     post:
       summary: Add a new client
       description: Registers a new Client in the system
-      operationId: putClient
+      operationId: postClient
       requestBody:
         description: The Client to add
         required: true
