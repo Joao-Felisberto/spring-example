@@ -23,7 +23,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link com.github.joao_felisberto.microservice.domain.Client}.
  */
 @RestController
-@RequestMapping("/api/clients")
+@RequestMapping("/api/DEPRECATED/clients")
 @Transactional
 public class ClientResource {
 

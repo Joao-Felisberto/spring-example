@@ -1,9 +1,12 @@
 package com.github.joao_felisberto.microservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+
 import java.io.Serializable;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,14 +35,33 @@ public class Client implements Serializable {
     @Column(name = "nif", nullable = false)
     private String nif;
 
-    @JsonIgnoreProperties(value = { "client" }, allowSetters = true)
+    @JsonIgnoreProperties(value = {"client"}, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(unique = true)
     private PhoneNumber phoneNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "clients" }, allowSetters = true)
+    @JsonIgnoreProperties(value = {"clients"}, allowSetters = true)
     private Address address;
+
+    public static Client fromDTO(ClientDTO dto) {
+        // todo shall this be enforced or can we ignore non-null values?
+        // id must be null for the database
+        return new Client()
+            .name(dto.getName())
+            .nif(dto.getNif())
+            .phoneNumber(PhoneNumber.fromDTO(dto.getPhone()))
+            .address(Address.fromDTO(dto.getAddress()));
+    }
+
+    public ClientDTO toDTO() {
+        return new ClientDTO(
+            this.name,
+            this.nif,
+            this.address.toDTO(),
+            this.phoneNumber.toDTO()
+        );
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -134,6 +156,8 @@ public class Client implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", nif='" + getNif() + "'" +
+            ", address=" + getAddress() + "'" +
+            ", phone=" + getPhoneNumber() + "'" +
             "}";
     }
 }

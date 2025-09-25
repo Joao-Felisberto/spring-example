@@ -77,4 +77,3 @@ enum CountryCode {
   UNITED_STATES("1")
   // ...
 }
-

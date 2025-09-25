@@ -30,5 +30,6 @@
       "relationshipType": "one-to-one"
     }
   ],
-  "searchEngine": "no"
+  "searchEngine": "no",
+  "skipServer": true
 }

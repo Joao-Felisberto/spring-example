@@ -2,9 +2,12 @@ package com.github.joao_felisberto.microservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
+import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
+import com.github.joao_felisberto.microservice.service.api.dto.PhoneNumberDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.annotations.Cache;
@@ -60,6 +63,29 @@ public class Address implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "phoneNumber", "address" }, allowSetters = true)
     private Set<Client> clients = new HashSet<>();
+
+    public static Address fromDTO(AddressDTO dto) {
+        return new Address()
+            .city(dto.getCity())
+            .country(CountryCode.fromJSONIndex(dto.getCountry()))
+            .postcode(dto.getPostcode())
+            .stateOrProvince(dto.getStateOrProvince())
+            .streetOne(dto.getStreetOne())
+            .streetTwo(dto.getStreetTwo())
+            .emailAddress(dto.getEmailAddress());
+    }
+
+    public AddressDTO toDTO() {
+        return new AddressDTO(
+            this.city,
+            new BigDecimal(this.country.ordinal()),
+            this.postcode,
+            this.stateOrProvince,
+            this.streetOne,
+            this.streetTwo,
+            this.emailAddress
+        );
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 

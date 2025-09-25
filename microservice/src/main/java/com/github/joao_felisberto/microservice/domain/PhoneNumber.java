@@ -2,9 +2,12 @@ package com.github.joao_felisberto.microservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
+import com.github.joao_felisberto.microservice.service.api.dto.PhoneNumberDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -38,6 +41,19 @@ public class PhoneNumber implements Serializable {
     @JsonIgnoreProperties(value = { "phoneNumber", "address" }, allowSetters = true)
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "phoneNumber")
     private Client client;
+
+    public static PhoneNumber fromDTO(PhoneNumberDTO dto) {
+        return new PhoneNumber()
+            .number(dto.getNumber().longValue())
+            .countryCode(CountryCode.fromJSONIndex(dto.getCountryCode()));
+    }
+
+    public PhoneNumberDTO toDTO() {
+        return new PhoneNumberDTO(
+            new BigDecimal(this.countryCode.ordinal()),
+            new BigDecimal(this.number)
+        );
+    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 

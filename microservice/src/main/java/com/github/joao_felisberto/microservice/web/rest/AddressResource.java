@@ -23,7 +23,7 @@ import tech.jhipster.web.util.ResponseUtil;
  * REST controller for managing {@link com.github.joao_felisberto.microservice.domain.Address}.
  */
 @RestController
-@RequestMapping("/api/addresses")
+@RequestMapping("/api/DEPRECATED/addresses")
 @Transactional
 public class AddressResource {
 

@@ -9,8 +9,90 @@ servers:
     description: Development server
   - url: https://localhost:8081/api
     description: Development server with TLS Profile
-paths: {}
+paths:
+  /client:
+    post:
+      summary: Add a new client
+      description: Registers a new Client in the system
+      operationId: putClient
+      requestBody:
+        description: The Client to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientDTO'
+      responses:
+        '200':
+          description: Client added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDTO'
 components:
+  schemas:
+    ClientDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        nif:
+          type: string
+        address:
+          $ref: '#/definitions/AddressDTO'
+        phone:
+          $ref: '#/definitions/PhoneNumberDTO'
+      required:
+        - name
+        - nif
+        - address
+        - phone
+    AddressDTO:
+      description: The textual identifier of the location where the client resides at
+      type: object
+      properties:
+        city:
+          description: City
+          type: string
+        country:
+          description: Country
+          type: number
+        postcode:
+          description: Postcode
+          type: string
+        stateOrProvince:
+          description: State or province
+          type: string
+        streetOne:
+          description: Describes the street
+          type: string
+        streetTwo:
+          description: Complementary street description
+          type: string
+        emailAddress:
+          description: Full email address in standard format
+          type: string
+      required:
+        - city
+        - country
+        - postcode
+        - stateOrProvince
+        - streetOne
+        - streetTwo
+        - emailAddress
+    PhoneNumberDTO:
+      description: The phone number with country code attributed to this client and this client alone
+      type: object
+      properties:
+        countryCode:
+          description: The code which uniquely identifies the country of this phone number
+          type: number
+        number:
+          description: The number that, within the country with the provided countryCode, belongs solely to the client
+          type: number
+      required:
+        - countryCode
+        - number
   responses:
     Problem:
       description: error occurred - see status code and problem object for more information.
@@ -63,5 +145,10 @@ components:
       description: JWT Authentication
       scheme: bearer
       bearerFormat: JWT
+#    basic:
+#      type: http
+#      description: Basic Authentication
+#      scheme: basic
 security:
   - jwt: []
+#  - basic: []
