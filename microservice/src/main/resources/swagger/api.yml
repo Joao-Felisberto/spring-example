@@ -36,8 +36,13 @@ components:
       properties:
         name:
           type: string
+          # https://github.com/OpenAPITools/openapi-generator/issues/19953#issuecomment-2592685406
+          x-field-extra-annotation: >-
+            @NotEmpty
         nif:
           type: string
+          x-field-extra-annotation: >-
+            @NotEmpty
         address:
           $ref: '#/definitions/AddressDTO'
         phone:
@@ -47,6 +52,7 @@ components:
         - nif
         - address
         - phone
+      additionalProperties: false
     AddressDTO:
       description: The textual identifier of the location where the client resides at
       type: object
@@ -54,24 +60,37 @@ components:
         city:
           description: City
           type: string
+          x-field-extra-annotation: >-
+            @NotEmpty
         country:
           description: Country
           type: number
         postcode:
           description: Postcode
           type: string
+          x-field-extra-annotation: >-
+            @NotEmpty
         stateOrProvince:
           description: State or province
           type: string
+          x-field-extra-annotation: >-
+            @NotEmpty
         streetOne:
           description: Describes the street
           type: string
+          x-field-extra-annotation: >-
+            @NotEmpty
         streetTwo:
           description: Complementary street description
           type: string
+          x-field-extra-annotation: >-
+            @NotEmpty
         emailAddress:
           description: Full email address in standard format
           type: string
+          x-field-extra-annotation: >-
+            @NotEmpty
+            @Email
       required:
         - city
         - country
@@ -80,6 +99,7 @@ components:
         - streetOne
         - streetTwo
         - emailAddress
+      additionalProperties: false
     PhoneNumberDTO:
       description: The phone number with country code attributed to this client and this client alone
       type: object
@@ -93,6 +113,7 @@ components:
       required:
         - countryCode
         - number
+      additionalProperties: false
   responses:
     Problem:
       description: error occurred - see status code and problem object for more information.

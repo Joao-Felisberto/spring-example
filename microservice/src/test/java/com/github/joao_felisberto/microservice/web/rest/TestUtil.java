@@ -2,6 +2,9 @@ package com.github.joao_felisberto.microservice.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
+import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
+import com.github.joao_felisberto.microservice.service.api.dto.PhoneNumberDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -196,6 +199,34 @@ public final class TestUtil {
             }
         );
         return (T) e.create();
+    }
+
+    public static ClientDTO cloneClientDTO(ClientDTO original) {
+        return new ClientDTO(
+            original.getName(),
+            original.getNif(),
+            cloneAddressDTO(original.getAddress()),
+            clonePhoneNumberDTO(original.getPhone())
+        );
+    }
+
+    public static AddressDTO cloneAddressDTO(AddressDTO original) {
+        return new AddressDTO(
+            original.getCity(),
+            original.getCountry(),
+            original.getPostcode(),
+            original.getStateOrProvince(),
+            original.getStreetOne(),
+            original.getStreetTwo(),
+            original.getEmailAddress()
+        );
+    }
+
+    public static PhoneNumberDTO clonePhoneNumberDTO(PhoneNumberDTO original) {
+        return new PhoneNumberDTO(
+            original.getCountryCode(),
+            original.getNumber()
+        );
     }
 
     private TestUtil() {}

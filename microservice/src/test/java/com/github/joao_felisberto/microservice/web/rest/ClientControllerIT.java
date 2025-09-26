@@ -7,12 +7,11 @@ import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.PhoneNumberDTO;
-import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -20,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
+import static com.github.joao_felisberto.microservice.web.rest.TestUtil.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -41,6 +41,8 @@ public class ClientControllerIT {
     @Autowired
     private MockMvc restClientMockMvc;
 
+    private static final ClientDTO NULL_CLIENT = new ClientDTO(null, null, null, null);
+
     public static ClientDTO createClientDTO() {
         return new ClientDTO(
             "a",
@@ -52,24 +54,23 @@ public class ClientControllerIT {
                 "a",
                 "a",
                 "a",
-                "a"
+                "a@a.pt"
             ),
             new PhoneNumberDTO(
                 new BigDecimal(CountryCode.PORTUGAL.ordinal()),
                 new BigDecimal(1)
             )
         );
-//        return new ClientDTO(
-//            "a",
-//            "1",
-//            null,
-//            null
-//        );
+    }
+
+    @BeforeEach
+    void clearDB() {
+        clientRepository.deleteAll();
     }
 
     @Test
     @Transactional
-    void createClient() throws Exception {
+    void createValidClient() throws Exception {
         final long databaseSizeBeforeCreate = clientRepository.count();
         final ClientDTO clientDTO = createClientDTO();
 
@@ -87,12 +88,68 @@ public class ClientControllerIT {
         );
 
         // Validate the Address in the database
-        // Assertions.assertEquals(databaseSizeBeforeCreate, clientRepository.count() - 1);
-        final long currentCount = clientRepository.count();
-        // assertThat(databaseSizeBeforeCreate + 1).isEqualTo(currentCount);
+        Assertions.assertEquals(databaseSizeBeforeCreate, clientRepository.count() - 1);
         Assertions.assertEquals(returnedClient, clientDTO);
-        // assertAddressUpdatableFieldsEquals(returnedClient, getPersistedAddress(returnedAddress));
+        // assertAddressUpdatableFieldsEquals(returnedClient, etPersistedAddress(returnedAddress)g);
+    }
 
-        // insertedAddress = returnedAddress;
+    @Test
+    @Transactional
+    void createInvalidClient() throws Exception {
+        final long databaseSizeBeforeCreate = clientRepository.count();
+        final ClientDTO validClient = createClientDTO();
+
+        final ClientDTO[] invalidClients = {
+            cloneClientDTO(validClient).name(null),
+            cloneClientDTO(validClient).nif(null),
+            cloneClientDTO(validClient).address(null),
+            cloneClientDTO(validClient).phone(null),
+
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).city(null)),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).country(null)),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).postcode(null)),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).stateOrProvince(null)),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetOne(null)),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetTwo(null)),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress(null)),
+
+            cloneClientDTO(validClient).phone(clonePhoneNumberDTO(validClient.getPhone()).countryCode(null)),
+            cloneClientDTO(validClient).phone(clonePhoneNumberDTO(validClient.getPhone()).number(null)),
+
+            // ---
+
+            cloneClientDTO(validClient).name(""),
+            cloneClientDTO(validClient).nif(""),
+
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).city("")),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).postcode("")),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).stateOrProvince("")),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetOne("")),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetTwo("")),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress("")),
+
+            // todo proper email fuzzing
+
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress("a")),
+            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress("a@")),
+        };
+
+        for (final ClientDTO invalidClient: invalidClients) {
+            final ClientDTO returnedClient = om.readValue(
+                restClientMockMvc
+                    .perform(post(ENTITY_API_URL)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(om.writeValueAsBytes(invalidClient))
+                    )
+                    .andExpect(status().isBadRequest())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString(),
+                ClientDTO.class
+            );
+
+            Assertions.assertEquals(databaseSizeBeforeCreate, clientRepository.count());
+            Assertions.assertEquals(returnedClient, NULL_CLIENT);
+        }
     }
 }

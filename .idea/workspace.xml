@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/AddressResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/AddressResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/PhoneNumberResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/PhoneNumberResourceIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/TestUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
