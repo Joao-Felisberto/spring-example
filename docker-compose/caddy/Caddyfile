@@ -1,0 +1,15 @@
+foo.test {
+    log stdout
+    # Mkcert - https://github.com/FiloSottile/mkcert
+    tls /root/certs/foo.test.pem /root/certs/foo.test-key.pem
+
+    proxy / http://gateway:8080 {
+        transparent
+        header_upstream Host  "foo.test"
+    }
+
+    proxy / http://microservice:8081 {
+        transparent
+        header_upstream Host  "foo.test"
+    }
+}

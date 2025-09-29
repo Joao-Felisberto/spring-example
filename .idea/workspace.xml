@@ -5,100 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docker-compose/caddy/Caddyfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose/docker-compose-ssl.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/GatewayApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/GatewayApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/GeneratedByJHipster.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/GeneratedByJHipster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/aop/logging/LoggingAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/aop/logging/LoggingAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/ApplicationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/ApplicationProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/AsyncConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/AsyncConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/CRLFLogConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/CRLFLogConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/DatabaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/DatabaseConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/DateTimeFormatConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/DateTimeFormatConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/JacksonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/JacksonConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/LiquibaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/LiquibaseConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/LoggingAspectConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/LoggingAspectConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/LoggingConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/LoggingConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/OpenApiConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/OpenApiConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/ReactorConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/ReactorConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/SecurityJwtConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/SecurityJwtConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/WebConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/config/WebConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/AbstractAuditingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/AbstractAuditingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/Authority.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/Authority.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/AuthorityCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/AuthorityCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/management/SecurityMetersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/management/SecurityMetersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/AuthorityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/AuthorityRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/EntityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/EntityManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/UserSqlHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/UserSqlHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/rowmapper/ColumnConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/rowmapper/ColumnConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/rowmapper/UserRowMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/repository/rowmapper/UserRowMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/AuthoritiesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/AuthoritiesConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/DomainUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/DomainUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/SecurityUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/SecurityUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/UserNotActivatedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/UserNotActivatedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/jwt/JWTRelayGatewayFilterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/security/jwt/JWTRelayGatewayFilterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/EmailAlreadyUsedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/EmailAlreadyUsedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/InvalidPasswordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/InvalidPasswordException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/MailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/MailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/UsernameAlreadyUsedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/UsernameAlreadyUsedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/dto/AdminUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/dto/AdminUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/dto/PasswordChangeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/dto/PasswordChangeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/service/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/AccountResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/AccountResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/AuthenticateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/AuthenticateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/AuthorityResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/AuthorityResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/GatewayResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/GatewayResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/PublicUserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/PublicUserResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/UserResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/BadRequestAlertException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/BadRequestAlertException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/EmailAlreadyUsedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/EmailAlreadyUsedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/ErrorConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/ErrorConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/ExceptionTranslator.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/ExceptionTranslator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/FieldErrorVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/FieldErrorVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/InvalidPasswordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/InvalidPasswordException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/LoginAlreadyUsedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/errors/LoginAlreadyUsedException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/KeyAndPasswordVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/KeyAndPasswordVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/LoginVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/LoginVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/ManagedUserVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/ManagedUserVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/RouteVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/java/com/github/joao_felisberto/gateway/web/rest/vm/RouteVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/IntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/IntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/TechnicalStructureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/TechnicalStructureTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/AsyncSyncConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/AsyncSyncConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/EmbeddedSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/EmbeddedSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/JHipsterBlockHoundIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/JHipsterBlockHoundIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/PostgreSqlTestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/PostgreSqlTestContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/SpringBootTestClassOrderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/SpringBootTestClassOrderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/SqlTestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/SqlTestContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/SqlTestContainersSpringContextCustomizerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/config/SqlTestContainersSpringContextCustomizerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AssertUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AssertUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AuthorityAsserts.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AuthorityAsserts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AuthorityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AuthorityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AuthorityTestSamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/domain/AuthorityTestSamples.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/management/SecurityMetersServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/management/SecurityMetersServiceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/DomainUserDetailsServiceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/DomainUserDetailsServiceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/SecurityUtilsUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/SecurityUtilsUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/AuthenticationIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/AuthenticationIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/JwtAuthenticationTestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/JwtAuthenticationTestUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/TokenAuthenticationIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/TokenAuthenticationIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/TokenAuthenticationSecurityMetersIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/security/jwt/TokenAuthenticationSecurityMetersIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/service/MailServiceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/service/MailServiceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/service/UserServiceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/service/UserServiceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/service/mapper/UserMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/service/mapper/UserMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/AccountResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/AccountResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/AuthenticateControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/AuthenticateControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/AuthorityResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/AuthorityResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/PublicUserResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/PublicUserResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/TestUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/UserResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/UserResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/WithUnauthenticatedMockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/WithUnauthenticatedMockUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/errors/ExceptionTranslatorIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/errors/ExceptionTranslatorIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/errors/ExceptionTranslatorTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/java/com/github/joao_felisberto/gateway/web/rest/errors/ExceptionTranslatorTestController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,31 +48,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.All in exercise.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.ClientResourceIT.getAllClients.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [-P\&quot;tls,dev\&quot;].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;us1&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/ex/microservice/src/main/resources/swagger&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.All in exercise.executor": "Coverage",
+    "JUnit.ClientResourceIT.getAllClients.executor": "Run",
+    "Maven. [test].executor": "Run",
+    "Maven. [validate].executor": "Run",
+    "Maven.exercise [-P\"tls,dev\"].executor": "Run",
+    "Maven.exercise [compile].executor": "Run",
+    "Maven.exercise [test].executor": "Run",
+    "Maven.exercise [validate].executor": "Run",
+    "Maven.exercise.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "us1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/dev/ex/docker-compose",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\ex\docker-compose" />
       <recent name="C:\dev\ex\microservice\src\main\resources\swagger" />
       <recent name="C:\dev\ex\src\main\resources\swagger" />
     </key>
