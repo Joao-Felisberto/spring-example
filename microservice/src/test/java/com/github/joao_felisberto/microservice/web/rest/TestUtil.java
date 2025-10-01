@@ -206,7 +206,8 @@ public final class TestUtil {
             original.getName(),
             original.getNif(),
             cloneAddressDTO(original.getAddress()),
-            clonePhoneNumberDTO(original.getPhone())
+            original.getPhoneNumber(),
+            original.getPhoneCountryCode()
         );
     }
 

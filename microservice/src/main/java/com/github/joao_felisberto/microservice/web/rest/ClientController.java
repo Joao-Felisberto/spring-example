@@ -2,10 +2,8 @@ package com.github.joao_felisberto.microservice.web.rest;
 
 import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.Client;
-import com.github.joao_felisberto.microservice.domain.PhoneNumber;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
-import com.github.joao_felisberto.microservice.repository.PhoneNumberRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import com.github.joao_felisberto.microservice.web.api.ClientApiDelegate;
 import com.github.joao_felisberto.microservice.web.rest.errors.BadRequestAlertException;
@@ -46,13 +44,11 @@ public class ClientController implements ClientApiDelegate {
 
     private final ClientRepository clientRepository;
     private final AddressRepository addressRepository;
-    private final PhoneNumberRepository phoneNumberRepository;
 
     @Autowired
-    public ClientController(ClientRepository clientRepository, AddressRepository addressRepository, PhoneNumberRepository phoneNumberRepository) {
+    public ClientController(ClientRepository clientRepository, AddressRepository addressRepository) {
         this.clientRepository = clientRepository;
         this.addressRepository = addressRepository;
-        this.phoneNumberRepository = phoneNumberRepository;
     }
 
     /**
@@ -74,12 +70,7 @@ public class ClientController implements ClientApiDelegate {
             LOG.error("A new client cannot already have an ID");
             throw new BadRequestAlertException("A new client cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        if (client.getPhoneNumber().getId() != null) {
-            LOG.error("A new phone number cannot already have an ID");
-            throw new BadRequestAlertException("A new phone number cannot already have an ID", ENTITY_NAME, "idexists");
-        }
 
-        final PhoneNumber phoneRes = phoneNumberRepository.save(client.getPhoneNumber());
         final Address addressRes = addressRepository.save(client.getAddress());
 
         // fixme does this exfiltrate data since relationships are ill encoded in POJO?

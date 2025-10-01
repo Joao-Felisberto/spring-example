@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+  <changeSet id="2025093010000-1" author="João Felisberto">
+    <!-- Add columns -->
+    <addColumn tableName="client">
+      <column name="phone_number" type="bigint"/>
+      <column name="phone_country_code" type="varchar(255)"/>
+    </addColumn>
+  </changeSet>
+
+  <changeSet id="2025093010000-2" author="João Felisberto">
+    <!-- Move data -->
+    <update tableName="client">
+      <column name="client.phone_number" valueComputed="phone_number.number"/>
+      <column name="client.phone_country_code" valueComputed="phone_number.country_code"/>
+      <where>phone_number.phone_id = client.phone_number_id</where>
+    </update>
+
+    <!--    <update tableName="clients">-->
+    <!--      <column name="phone_country_code" valueComputed="phone_number.country_code"/>-->
+    <!--      <where>phone_number.phone_id = client.phone_number_id</where>-->
+    <!--    </update>-->
+  </changeSet>
+
+  <changeSet id="2025093010000-3" author="João Felisberto">
+    <!-- Add constraints -->
+    <addNotNullConstraint tableName="client" columnName="phone_number"/>
+    <addNotNullConstraint tableName="client" columnName="phone_country_code"/>
+  </changeSet>
+
+  <changeSet id="2025093010000-4" author="João Felisberto">
+    <!-- Drop table -->
+    <dropTable tableName="phone_number"/>
+  </changeSet>
+
+  <!--  <changeSet id="2025093010000-4" author="João Felisberto" context="faker">-->
+  <!--    <loadData-->
+  <!--      file="config/liquibase/fake-data/client.csv"-->
+  <!--      separator=";"-->
+  <!--      tableName="client"-->
+  <!--      usePreparedStatements="true">-->
+  <!--      <column name="id" type="numeric"/>-->
+  <!--      <column name="name" type="string"/>-->
+  <!--      <column name="nif" type="string"/>-->
+  <!--      <column name="phone_country_code" type="string"/>-->
+  <!--      <column name="phone_number" type="numeric"/>-->
+  <!--    </loadData>-->
+  <!--  </changeSet>-->
+</databaseChangeLog>
+
+
+  <!--<?xml version="1.0" encoding="utf-8"?>-->
+  <!--<databaseChangeLog-->
+  <!--  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+  <!--  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+  <!--  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">-->
+
+  <!--  <changeSet id="20250930100001" author="João Felisberto">-->
+  <!--    <preConditions onFail="MARK_RAN">-->
+  <!--      <not>-->
+  <!--        <columnExists tableName="client" columnName="phone_country_code"/>-->
+  <!--      </not>-->
+  <!--    </preConditions>-->
+  <!--    &lt;!&ndash; Add new columns to the client table without NOT NULL constraint &ndash;&gt;-->
+  <!--    <addColumn tableName="client">-->
+  <!--      <column name="phone_country_code" type="varchar(255)"/>-->
+  <!--      <column name="phone_number" type="bigint"/>-->
+  <!--    </addColumn>-->
+
+  <!--    &lt;!&ndash; Update phone_country_code and phone_number using a join &ndash;&gt;-->
+  <!--    <update tableName="client">-->
+  <!--      <column name="phone_country_code"-->
+  <!--              value="(SELECT country_code FROM phone_number WHERE phone_number.id = client.phone_number_id)"/>-->
+  <!--      <column name="phone_number"-->
+  <!--              value="(SELECT number FROM phone_number WHERE phone_number.id = client.phone_number_id)"/>-->
+  <!--      <where>client.phone_number_id IS phone_number.id</where>-->
+  <!--    </update>-->
+
+  <!--    &lt;!&ndash; Alter the column to add NOT NULL constraint &ndash;&gt;-->
+  <!--    <addNotNullConstraint tableName="client" columnName="phone_country_code" columnDataType="varchar(255)"/>-->
+  <!--    <addNotNullConstraint tableName="client" columnName="phone_number" columnDataType="bigint"/>-->
+
+  <!--    &lt;!&ndash; Drop the foreign key constraint &ndash;&gt;-->
+  <!--    <dropForeignKeyConstraint baseTableName="client" constraintName="fk_client__phone_number_id"/>-->
+
+  <!--    &lt;!&ndash; Drop the phone_number table &ndash;&gt;-->
+  <!--    <dropTable tableName="phone_number"/>-->
+  <!--  </changeSet>-->
+
+  <!--  <changeSet id="20250930100002" author="João Felisberto" context="faker">-->
+  <!--    <loadData-->
+  <!--      file="config/liquibase/fake-data/client.csv"-->
+  <!--      separator=";"-->
+  <!--      tableName="client"-->
+  <!--      usePreparedStatements="true">-->
+  <!--      <column name="id" type="numeric"/>-->
+  <!--      <column name="name" type="string"/>-->
+  <!--      <column name="nif" type="string"/>-->
+  <!--      <column name="phone_country_code" type="string"/>-->
+  <!--      <column name="phone_number" type="numeric"/>-->
+  <!--    </loadData>-->
+  <!--  </changeSet>-->
+  <!--</databaseChangeLog>-->

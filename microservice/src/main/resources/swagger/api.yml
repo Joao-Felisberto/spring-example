@@ -45,13 +45,18 @@ components:
             @NotEmpty
         address:
           $ref: '#/definitions/AddressDTO'
-        phone:
-          $ref: '#/definitions/PhoneNumberDTO'
+        phone_number:
+          description: The number that, within the country with the provided countryCode, belongs solely to the client
+          type: number
+        phone_country_code:
+          description: The code which uniquely identifies the country of this phone number
+          type: number
       required:
         - name
         - nif
         - address
-        - phone
+        - phone_number
+        - phone_country_code
       additionalProperties: false
     AddressDTO:
       description: The textual identifier of the location where the client resides at
@@ -100,20 +105,20 @@ components:
         - streetTwo
         - emailAddress
       additionalProperties: false
-    PhoneNumberDTO:
-      description: The phone number with country code attributed to this client and this client alone
-      type: object
-      properties:
-        countryCode:
-          description: The code which uniquely identifies the country of this phone number
-          type: number
-        number:
-          description: The number that, within the country with the provided countryCode, belongs solely to the client
-          type: number
-      required:
-        - countryCode
-        - number
-      additionalProperties: false
+#    PhoneNumberDTO:
+#      description: The phone number with country code attributed to this client and this client alone
+#      type: object
+#      properties:
+#        countryCode:
+#          description: The code which uniquely identifies the country of this phone number
+#          type: number
+#        number:
+#          description: The number that, within the country with the provided countryCode, belongs solely to the client
+#          type: number
+#      required:
+#        - countryCode
+#        - number
+#      additionalProperties: false
   responses:
     Problem:
       description: error occurred - see status code and problem object for more information.

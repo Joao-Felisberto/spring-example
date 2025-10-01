@@ -19,6 +19,7 @@ logging:
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
     com.github.joao_felisberto.gateway: DEBUG
+    _org.springframework.web.servlet.HandlerMapping.Mappings: debug
 
 management:
   zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies

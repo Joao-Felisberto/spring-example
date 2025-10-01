@@ -3,7 +3,6 @@ package com.github.joao_felisberto.microservice.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
-import com.github.joao_felisberto.microservice.service.api.dto.PhoneNumberDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
@@ -67,7 +66,7 @@ public class Address implements Serializable {
     public static Address fromDTO(AddressDTO dto) {
         return new Address()
             .city(dto.getCity())
-            .country(CountryCode.fromJSONIndex(dto.getCountry()))
+            .country(CountryCode.fromBigDecimalIndex(dto.getCountry()))
             .postcode(dto.getPostcode())
             .stateOrProvince(dto.getStateOrProvince())
             .streetOne(dto.getStreetOne())

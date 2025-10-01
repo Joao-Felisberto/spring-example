@@ -41,7 +41,7 @@ public class ClientControllerIT {
     @Autowired
     private MockMvc restClientMockMvc;
 
-    private static final ClientDTO NULL_CLIENT = new ClientDTO(null, null, null, null);
+    private static final ClientDTO NULL_CLIENT = new ClientDTO(null, null, null, null, null);
 
     public static ClientDTO createClientDTO() {
         return new ClientDTO(
@@ -56,10 +56,8 @@ public class ClientControllerIT {
                 "a",
                 "a@a.pt"
             ),
-            new PhoneNumberDTO(
-                new BigDecimal(CountryCode.PORTUGAL.ordinal()),
-                new BigDecimal(1)
-            )
+            new BigDecimal(CountryCode.PORTUGAL.ordinal()),
+            new BigDecimal(1)
         );
     }
 
@@ -103,7 +101,8 @@ public class ClientControllerIT {
             cloneClientDTO(validClient).name(null),
             cloneClientDTO(validClient).nif(null),
             cloneClientDTO(validClient).address(null),
-            cloneClientDTO(validClient).phone(null),
+            cloneClientDTO(validClient).phoneNumber(null),
+            cloneClientDTO(validClient).phoneCountryCode(null),
 
             cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).city(null)),
             cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).country(null)),
@@ -112,9 +111,6 @@ public class ClientControllerIT {
             cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetOne(null)),
             cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetTwo(null)),
             cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress(null)),
-
-            cloneClientDTO(validClient).phone(clonePhoneNumberDTO(validClient.getPhone()).countryCode(null)),
-            cloneClientDTO(validClient).phone(clonePhoneNumberDTO(validClient.getPhone()).number(null)),
 
             // ---
 
@@ -134,7 +130,7 @@ public class ClientControllerIT {
             cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress("a@")),
         };
 
-        for (final ClientDTO invalidClient: invalidClients) {
+        for (final ClientDTO invalidClient : invalidClients) {
             final ClientDTO returnedClient = om.readValue(
                 restClientMockMvc
                     .perform(post(ENTITY_API_URL)

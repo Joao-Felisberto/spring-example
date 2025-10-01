@@ -2,6 +2,8 @@
 
 ## Usage
 
+Build microservices with `mvn package -Pprod verify jib:dockerBuild`
+
 Launch all your infrastructure by running: `docker compose up -d`.
 
 ## Configured Docker services

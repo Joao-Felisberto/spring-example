@@ -20,7 +20,7 @@ public enum CountryCode {
         return value;
     }
 
-    public static CountryCode fromJSONIndex(BigDecimal bigI) {
+    public static CountryCode fromBigDecimalIndex(BigDecimal bigI) {
         final int i = bigI.intValue();
         return values()[i];
     }

@@ -1,7 +1,12 @@
 {
   "generator-jhipster": {
     "baseName": "workspaces",
+    "creationTimestamp": 1759229930827,
     "directoryPath": "./",
-    "jhipsterVersion": "8.11.0"
+    "entities": [],
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "ZWNhOWZhYjJkNjc0OTQxOTllZDc5MDcxM2E0ZDIzNGU1N2ViNGY4ZGRkNGViNGY4M2M5ZGE1NjUxNzAzODUyYjk2MTU3MmJmMTgzNDRlOTViMDA0OGQ0YzVmYTY3MTU3OTEzMTg0ZWY3MjY1YjE2ODY5YzQzMDVhMDlkZDExMTQ=",
+    "languages": ["en"],
+    "nativeLanguage": "en"
   }
 }

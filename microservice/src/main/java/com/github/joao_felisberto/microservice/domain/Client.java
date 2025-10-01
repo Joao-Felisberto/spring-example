@@ -1,11 +1,13 @@
 package com.github.joao_felisberto.microservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -35,10 +37,15 @@ public class Client implements Serializable {
     @Column(name = "nif", nullable = false)
     private String nif;
 
-    @JsonIgnoreProperties(value = {"client"}, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(unique = true)
-    private PhoneNumber phoneNumber;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "phone_country_code", nullable = false)
+    private CountryCode countryCode;
+
+    @NotNull
+    @Min(value = 0L)
+    @Column(name = "phone_number", nullable = false)
+    private Long phoneNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"clients"}, allowSetters = true)
@@ -50,7 +57,8 @@ public class Client implements Serializable {
         return new Client()
             .name(dto.getName())
             .nif(dto.getNif())
-            .phoneNumber(PhoneNumber.fromDTO(dto.getPhone()))
+            .phoneNumber(dto.getPhoneNumber().longValue())
+            .countryCode(CountryCode.fromBigDecimalIndex(dto.getPhoneCountryCode()))
             .address(Address.fromDTO(dto.getAddress()));
     }
 
@@ -59,7 +67,8 @@ public class Client implements Serializable {
             this.name,
             this.nif,
             this.address.toDTO(),
-            this.phoneNumber.toDTO()
+            new BigDecimal(this.phoneNumber),
+            new BigDecimal(this.countryCode.ordinal())
         );
     }
 
@@ -104,19 +113,6 @@ public class Client implements Serializable {
         this.nif = nif;
     }
 
-    public PhoneNumber getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-    public void setPhoneNumber(PhoneNumber phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Client phoneNumber(PhoneNumber phoneNumber) {
-        this.setPhoneNumber(phoneNumber);
-        return this;
-    }
-
     public Address getAddress() {
         return this.address;
     }
@@ -127,6 +123,32 @@ public class Client implements Serializable {
 
     public Client address(Address address) {
         this.setAddress(address);
+        return this;
+    }
+
+    public CountryCode getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(CountryCode countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Client phoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public Client countryCode(CountryCode countryCode) {
+        this.countryCode = countryCode;
         return this;
     }
 
@@ -157,7 +179,7 @@ public class Client implements Serializable {
             ", name='" + getName() + "'" +
             ", nif='" + getNif() + "'" +
             ", address=" + getAddress() + "'" +
-            ", phone=" + getPhoneNumber() + "'" +
+            ", phone_number=" + getPhoneNumber() + "'" +
             "}";
     }
 }

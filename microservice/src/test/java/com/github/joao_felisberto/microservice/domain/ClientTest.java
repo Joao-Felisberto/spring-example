@@ -2,7 +2,6 @@ package com.github.joao_felisberto.microservice.domain;
 
 import static com.github.joao_felisberto.microservice.domain.AddressTestSamples.*;
 import static com.github.joao_felisberto.microservice.domain.ClientTestSamples.*;
-import static com.github.joao_felisberto.microservice.domain.PhoneNumberTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.github.joao_felisberto.microservice.web.rest.TestUtil;
@@ -24,17 +23,17 @@ class ClientTest {
         assertThat(client1).isNotEqualTo(client2);
     }
 
-    @Test
-    void phoneNumberTest() {
-        Client client = getClientRandomSampleGenerator();
-        PhoneNumber phoneNumberBack = getPhoneNumberRandomSampleGenerator();
-
-        client.setPhoneNumber(phoneNumberBack);
-        assertThat(client.getPhoneNumber()).isEqualTo(phoneNumberBack);
-
-        client.phoneNumber(null);
-        assertThat(client.getPhoneNumber()).isNull();
-    }
+//    @Test
+//    void phoneNumberTest() {
+//        Client client = getClientRandomSampleGenerator();
+//        PhoneNumber phoneNumberBack = getPhoneNumberRandomSampleGenerator();
+//
+//        client.setPhoneNumber(phoneNumberBack);
+//        assertThat(client.getPhoneNumber()).isEqualTo(phoneNumberBack);
+//
+//        client.phoneNumber(null);
+//        assertThat(client.getPhoneNumber()).isNull();
+//    }
 
     @Test
     void addressTest() {

@@ -1,11 +1,11 @@
-id;name;nif
-1;that per squiggly;restaurant valiantly incidentally
-2;late scorn;rout collaborate
-3;geez dampen hmph;whoever sheathe
-4;immaculate yahoo;eke pish
-5;provided humiliating;needy
-6;or;gasp
-7;coaxingly sympathetically along;worth
-8;depend garage frilly;blacken dereference shyly
-9;ha upbeat aw;indeed surge
-10;whose innocently deduct;broadcast whether if
+id;name;nif;phone_number_id;address_id
+1;that per squiggly;restaurant valiantly incidentally;1;1
+2;late scorn;rout collaborate;2;2
+3;geez dampen hmph;whoever sheathe;3;3
+4;immaculate yahoo;eke pish;4;4
+5;provided humiliating;needy;5;5
+6;or;gasp;6;6
+7;coaxingly sympathetically along;worth;7;7
+8;depend garage frilly;blacken dereference shyly;8;8
+9;ha upbeat aw;indeed surge;9;9
+10;whose innocently deduct;broadcast whether if;10;10
