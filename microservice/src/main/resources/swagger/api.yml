@@ -12,7 +12,7 @@ servers:
 paths:
   /client:
     post:
-      summary: Add a new client
+      summary: Add a new Client
       description: Registers a new Client in the system
       operationId: postClient
       requestBody:
@@ -29,6 +29,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientDTO'
+    delete:
+      summary: Delete an existing client
+      description: Removes an existing Client from the system or does nothing if it doesn't exist
+      operationId: deleteClient
+      parameters:
+        - name: id
+          in: path
+          description: The unique identifier of the Client to delete
+          required: true
+          schema: 
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Nothing is returned wether a Client was deleted or not
+          content: {}
+        '404':
+          description: If no id is provided
+          content: {}
 components:
   schemas:
     ClientDTO:
@@ -105,20 +124,20 @@ components:
         - streetTwo
         - emailAddress
       additionalProperties: false
-#    PhoneNumberDTO:
-#      description: The phone number with country code attributed to this client and this client alone
-#      type: object
-#      properties:
-#        countryCode:
-#          description: The code which uniquely identifies the country of this phone number
-#          type: number
-#        number:
-#          description: The number that, within the country with the provided countryCode, belongs solely to the client
-#          type: number
-#      required:
-#        - countryCode
-#        - number
-#      additionalProperties: false
+  #    PhoneNumberDTO:
+  #      description: The phone number with country code attributed to this client and this client alone
+  #      type: object
+  #      properties:
+  #        countryCode:
+  #          description: The code which uniquely identifies the country of this phone number
+  #          type: number
+  #        number:
+  #          description: The number that, within the country with the provided countryCode, belongs solely to the client
+  #          type: number
+  #      required:
+  #        - countryCode
+  #        - number
+  #      additionalProperties: false
   responses:
     Problem:
       description: error occurred - see status code and problem object for more information.
@@ -176,5 +195,5 @@ components:
 #      description: Basic Authentication
 #      scheme: basic
 security:
-  - jwt: []
+  - jwt: [ ]
 #  - basic: []

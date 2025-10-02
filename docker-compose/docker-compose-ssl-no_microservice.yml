@@ -1,41 +1,41 @@
 services:
-#  gateway:
-#    image: gateway
-#    environment:
-#      - _JAVA_OPTIONS=-Xmx512m -Xms256m
-#      - SPRING_PROFILES_ACTIVE=prod,api-docs,zipkin
-#      - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
-#      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://zipkin:9411/api/v2/spans
-#      - SPRING_CLOUD_CONSUL_HOST=consul
-#      - SPRING_CLOUD_CONSUL_PORT=8500
-#      - SPRING_R2DBC_URL=r2dbc:postgresql://gateway-postgresql:5432/gateway
-#      - SPRING_LIQUIBASE_URL=jdbc:postgresql://gateway-postgresql:5432/gateway
-#    ports:
-#      - 8080:8080
-#    healthcheck:
-#      test:
-#        - CMD
-#        - curl
-#        - -f
-#        - http://localhost:8080/management/health
-#      interval: 5s
-#      timeout: 5s
-#      retries: 40
-#    depends_on:
-#      gateway-postgresql:
-#        condition: service_healthy
-#  gateway-postgresql:
-#    image: postgres:17.4
-#    environment:
-#      - POSTGRES_USER=gateway
-#      - POSTGRES_HOST_AUTH_METHOD=trust
-#    healthcheck:
-#      test:
-#        - CMD-SHELL
-#        - pg_isready -U $${POSTGRES_USER}
-#      interval: 5s
-#      timeout: 5s
-#      retries: 10
+  gateway:
+    image: gateway
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,api-docs,zipkin
+      - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
+      - MANAGEMENT_ZIPKIN_TRACING_ENDPOINT=http://zipkin:9411/api/v2/spans
+      - SPRING_CLOUD_CONSUL_HOST=consul
+      - SPRING_CLOUD_CONSUL_PORT=8500
+      - SPRING_R2DBC_URL=r2dbc:postgresql://gateway-postgresql:5432/gateway
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://gateway-postgresql:5432/gateway
+    ports:
+      - 8080:8080
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8080/management/health
+      interval: 5s
+      timeout: 5s
+      retries: 40
+    depends_on:
+      gateway-postgresql:
+        condition: service_healthy
+  gateway-postgresql:
+    image: postgres:17.4
+    environment:
+      - POSTGRES_USER=gateway
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U $${POSTGRES_USER}
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
 #  microservice:
 #    image: microservice
