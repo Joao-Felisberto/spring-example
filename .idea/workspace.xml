@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose/docker-compose-ssl-no_microservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/docker-compose-ssl-no_microservice.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +52,7 @@
     "Application.GatewayApp.executor": "Run",
     "Application.MicroserviceApp.executor": "Run",
     "JUnit.All in exercise.executor": "Coverage",
+    "JUnit.ClientControllerIT.deleteExistingClient.executor": "Run",
     "JUnit.ClientResourceIT.getAllClients.executor": "Run",
     "Maven. [test].executor": "Run",
     "Maven. [validate].executor": "Run",
@@ -101,7 +99,7 @@
       <command value="mvn -P&quot;tls,dev&quot;" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.GatewayApp">
+  <component name="RunManager" selected="JUnit.ClientControllerIT.deleteExistingClient">
     <configuration name="GatewayApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.gateway.GatewayApp" />
       <module name="gateway" />
@@ -128,10 +126,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in exercise" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="exercise" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+    <configuration name="ClientControllerIT.deleteExistingClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.web.rest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.web.rest" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.web.rest.ClientControllerIT" />
+      <option name="METHOD_NAME" value="deleteExistingClient" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -187,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClientControllerIT.deleteExistingClient" />
         <item itemvalue="Application.GatewayApp" />
         <item itemvalue="Application.MicroserviceApp" />
         <item itemvalue="JUnit.ClientResourceIT.getAllClients" />
         <item itemvalue="Python.test" />
-        <item itemvalue="JUnit.All in exercise" />
       </list>
     </recent_temporary>
   </component>

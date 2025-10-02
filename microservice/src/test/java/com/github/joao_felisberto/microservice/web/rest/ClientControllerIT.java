@@ -2,7 +2,9 @@ package com.github.joao_felisberto.microservice.web.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.joao_felisberto.microservice.IntegrationTest;
+import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
+import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
@@ -20,6 +22,7 @@ import java.math.BigDecimal;
 
 import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneAddressDTO;
 import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneClientDTO;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,12 +31,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ClientControllerIT {
     private static final String ENTITY_API_URL = "/api/clients";
+//    private static final Logger LOG = LoggerFactory.getLogger(ClientControllerIT.class);
 
     @Autowired
     private ObjectMapper om;
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
 
 //    @Autowired
 //    private EntityManager em;
@@ -145,7 +152,41 @@ public class ClientControllerIT {
             );
 
             Assertions.assertEquals(databaseSizeBeforeCreate, clientRepository.count());
-            Assertions.assertEquals(returnedClient, NULL_CLIENT);
+            Assertions.assertEquals(NULL_CLIENT, returnedClient);
         }
+    }
+
+    @Test
+    @Transactional
+    void deleteExistingClient() throws Exception {
+        final long clientDBSizeBeforeCreate = clientRepository.count();
+        final ClientDTO clientDTO = createClientDTO();
+        final Client client = Client.fromDTO(clientDTO);
+
+        addressRepository.saveAndFlush(client.getAddress());
+        clientRepository.saveAndFlush(client);
+        Assertions.assertEquals(clientDBSizeBeforeCreate, clientRepository.count() - 1);
+
+        final long id = client.getId();
+
+        restClientMockMvc
+            .perform(delete(String.format("%s/%d", ENTITY_API_URL, id)))
+            .andExpect(status().isNoContent());
+
+        Assertions.assertEquals(clientDBSizeBeforeCreate, clientRepository.count());
+    }
+
+    @Test
+    @Transactional
+    void deleteNonExistingClient() throws Exception {
+        final long clientDBSizeBeforeCreate = clientRepository.count();
+        final long nonExistentID = -1;
+        Assertions.assertTrue(clientRepository.findById(nonExistentID).isEmpty());
+
+        restClientMockMvc
+            .perform(delete(String.format("%s/%d", ENTITY_API_URL, nonExistentID)))
+            .andExpect(status().isNoContent());
+
+        Assertions.assertEquals(clientDBSizeBeforeCreate, clientRepository.count());
     }
 }

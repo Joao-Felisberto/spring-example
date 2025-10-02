@@ -90,8 +90,9 @@ public class ClientController implements ClientApiDelegate {
     @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<Void> deleteClient(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete Client : {}", id);
+        LOG.debug("REST request to delete Client: {}", id);
         clientRepository.deleteById(id);
+        clientRepository.flush();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
