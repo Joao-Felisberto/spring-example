@@ -1,28 +1,28 @@
 package com.github.joao_felisberto.microservice.web.rest;
 
-import static com.github.joao_felisberto.microservice.domain.ClientAsserts.*;
-import static com.github.joao_felisberto.microservice.web.rest.TestUtil.createUpdateProxyForBean;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.joao_felisberto.microservice.IntegrationTest;
 import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import jakarta.persistence.EntityManager;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
+
+import static com.github.joao_felisberto.microservice.domain.ClientAsserts.*;
+import static com.github.joao_felisberto.microservice.web.rest.TestUtil.createUpdateProxyForBean;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Integration tests for the {@link ClientResource} REST controller.
@@ -62,7 +62,7 @@ class ClientResourceIT {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -72,7 +72,7 @@ class ClientResourceIT {
 
     /**
      * Create an updated entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */

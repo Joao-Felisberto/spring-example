@@ -99,15 +99,15 @@ public class ClientController implements ClientApiDelegate {
 
     @GetMapping("/{nif}")
     @Override
-    public ResponseEntity<ClientDTO> getClientByNIF(@PathVariable("nif") Long nif) {
+    public ResponseEntity<ClientDTO> getClientByNIF(@PathVariable("nif") String nif) {
         LOG.debug("REST request for Client with NIF: {}", nif);
 
-        final Optional<Client> clientRes = clientRepository.findByNIF(nif);
+        final Optional<Client> clientRes = clientRepository.findBynif(nif);
         if (clientRes.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        final ClientDTO client = clientRes.get().toDTO();
+        final ClientDTO client = clientRes.orElseThrow().toDTO();
 
         return new ResponseEntity<>(client, HttpStatus.OK);
     }

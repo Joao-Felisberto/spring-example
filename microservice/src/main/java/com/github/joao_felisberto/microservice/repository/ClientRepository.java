@@ -13,5 +13,5 @@ import java.util.Optional;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    Optional<Client> findByNIF(Long nif);
+    Optional<Client> findBynif(String nif);
 }

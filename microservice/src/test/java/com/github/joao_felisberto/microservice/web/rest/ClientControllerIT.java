@@ -3,10 +3,8 @@ package com.github.joao_felisberto.microservice.web.rest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.joao_felisberto.microservice.IntegrationTest;
 import com.github.joao_felisberto.microservice.domain.Client;
-import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
-import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,18 +16,17 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
-
+import static com.github.joao_felisberto.microservice.TestUtil.NULL_CLIENT;
+import static com.github.joao_felisberto.microservice.TestUtil.createClientDTO;
 import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneAddressDTO;
 import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneClientDTO;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-public class ClientControllerIT {
+class ClientControllerIT {
     private static final String ENTITY_API_URL = "/api/clients";
 //    private static final Logger LOG = LoggerFactory.getLogger(ClientControllerIT.class);
 
@@ -47,26 +44,6 @@ public class ClientControllerIT {
 
     @Autowired
     private MockMvc restClientMockMvc;
-
-    private static final ClientDTO NULL_CLIENT = new ClientDTO(null, null, null, null, null);
-
-    public static ClientDTO createClientDTO() {
-        return new ClientDTO(
-            "a",
-            "1",
-            new AddressDTO(
-                "a",
-                new BigDecimal(CountryCode.PORTUGAL.ordinal()),
-                "a",
-                "a",
-                "a",
-                "a",
-                "a@a.pt"
-            ),
-            new BigDecimal(CountryCode.PORTUGAL.ordinal()),
-            new BigDecimal(1)
-        );
-    }
 
     @BeforeEach
     void clearDB() {
@@ -95,7 +72,6 @@ public class ClientControllerIT {
         // Validate the Address in the database
         Assertions.assertEquals(databaseSizeBeforeCreate, clientRepository.count() - 1);
         Assertions.assertEquals(returnedClient, clientDTO);
-        // assertAddressUpdatableFieldsEquals(returnedClient, etPersistedAddress(returnedAddress)g);
     }
 
     @Test
@@ -179,13 +155,71 @@ public class ClientControllerIT {
     @Test
     @Transactional
     void deleteNonExistingClient() throws Exception {
-        final long clientDBSizeBeforeCreate = clientRepository.count();
+        final long clientDBSizeBeforeDelete = clientRepository.count();
         final long nonExistentID = -1;
         Assertions.assertTrue(clientRepository.findById(nonExistentID).isEmpty());
 
         restClientMockMvc
             .perform(delete(String.format("%s/%d", ENTITY_API_URL, nonExistentID)))
             .andExpect(status().isNoContent());
+
+        Assertions.assertEquals(clientDBSizeBeforeDelete, clientRepository.count());
+    }
+
+    @Test
+    @Transactional
+    void deleteClientWithBadID() throws Exception {
+        final long clientDBSizeBeforeDelete = clientRepository.count();
+        final String nonExistentID = "This is not a valid ID!";
+
+        restClientMockMvc
+            .perform(delete(String.format("%s/%s", ENTITY_API_URL, nonExistentID)))
+            .andExpect(status().isBadRequest());
+
+        Assertions.assertEquals(clientDBSizeBeforeDelete, clientRepository.count());
+    }
+
+    @Test
+    @Transactional
+    void findExistingClientByNIF() throws Exception {
+        final long clientDBSizeBeforeCreate = clientRepository.count();
+        final ClientDTO clientDTO = createClientDTO();
+        final Client client = Client.fromDTO(clientDTO);
+
+        addressRepository.saveAndFlush(client.getAddress());
+        clientRepository.saveAndFlush(client);
+        Assertions.assertEquals(clientDBSizeBeforeCreate, clientRepository.count() - 1);
+
+        final String nif = client.getNif();
+
+        final ClientDTO returnedClient = om.readValue(
+            restClientMockMvc
+                .perform(get(String.format("%s/%s", ENTITY_API_URL, nif))
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(om.writeValueAsBytes(clientDTO))
+                )
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString(),
+            ClientDTO.class
+        );
+
+        Assertions.assertEquals(returnedClient, clientDTO);
+
+        Assertions.assertEquals(clientDBSizeBeforeCreate, clientRepository.count() - 1);
+    }
+
+    @Test
+    @Transactional
+    void findNonExistingClientByNIF() throws Exception {
+        final long clientDBSizeBeforeCreate = clientRepository.count();
+        final String nonExistentNIF = "I do not exist!";
+        Assertions.assertTrue(clientRepository.findBynif(nonExistentNIF).isEmpty());
+
+        restClientMockMvc
+            .perform(get(String.format("%s/%s", ENTITY_API_URL, nonExistentNIF)))
+            .andExpect(status().isNotFound());
 
         Assertions.assertEquals(clientDBSizeBeforeCreate, clientRepository.count());
     }

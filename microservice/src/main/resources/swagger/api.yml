@@ -55,6 +55,9 @@ paths:
         '403':
           description: Unauthorized
           content: { }
+        '400':
+          description: The ID passed is not valid
+          content: { }
   /client/{nif}:
     get:
       summary: Get the Client with the given NIF
@@ -66,8 +69,7 @@ paths:
           description: The NIF of the Client to search for
           required: true
           schema:
-            type: integer
-            format: int64
+            type: string
       responses:
         '200':
           description: Client found

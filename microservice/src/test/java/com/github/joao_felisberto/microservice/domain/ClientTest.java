@@ -1,11 +1,11 @@
 package com.github.joao_felisberto.microservice.domain;
 
-import static com.github.joao_felisberto.microservice.domain.AddressTestSamples.*;
-import static com.github.joao_felisberto.microservice.domain.ClientTestSamples.*;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.joao_felisberto.microservice.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
+
+import static com.github.joao_felisberto.microservice.domain.AddressTestSamples.getAddressRandomSampleGenerator;
+import static com.github.joao_felisberto.microservice.domain.ClientTestSamples.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ClientTest {
 

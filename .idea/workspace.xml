@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/TestUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/repository/ClientRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/ClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/ClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientResourceIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,35 +53,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GatewayApp.executor": "Run",
-    "Application.MicroserviceApp.executor": "Run",
-    "JUnit.All in exercise.executor": "Coverage",
-    "JUnit.ClientControllerIT.deleteExistingClient.executor": "Run",
-    "JUnit.ClientResourceIT.getAllClients.executor": "Run",
-    "Maven. [test].executor": "Run",
-    "Maven. [validate].executor": "Run",
-    "Maven.exercise [-P\"tls,dev\"].executor": "Run",
-    "Maven.exercise [compile].executor": "Run",
-    "Maven.exercise [test].executor": "Run",
-    "Maven.exercise [validate].executor": "Run",
-    "Maven.exercise.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "us4",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/dev/ex/microservice/src/main/resources/config/liquibase/changelog",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.saveactions"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GatewayApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MicroserviceApp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in exercise.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ClientControllerIT.deleteExistingClient.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientResourceIT.getAllClients.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [-P\&quot;tls,dev\&quot;].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;us4&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/ex/microservice/src/main/resources/config/liquibase/changelog&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.saveactions&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\ex\microservice\src\main\resources\config\liquibase\changelog" />
@@ -87,6 +93,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dev\ex\.mvn" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.github.joao_felisberto.microservice.repository" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -100,7 +109,7 @@
       <command value="mvn -P&quot;tls,dev&quot;" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ClientControllerIT.deleteExistingClient">
+  <component name="RunManager" selected="JUnit.ClientRepositoryTest">
     <configuration name="GatewayApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.gateway.GatewayApp" />
       <module name="gateway" />
@@ -143,6 +152,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ClientRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.repository.ClientRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClientResourceIT.getAllClients" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice" />
       <extension name="coverage">
@@ -170,35 +194,13 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="microservice" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClientRepositoryTest" />
         <item itemvalue="JUnit.ClientControllerIT.deleteExistingClient" />
         <item itemvalue="Application.GatewayApp" />
         <item itemvalue="Application.MicroserviceApp" />
         <item itemvalue="JUnit.ClientResourceIT.getAllClients" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
