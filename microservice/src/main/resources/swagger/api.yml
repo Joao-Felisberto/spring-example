@@ -29,6 +29,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClientDTO'
+        '403':
+          description: Unauthorized
+          content: { }
+  /client/{id}:
     delete:
       summary: Delete an existing client
       description: Removes an existing Client from the system or does nothing if it doesn't exist
@@ -38,16 +42,45 @@ paths:
           in: path
           description: The unique identifier of the Client to delete
           required: true
-          schema: 
+          schema:
             type: integer
             format: int64
       responses:
         '204':
-          description: Nothing is returned wether a Client was deleted or not
-          content: {}
+          description: Nothing is returned whether a Client was deleted or not
+          content: { }
         '404':
-          description: If no id is provided
-          content: {}
+          description: No id provided
+          content: { }
+        '403':
+          description: Unauthorized
+          content: { }
+  /client/{nif}:
+    get:
+      summary: Get the Client with the given NIF
+      description: Finds which client has the provided NIF, if any
+      operationId: getClientByNIF
+      parameters:
+        - name: nif
+          in: path
+          description: The NIF of the Client to search for
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Client found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDTO'
+        '404':
+          description: Client not found
+          content: { }
+        '403':
+          description: Unauthorized
+          content: { }
 components:
   schemas:
     ClientDTO:

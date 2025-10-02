@@ -20,6 +20,7 @@ import tech.jhipster.web.util.HeaderUtil;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.github.joao_felisberto.microservice.domain.Client}.
@@ -94,5 +95,20 @@ public class ClientController implements ClientApiDelegate {
         clientRepository.deleteById(id);
         clientRepository.flush();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{nif}")
+    @Override
+    public ResponseEntity<ClientDTO> getClientByNIF(@PathVariable("nif") Long nif) {
+        LOG.debug("REST request for Client with NIF: {}", nif);
+
+        final Optional<Client> clientRes = clientRepository.findByNIF(nif);
+        if (clientRes.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        final ClientDTO client = clientRes.get().toDTO();
+
+        return new ResponseEntity<>(client, HttpStatus.OK);
     }
 }
