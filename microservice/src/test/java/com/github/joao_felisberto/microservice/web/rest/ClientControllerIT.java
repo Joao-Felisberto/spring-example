@@ -6,7 +6,6 @@ import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
-import com.github.joao_felisberto.microservice.service.api.dto.PhoneNumberDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-import static com.github.joao_felisberto.microservice.web.rest.TestUtil.*;
+import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneAddressDTO;
+import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneClientDTO;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 

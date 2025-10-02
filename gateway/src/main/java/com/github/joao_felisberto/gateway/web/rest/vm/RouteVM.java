@@ -1,7 +1,8 @@
 package com.github.joao_felisberto.gateway.web.rest.vm;
 
-import java.util.List;
 import org.springframework.cloud.client.ServiceInstance;
+
+import java.util.List;
 
 /**
  * View Model that stores a route managed by the Gateway.

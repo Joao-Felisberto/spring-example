@@ -2,9 +2,6 @@ package com.github.joao_felisberto.microservice.web.rest;
 
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import java.net.http.HttpResponse;
 
 @RestController
 @RequestMapping("/")
@@ -26,6 +21,7 @@ public class Tmp {
      * A shortcut to create a client
      * Created to prove a correct SSL implementation, since there is no use case for a microservice calling
      * itself over HTTPS, like load balancing.
+     *
      * @param clientDTO The client to add
      * @return The added client
      */
