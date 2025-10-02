@@ -20,6 +20,7 @@ import tech.jhipster.web.util.HeaderUtil;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -110,5 +111,13 @@ public class ClientController implements ClientApiDelegate {
         final ClientDTO client = clientRes.orElseThrow().toDTO();
 
         return new ResponseEntity<>(client, HttpStatus.OK);
+    }
+
+    @GetMapping("")
+    @Override
+    public ResponseEntity<List<ClientDTO>> listClients() {
+        LOG.debug("REST request for full list of Clients");
+
+        return new ResponseEntity<>(clientRepository.findAll().stream().map(Client::toDTO).toList(), HttpStatus.OK);
     }
 }
