@@ -9,6 +9,8 @@ import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
@@ -16,8 +18,12 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.github.joao_felisberto.microservice.TestUtil.NULL_CLIENT;
-import static com.github.joao_felisberto.microservice.TestUtil.createClientDTO;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static com.github.joao_felisberto.microservice.TestUtil.*;
 import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneAddressDTO;
 import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneClientDTO;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -28,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 class ClientControllerIT {
     private static final String ENTITY_API_URL = "/api/clients";
-//    private static final Logger LOG = LoggerFactory.getLogger(ClientControllerIT.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ClientControllerIT.class);
 
     @Autowired
     private ObjectMapper om;
@@ -222,5 +228,61 @@ class ClientControllerIT {
             .andExpect(status().isNotFound());
 
         Assertions.assertEquals(clientDBSizeBeforeCreate, clientRepository.count());
+    }
+
+    @Test
+    @Transactional
+    void listAllClientsEmpty() throws Exception {
+        Assertions.assertEquals(0, clientRepository.count());
+
+        final List<?> returnedClients = om.readValue(
+            restClientMockMvc
+                .perform(get(ENTITY_API_URL))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString(),
+            List.class
+        );
+
+        Assertions.assertEquals(0, returnedClients.size());
+    }
+
+    @Test
+    @Transactional
+    void listAllClientsNonEmpty() throws Exception {
+        Assertions.assertEquals(0, clientRepository.count());
+
+        final List<Client> cs = Arrays.asList(
+            Client.fromDTO(createDistinctClientDTO("a")),
+            Client.fromDTO(createDistinctClientDTO("b")),
+            Client.fromDTO(createDistinctClientDTO("c")),
+            Client.fromDTO(createDistinctClientDTO("d")),
+            Client.fromDTO(createDistinctClientDTO("e")),
+            Client.fromDTO(createDistinctClientDTO("f"))
+        );
+
+        addressRepository.saveAll(cs.stream().map(Client::getAddress).toList());
+        clientRepository.saveAll(cs);
+
+        Assertions.assertEquals(cs.size(), addressRepository.count());
+        Assertions.assertEquals(cs.size(), clientRepository.count());
+
+        final Set<?> returnedClients = new HashSet<Object>(om.readValue(
+            restClientMockMvc
+                .perform(get(ENTITY_API_URL))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString(),
+            List.class
+        ));
+
+        Assertions.assertEquals(cs.size(), returnedClients.size());
+        cs.forEach(c -> {
+            final ClientDTO cdto = c.toDTO();
+            LOG.debug("Is in response? {}", cdto);
+            Assertions.assertTrue(returnedClients.contains(cdto));
+        });
     }
 }

@@ -26,4 +26,22 @@ public class TestUtil {
             new BigDecimal(1)
         );
     }
+
+    public static ClientDTO createDistinctClientDTO(String string) {
+        return new ClientDTO(
+            string,
+            "1",
+            new AddressDTO(
+                string,
+                new BigDecimal(CountryCode.PORTUGAL.ordinal()),
+                string,
+                string,
+                string,
+                string,
+                String.format("%s@%s.pt", string, string)
+            ),
+            new BigDecimal(CountryCode.PORTUGAL.ordinal()),
+            new BigDecimal(1)
+        );
+    }
 }
