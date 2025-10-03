@@ -19,9 +19,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.github.joao_felisberto.microservice.TestUtil.*;
 import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneAddressDTO;
@@ -268,21 +268,19 @@ class ClientControllerIT {
         Assertions.assertEquals(cs.size(), addressRepository.count());
         Assertions.assertEquals(cs.size(), clientRepository.count());
 
-        final Set<?> returnedClients = new HashSet<Object>(om.readValue(
+        final ClientDTO[] res = om.readValue(
             restClientMockMvc
                 .perform(get(ENTITY_API_URL))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            List.class
-        ));
+            ClientDTO[].class
+        );
+        final Set<ClientDTO> returnedClients = Arrays.stream(res)
+            .collect(Collectors.toSet());
 
         Assertions.assertEquals(cs.size(), returnedClients.size());
-        cs.forEach(c -> {
-            final ClientDTO cdto = c.toDTO();
-            LOG.debug("Is in response? {}", cdto);
-            Assertions.assertTrue(returnedClients.contains(cdto));
-        });
+        cs.forEach(c -> Assertions.assertTrue(returnedClients.contains(c.toDTO())));
     }
 }
