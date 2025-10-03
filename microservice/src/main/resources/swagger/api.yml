@@ -32,6 +32,22 @@ paths:
         '403':
           description: Unauthorized
           content: { }
+    get:
+      summary: List all clients
+      description: Fetches the complete list of clients
+      operationId: listClients
+      responses:
+        '200':
+          description: Full list of clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientDTO'
+        '403':
+          description: Unauthorized
+          content: { }
   /client/{id}:
     delete:
       summary: Delete an existing client
