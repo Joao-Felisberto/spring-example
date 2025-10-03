@@ -99,6 +99,33 @@ paths:
         '403':
           description: Unauthorized
           content: { }
+  /client/name:
+    get:
+      summary: Get the Clients with the given name
+      description: Finds all clients with names close to the "name" parameter
+      operationId: getClientsByName
+      parameters:
+        - name: name
+          in: query
+          description: The name of the Client to search for
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Clients found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientDTO'
+        '404':
+          description: No clients found
+          content: { }
+        '403':
+          description: Unauthorized
+          content: { }
 components:
   schemas:
     ClientDTO:

@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,14 +68,14 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "us3",
+    "git-widget-placeholder": "us5",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/dev/ex/microservice/src/main/resources/config/liquibase/changelog",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.saveactions"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">

@@ -4,6 +4,7 @@ import com.github.joao_felisberto.microservice.domain.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -14,4 +15,6 @@ import java.util.Optional;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
     Optional<Client> findBynif(String nif);
+
+    List<Client> findAllByNameLike(String name);
 }
