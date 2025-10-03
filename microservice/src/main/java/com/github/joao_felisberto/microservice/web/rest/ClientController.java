@@ -124,8 +124,11 @@ public class ClientController implements ClientApiDelegate {
     @GetMapping("/name")
     @Override
     public ResponseEntity<List<ClientDTO>> getClientsByName(@RequestParam String name) {
-        LOG.debug("REST request for Clients with name");
+        LOG.debug("REST request for Clients with name {}", name);
 
-        return new ResponseEntity<>(clientRepository.findAllByNameLike(name).stream().map(Client::toDTO).toList(), HttpStatus.OK);
+        return new ResponseEntity<>(
+            clientRepository.findAllByNameContaining(name).stream().map(Client::toDTO).toList(),
+            HttpStatus.OK
+        );
     }
 }

@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -54,6 +55,7 @@ class ClientControllerIT {
     @BeforeEach
     void clearDB() {
         clientRepository.deleteAll();
+        addressRepository.deleteAll();
     }
 
     @Test
@@ -282,5 +284,119 @@ class ClientControllerIT {
 
         Assertions.assertEquals(cs.size(), returnedClients.size());
         cs.forEach(c -> Assertions.assertTrue(returnedClients.contains(c.toDTO())));
+    }
+
+    @Test
+    @Transactional
+    void testFindNonExistingClientByName() throws Exception {
+        final Client[] cs = {
+            Client.fromDTO(createDistinctClientDTO("a")),
+            Client.fromDTO(createDistinctClientDTO("b")),
+            Client.fromDTO(createDistinctClientDTO("c")),
+            Client.fromDTO(createDistinctClientDTO("d")),
+        };
+        for (final Client c : cs) {
+            addressRepository.saveAndFlush(c.getAddress());
+            clientRepository.saveAndFlush(c);
+        }
+
+        final List<?> returnedClients = om.readValue(
+            restClientMockMvc
+                .perform(get(String.format("%s/name?name=%s", ENTITY_API_URL, "NON EXISTENT")))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString(),
+            List.class
+        );
+
+        Assertions.assertEquals(0, returnedClients.size());
+    }
+
+    @Test
+    @Transactional
+    void testFindExistingClientByExactName() throws Exception {
+        final String[] names = {"a", "b", "c", "d"};
+        final List<Client> cs = Arrays.stream(names)
+            .map(name -> Client.fromDTO(createDistinctClientDTO(name)))
+            .toList();
+        cs.forEach(c -> {
+            addressRepository.saveAndFlush(c.getAddress());
+            clientRepository.saveAndFlush(c);
+        });
+
+        for (final String name : names) {
+            final ClientDTO[] retrieved = om.readValue(
+                restClientMockMvc
+                    .perform(get(String.format("%s/name?name=%s", ENTITY_API_URL, name)))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString(),
+                ClientDTO[].class
+            );
+
+            Assertions.assertEquals(1, retrieved.length);
+            Assertions.assertEquals(name, retrieved[0].getName());
+        }
+    }
+
+    @Test
+    @Transactional
+    void testFindExistingClientByApproximateName() throws Exception {
+        final String[] names = {"a", "aa", "ab", "bd", "cc c"};
+        final List<Client> cs = Arrays.stream(names)
+            .map(name -> Client.fromDTO(createDistinctClientDTO(name))).toList();
+        cs.forEach(c -> {
+            addressRepository.saveAndFlush(c.getAddress());
+            clientRepository.saveAndFlush(c);
+        });
+
+        final Map<String, List<String>> expected = Map.of(
+            "a", List.of("a", "aa", "ab"),
+            "b", List.of("ab", "bd")
+        );
+        for (final Map.Entry<String, List<String>> entry : expected.entrySet()) {
+            final String k = entry.getKey();
+            final List<String> v = entry.getValue();
+            final List<ClientDTO> retrieved = Arrays.stream(om.readValue(
+                restClientMockMvc
+                    .perform(get(String.format("%s/name?name=%s", ENTITY_API_URL, k)))
+                    .andExpect(status().isOk())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString(),
+                ClientDTO[].class
+            )).toList();
+//            final List<ClientDTO> retrieved = clientRepository.findAllByNameContaining(k).stream().map(Client::toDTO).toList();
+
+            LOG.info("Expected: {}", v);
+            LOG.info("Got:      {}", retrieved.stream().map(ClientDTO::getName).toList());
+            Assertions.assertEquals(v.size(), retrieved.size());
+            retrieved.stream().map(ClientDTO::getName).forEach(n -> Assertions.assertTrue(v.contains(n)));
+        }
+    }
+
+    @Test
+    @Transactional
+    void testStuff() {
+        final String[] names = {"a", "aa", "ab", "bd", "cc c"};
+        final List<Client> cs = Arrays.stream(names)
+            .map(name -> Client.fromDTO(createDistinctClientDTO(name)))
+            .toList();
+        cs.forEach(c -> {
+            addressRepository.saveAndFlush(c.getAddress());
+            clientRepository.saveAndFlush(c);
+        });
+
+        final Map<String, List<String>> expected = Map.of(
+            "a", List.of("a", "aa", "ab"),
+            "b", List.of("ab", "bd")
+        );
+        expected.forEach((k, v) -> {
+            final List<Client> results = clientRepository.findAllByNameContaining(k);
+            Assertions.assertEquals(v.size(), results.size());
+            results.stream().map(Client::getName).forEach(n -> Assertions.assertTrue(v.contains(n)));
+        });
     }
 }
