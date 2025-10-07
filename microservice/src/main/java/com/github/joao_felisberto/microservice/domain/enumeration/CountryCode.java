@@ -1,7 +1,5 @@
 package com.github.joao_felisberto.microservice.domain.enumeration;
 
-import java.math.BigDecimal;
-
 /**
  * The CountryCode enumeration.
  */
@@ -20,8 +18,8 @@ public enum CountryCode {
         return value;
     }
 
-    public static CountryCode fromBigDecimalIndex(BigDecimal bigI) {
-        final int i = bigI.intValue();
-        return values()[i];
-    }
+//    public static CountryCode fromBigDecimalIndex(BigDecimal bigI) {
+//        final int i = bigI.intValue();
+//        return values()[i];
+//    }
 }

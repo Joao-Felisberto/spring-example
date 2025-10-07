@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/AddressMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/ClientMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/enumeration/CountryCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/enumeration/CountryCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/repository/ClientRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/repository/ClientRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -68,7 +74,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "us5",
+    "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/dev/ex/microservice/src/main/resources/config/liquibase/changelog",
     "project.structure.last.edited": "Modules",
@@ -189,6 +195,13 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.GatewayApp" />
+      <item itemvalue="Application.MicroserviceApp" />
+      <item itemvalue="JUnit.ClientControllerIT.deleteExistingClient" />
+      <item itemvalue="JUnit.ClientRepositoryTest" />
+      <item itemvalue="JUnit.ClientResourceIT.getAllClients" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ClientRepositoryTest" />

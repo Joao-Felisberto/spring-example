@@ -2,6 +2,7 @@ package com.github.joao_felisberto.microservice.web.rest;
 
 import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.Client;
+import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
@@ -61,7 +62,7 @@ public class ClientController implements ClientApiDelegate {
     @PostMapping("")
     @Override
     public ResponseEntity<ClientDTO> postClient(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
-        final Client client = Client.fromDTO(clientDTO);
+        final Client client = ClientMapper.INSTANCE.clientDTOToClient(clientDTO);
 
         if (client.getId() != null) {
             LOG.error("A new client cannot already have an ID");
@@ -75,7 +76,7 @@ public class ClientController implements ClientApiDelegate {
         try {
             return ResponseEntity.created(new URI("/api/clients/" + client.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, client.getId().toString()))
-                .body(clientRes.toDTO());
+                .body(ClientMapper.INSTANCE.clientToClientDTO(clientRes));
         } catch (URISyntaxException e) {
             LOG.error("Malformed URI: '{}'", "/api/clients/" + client.getId());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -108,7 +109,7 @@ public class ClientController implements ClientApiDelegate {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        final ClientDTO client = clientRes.orElseThrow().toDTO();
+        final ClientDTO client = ClientMapper.INSTANCE.clientToClientDTO(clientRes.orElseThrow());
 
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
@@ -118,7 +119,12 @@ public class ClientController implements ClientApiDelegate {
     public ResponseEntity<List<ClientDTO>> listClients() {
         LOG.debug("REST request for full list of Clients");
 
-        return new ResponseEntity<>(clientRepository.findAll().stream().map(Client::toDTO).toList(), HttpStatus.OK);
+        return new ResponseEntity<>(
+            clientRepository.findAll().stream()
+                .map(ClientMapper.INSTANCE::clientToClientDTO)
+                .toList(),
+            HttpStatus.OK
+        );
     }
 
     @GetMapping("/name")
@@ -126,6 +132,11 @@ public class ClientController implements ClientApiDelegate {
     public ResponseEntity<List<ClientDTO>> getClientsByName(@RequestParam String name) {
         LOG.debug("REST request for Clients with name");
 
-        return new ResponseEntity<>(clientRepository.findAllByNameLike(name).stream().map(Client::toDTO).toList(), HttpStatus.OK);
+        return new ResponseEntity<>(
+            clientRepository.findAllByNameLike(name).stream()
+                .map(ClientMapper.INSTANCE::clientToClientDTO)
+                .toList(),
+            HttpStatus.OK
+        );
     }
 }

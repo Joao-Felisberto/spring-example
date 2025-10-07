@@ -1,6 +1,7 @@
 package com.github.joao_felisberto.microservice.repository;
 
 import com.github.joao_felisberto.microservice.domain.Client;
+import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +35,7 @@ public class ClientRepositoryTest {
 
     @Test
     public void testFindExistingClientByNIF() throws Exception {
-        final Client client = Client.fromDTO(createClientDTO());
+        final Client client = ClientMapper.INSTANCE.clientDTOToClient(createClientDTO());
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);
@@ -47,7 +48,7 @@ public class ClientRepositoryTest {
 
     @Test
     public void testFindNonExistingClientByNIF() throws Exception {
-        final Client client = Client.fromDTO(createClientDTO());
+        final Client client = ClientMapper.INSTANCE.clientDTOToClient(createClientDTO());
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);

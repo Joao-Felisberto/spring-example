@@ -3,6 +3,7 @@ package com.github.joao_felisberto.microservice.web.rest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.joao_felisberto.microservice.IntegrationTest;
 import com.github.joao_felisberto.microservice.domain.Client;
+import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
@@ -143,7 +144,7 @@ class ClientControllerIT {
     void deleteExistingClient() throws Exception {
         final long clientDBSizeBeforeCreate = clientRepository.count();
         final ClientDTO clientDTO = createClientDTO();
-        final Client client = Client.fromDTO(clientDTO);
+        final Client client = ClientMapper.INSTANCE.clientDTOToClient(clientDTO);
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);
@@ -190,7 +191,7 @@ class ClientControllerIT {
     void findExistingClientByNIF() throws Exception {
         final long clientDBSizeBeforeCreate = clientRepository.count();
         final ClientDTO clientDTO = createClientDTO();
-        final Client client = Client.fromDTO(clientDTO);
+        final Client client = ClientMapper.INSTANCE.clientDTOToClient(clientDTO);
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);
@@ -254,12 +255,12 @@ class ClientControllerIT {
         Assertions.assertEquals(0, clientRepository.count());
 
         final List<Client> cs = Arrays.asList(
-            Client.fromDTO(createDistinctClientDTO("a")),
-            Client.fromDTO(createDistinctClientDTO("b")),
-            Client.fromDTO(createDistinctClientDTO("c")),
-            Client.fromDTO(createDistinctClientDTO("d")),
-            Client.fromDTO(createDistinctClientDTO("e")),
-            Client.fromDTO(createDistinctClientDTO("f"))
+            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("a")),
+            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("b")),
+            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("c")),
+            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("d")),
+            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("e")),
+            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("f"))
         );
 
         addressRepository.saveAll(cs.stream().map(Client::getAddress).toList());
@@ -281,6 +282,6 @@ class ClientControllerIT {
             .collect(Collectors.toSet());
 
         Assertions.assertEquals(cs.size(), returnedClients.size());
-        cs.forEach(c -> Assertions.assertTrue(returnedClients.contains(c.toDTO())));
+        cs.forEach(c -> Assertions.assertTrue(returnedClients.contains(ClientMapper.INSTANCE.clientToClientDTO(c))));
     }
 }

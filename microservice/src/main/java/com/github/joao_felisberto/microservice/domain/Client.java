@@ -2,15 +2,13 @@ package com.github.joao_felisberto.microservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
-import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-
-import java.io.Serializable;
-import java.math.BigDecimal;
-
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import java.io.Serializable;
 
 /**
  * A Client.
@@ -51,26 +49,26 @@ public class Client implements Serializable {
     @JsonIgnoreProperties(value = {"clients"}, allowSetters = true)
     private Address address;
 
-    public static Client fromDTO(ClientDTO dto) {
-        // todo shall this be enforced or can we ignore non-null values?
-        // id must be null for the database
-        return new Client()
-            .name(dto.getName())
-            .nif(dto.getNif())
-            .phoneNumber(dto.getPhoneNumber().longValue())
-            .countryCode(CountryCode.fromBigDecimalIndex(dto.getPhoneCountryCode()))
-            .address(Address.fromDTO(dto.getAddress()));
-    }
-
-    public ClientDTO toDTO() {
-        return new ClientDTO(
-            this.name,
-            this.nif,
-            this.address.toDTO(),
-            new BigDecimal(this.phoneNumber),
-            new BigDecimal(this.countryCode.ordinal())
-        );
-    }
+//    public static Client fromDTO(ClientDTO dto) {
+//        // todo shall this be enforced or can we ignore non-null values?
+//        // id must be null for the database
+//        return new Client()
+//            .name(dto.getName())
+//            .nif(dto.getNif())
+//            .phoneNumber(dto.getPhoneNumber().longValue())
+//            .countryCode(CountryCode.fromBigDecimalIndex(dto.getPhoneCountryCode()))
+//            .address(Address.fromDTO(dto.getAddress()));
+//    }
+//
+//    public ClientDTO toDTO() {
+//        return new ClientDTO(
+//            this.name,
+//            this.nif,
+//            this.address.toDTO(),
+//            new BigDecimal(this.phoneNumber),
+//            new BigDecimal(this.countryCode.ordinal())
+//        );
+//    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
