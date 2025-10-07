@@ -6,12 +6,38 @@
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/TestUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/AddressMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/AddressMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/ClientMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/ClientMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.jdl" beforeDir="false" afterPath="$PROJECT_DIR$/app.jdl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/.devcontainer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.devcontainer/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.prettierignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/checkstyle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/checkstyle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/banner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/i18n/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/test/resources/META-INF/services/reactor.blockhound.integration.BlockHoundIntegration" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/resources/META-INF/services/reactor.blockhound.integration.BlockHoundIntegration" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/test/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/resources/i18n/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/test/resources/junit-platform.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/resources/junit-platform.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/.devcontainer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.devcontainer/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/.jhipster/Address.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.jhipster/Address.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/.jhipster/Client.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.jhipster/Client.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/ClientQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/ClientQueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/criteria/ClientCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/criteria/ClientCriteria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/Tmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/Tmp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/banner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/i18n/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/resources/junit-platform.properties" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/resources/junit-platform.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +101,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/dev/ex/microservice/src/main/resources/config/liquibase/changelog",
+    "last_opened_file_path": "C:/dev/ex/microservice/src/main/java/com/github/joao_felisberto/microservice",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -85,11 +111,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\dev\ex\microservice\src\main\java\com\github\joao_felisberto\microservice" />
       <recent name="C:\dev\ex\microservice\src\main\resources\config\liquibase\changelog" />
       <recent name="C:\dev\ex\microservice\src\main\resources" />
       <recent name="C:\dev\ex\docker-compose" />
       <recent name="C:\dev\ex\microservice\src\main\resources\swagger" />
-      <recent name="C:\dev\ex\src\main\resources\swagger" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dev\ex\.mvn" />

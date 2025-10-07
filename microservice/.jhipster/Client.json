@@ -15,18 +15,24 @@
       "fieldName": "nif",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "countryCode",
+      "fieldType": "CountryCode",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PORTUGAL (351),SPAIN (350),UNITED_STATES (1)"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
     }
   ],
+  "jpaMetamodelFiltering": true,
   "microserviceName": "microservice",
   "name": "Client",
   "relationships": [
-    {
-      "otherEntityName": "phoneNumber",
-      "otherEntityRelationshipName": "client",
-      "relationshipName": "phoneNumber",
-      "relationshipSide": "left",
-      "relationshipType": "one-to-one"
-    },
     {
       "otherEntityName": "address",
       "otherEntityRelationshipName": "client",
@@ -36,5 +42,6 @@
     }
   ],
   "searchEngine": "no",
+  "service": "serviceClass",
   "skipServer": true
 }

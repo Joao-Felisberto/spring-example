@@ -1,6 +1,9 @@
 {
   "generator-jhipster": {
-    "appsFolders": ["gateway", "microservice"],
+    "appsFolders": [
+      "gateway",
+      "microservice"
+    ],
     "clusteredDbApps": [],
     "deploymentType": "docker-compose",
     "directoryPath": "../",

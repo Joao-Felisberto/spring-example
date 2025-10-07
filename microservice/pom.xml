@@ -877,6 +877,9 @@
                 <modelPackage>com.github.joao_felisberto.microservice.service.api.dto</modelPackage>
                 <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                 <skipValidateSpec>false</skipValidateSpec>
+                <importMappings>
+                  ClientCriteria=com.github.joao_felisberto.microservice.service.criteria.ClientCriteria
+                </importMappings>
                 <configOptions>
                   <delegatePattern>true</delegatePattern>
                   <title>microservice</title>

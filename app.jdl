@@ -41,8 +41,10 @@ application {
 
 
 entity Client {
-  name String required // neds more complexity?
+  name String required // needs more complexity?
   nif String required // supports any number of numbers AND eventual codes with letters (future proof if not yet real)
+  countryCode CountryCode required
+  phoneNumber Long required min(0)
 }
 
 // https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/Party_Management.regular.swagger.json
@@ -56,18 +58,12 @@ entity Address {
   emailAddress String required // TODO: validate
 }
 
-entity PhoneNumber {
-  countryCode CountryCode required
-  number Long required min(0)
-}
+// use noFluentMethod for *
+use serviceClass for Client
+filter Client
 
 relationship ManyToOne {
   Client to Address
-}
-
-relationship OneToOne {
-  Client to PhoneNumber // one to one discards some edge cases (home/shared phones),
-                        //but is more important for fraud prevention maybe
 }
 
 // Is an eunm adequate? Hardly ever changes, but still changes
@@ -77,3 +73,4 @@ enum CountryCode {
   UNITED_STATES("1")
   // ...
 }
+
