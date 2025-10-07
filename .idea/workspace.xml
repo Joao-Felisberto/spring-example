@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/AddressMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/ClientMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Address.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/enumeration/CountryCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/enumeration/CountryCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/repository/ClientRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/repository/ClientRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/TestUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/AddressMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/AddressMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/ClientMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/ClientMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -60,6 +58,7 @@
     "Application.MicroserviceApp.executor": "Run",
     "JUnit.All in exercise.executor": "Coverage",
     "JUnit.ClientControllerIT.deleteExistingClient.executor": "Run",
+    "JUnit.ClientMapperTest.fail.executor": "Run",
     "JUnit.ClientRepositoryTest.executor": "Run",
     "JUnit.ClientResourceIT.getAllClients.executor": "Run",
     "Maven. [test].executor": "Run",
@@ -110,7 +109,7 @@
       <command value="mvn -P&quot;tls,dev&quot;" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ClientRepositoryTest">
+  <component name="RunManager" selected="JUnit.ClientMapperTest.fail">
     <configuration name="GatewayApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.gateway.GatewayApp" />
       <module name="gateway" />
@@ -153,6 +152,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ClientMapperTest.fail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.web.rest.mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.web.rest.mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.web.rest.mappers.ClientMapperTest" />
+      <option name="METHOD_NAME" value="fail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClientRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice" />
       <extension name="coverage">
@@ -164,22 +179,6 @@
       <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.repository" />
       <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.repository.ClientRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ClientResourceIT.getAllClients" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.github.joao_felisberto.microservice.web.rest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.web.rest" />
-      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.web.rest.ClientResourceIT" />
-      <option name="METHOD_NAME" value="getAllClients" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -198,17 +197,17 @@
     <list>
       <item itemvalue="Application.GatewayApp" />
       <item itemvalue="Application.MicroserviceApp" />
+      <item itemvalue="JUnit.ClientMapperTest.fail" />
       <item itemvalue="JUnit.ClientControllerIT.deleteExistingClient" />
       <item itemvalue="JUnit.ClientRepositoryTest" />
-      <item itemvalue="JUnit.ClientResourceIT.getAllClients" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClientMapperTest.fail" />
         <item itemvalue="JUnit.ClientRepositoryTest" />
         <item itemvalue="JUnit.ClientControllerIT.deleteExistingClient" />
         <item itemvalue="Application.GatewayApp" />
         <item itemvalue="Application.MicroserviceApp" />
-        <item itemvalue="JUnit.ClientResourceIT.getAllClients" />
       </list>
     </recent_temporary>
   </component>

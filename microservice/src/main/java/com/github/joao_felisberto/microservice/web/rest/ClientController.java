@@ -15,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import tech.jhipster.web.util.HeaderUtil;
 
 import java.net.URI;
@@ -32,9 +34,10 @@ import java.util.Optional;
  *     <li> {@code POST /api/clients} Add a new client</li>
  * </ul>
  */
-@RestController
-@RequestMapping("/api/clients")
-@Transactional
+//@RestController
+//@RequestMapping("/api/clients")
+//@Transactional
+@Service
 public class ClientController implements ClientApiDelegate {
     private static final Logger LOG = LoggerFactory.getLogger(ClientController.class);
     private static final String ENTITY_NAME = Client.class.getName();
@@ -59,7 +62,7 @@ public class ClientController implements ClientApiDelegate {
      * or with status {@code 400 (Bad Request)} if the client has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect because the generated ID is not well formed.
      */
-    @PostMapping("")
+//    @PostMapping("")
     @Override
     public ResponseEntity<ClientDTO> postClient(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
         final Client client = ClientMapper.INSTANCE.clientDTOToClient(clientDTO);
@@ -90,7 +93,7 @@ public class ClientController implements ClientApiDelegate {
      * @return the {@link ResponseEntity} with status {@code 204 (No Content)},
      * or {@code 404 (Not Found)} if no id is provided
      */
-    @DeleteMapping("/{id}")
+//    @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<Void> deleteClient(@PathVariable("id") Long id) {
         LOG.debug("REST request to delete Client: {}", id);
@@ -99,7 +102,7 @@ public class ClientController implements ClientApiDelegate {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/{nif}")
+    //    @GetMapping("/{nif}")
     @Override
     public ResponseEntity<ClientDTO> getClientByNIF(@PathVariable("nif") String nif) {
         LOG.debug("REST request for Client with NIF: {}", nif);
@@ -114,7 +117,7 @@ public class ClientController implements ClientApiDelegate {
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
-    @GetMapping("")
+    //    @GetMapping("")
     @Override
     public ResponseEntity<List<ClientDTO>> listClients() {
         LOG.debug("REST request for full list of Clients");
@@ -127,7 +130,7 @@ public class ClientController implements ClientApiDelegate {
         );
     }
 
-    @GetMapping("/name")
+    //    @GetMapping("/name")
     @Override
     public ResponseEntity<List<ClientDTO>> getClientsByName(@RequestParam String name) {
         LOG.debug("REST request for Clients with name");

@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WithMockUser
 class ClientControllerIT {
-    private static final String ENTITY_API_URL = "/api/clients";
+    private static final String ENTITY_API_URL = "/api/client";
     private static final Logger LOG = LoggerFactory.getLogger(ClientControllerIT.class);
 
     @Autowired

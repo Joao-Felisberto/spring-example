@@ -1,5 +1,7 @@
 package com.github.joao_felisberto.microservice;
 
+import com.github.joao_felisberto.microservice.domain.Address;
+import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
@@ -43,5 +45,37 @@ public class TestUtil {
             new BigDecimal(CountryCode.PORTUGAL.ordinal()),
             new BigDecimal(1)
         );
+    }
+
+    public static AddressDTO createAddressDTO() {
+        return new AddressDTO(
+            "a",
+            new BigDecimal(CountryCode.PORTUGAL.ordinal()),
+            "a",
+            "a",
+            "a",
+            "a",
+            "a@a.pt"
+        );
+    }
+
+    public static Client createClient() {
+        return new Client()
+            .name("a")
+            .nif("1")
+            .countryCode(CountryCode.PORTUGAL)
+            .phoneNumber(1L)
+            .address(createAddress());
+    }
+
+    public static Address createAddress() {
+        return new Address()
+            .city("a")
+            .country(CountryCode.PORTUGAL)
+            .postcode("a")
+            .stateOrProvince("a")
+            .streetOne("a")
+            .streetTwo("a")
+            .emailAddress("a");
     }
 }

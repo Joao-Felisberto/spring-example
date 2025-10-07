@@ -45,7 +45,7 @@ public class Client implements Serializable {
     @Column(name = "phone_number", nullable = false)
     private Long phoneNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = {"clients"}, allowSetters = true)
     private Address address;
 
