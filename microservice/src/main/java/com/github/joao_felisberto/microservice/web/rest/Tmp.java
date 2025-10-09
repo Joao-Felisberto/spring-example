@@ -51,10 +51,10 @@ public class Tmp {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, (request, response) -> {
                     final ProblemDetail detail = ProblemDetail.forStatus(response.getStatusCode());
-                    detail.setInstance(uri);
-                    detail.setTitle("Error creating Client");
-                    detail.setProperty("request", request);
-                    detail.setProperty("response", response);
+//                    detail.setInstance(uri);
+//                    detail.setTitle("Error creating Client");
+//                    detail.setProperty("request", request);
+//                    detail.setProperty("response", response);
 
                     throw new ErrorResponseException(response.getStatusCode(), detail, null);
                 })

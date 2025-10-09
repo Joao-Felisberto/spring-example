@@ -7,6 +7,7 @@ import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
+import com.github.joao_felisberto.microservice.util.Cloner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,8 +26,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.github.joao_felisberto.microservice.TestUtil.*;
-import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneAddressDTO;
-import static com.github.joao_felisberto.microservice.web.rest.TestUtil.cloneClientDTO;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -88,36 +87,36 @@ class ClientControllerIT {
         final ClientDTO validClient = createClientDTO();
 
         final ClientDTO[] invalidClients = {
-            cloneClientDTO(validClient).name(null),
-            cloneClientDTO(validClient).nif(null),
-            cloneClientDTO(validClient).address(null),
-            cloneClientDTO(validClient).phoneNumber(null),
-            cloneClientDTO(validClient).phoneCountryCode(null),
+            Cloner.INSTANCE.clone(validClient).name(null),
+            Cloner.INSTANCE.clone(validClient).nif(null),
+            Cloner.INSTANCE.clone(validClient).address(null),
+            Cloner.INSTANCE.clone(validClient).phoneNumber(null),
+            Cloner.INSTANCE.clone(validClient).phoneCountryCode(null),
 
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).city(null)),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).country(null)),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).postcode(null)),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).stateOrProvince(null)),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetOne(null)),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetTwo(null)),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress(null)),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).city(null)),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).country(null)),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).postcode(null)),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).stateOrProvince(null)),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetOne(null)),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetTwo(null)),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress(null)),
 
             // ---
 
-            cloneClientDTO(validClient).name(""),
-            cloneClientDTO(validClient).nif(""),
+            Cloner.INSTANCE.clone(validClient).name(""),
+            Cloner.INSTANCE.clone(validClient).nif(""),
 
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).city("")),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).postcode("")),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).stateOrProvince("")),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetOne("")),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).streetTwo("")),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress("")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).city("")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).postcode("")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).stateOrProvince("")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetOne("")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetTwo("")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress("")),
 
             // todo proper email fuzzing
 
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress("a")),
-            cloneClientDTO(validClient).address(cloneAddressDTO(validClient.getAddress()).emailAddress("a@")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress("a")),
+            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress("a@")),
         };
 
         for (final ClientDTO invalidClient : invalidClients) {

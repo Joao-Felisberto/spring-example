@@ -66,10 +66,9 @@ public class ClientQueryService extends QueryService<Client> {
      * @return the matching {@link Specification} of the entity.
      */
     protected Specification<Client> createSpecification(ClientCriteria criteria) {
-        Specification<Client> specification = Specification.where(null);
         if (criteria != null) {
             // This has to be called first, because the distinct method returns null
-            specification = Specification.allOf(
+            return Specification.allOf(
                 Boolean.TRUE.equals(criteria.getDistinct()) ? distinct(criteria.getDistinct()) : null,
                 buildRangeSpecification(criteria.getId(), Client_.id),
                 buildStringSpecification(criteria.getName(), Client_.name),
@@ -79,6 +78,6 @@ public class ClientQueryService extends QueryService<Client> {
                 buildSpecification(criteria.getAddressId(), root -> root.join(Client_.address, JoinType.LEFT).get(Address_.id))
             );
         }
-        return specification;
+        return Specification.where(null);
     }
 }

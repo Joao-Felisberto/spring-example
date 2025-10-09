@@ -5,39 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/util/Cloner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.yo-rc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.jdl" beforeDir="false" afterPath="$PROJECT_DIR$/app.jdl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/.devcontainer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.devcontainer/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.prettierignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/.yo-rc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/checkstyle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/checkstyle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/banner.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/i18n/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/resources/META-INF/services/reactor.blockhound.integration.BlockHoundIntegration" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/resources/META-INF/services/reactor.blockhound.integration.BlockHoundIntegration" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/resources/i18n/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gateway/src/test/resources/junit-platform.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/test/resources/junit-platform.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/.devcontainer/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.devcontainer/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/.jhipster/Address.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.jhipster/Address.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/.jhipster/Client.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.jhipster/Client.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/.yo-rc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/ClientQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/ClientQueryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/criteria/ClientCriteria.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/criteria/ClientCriteria.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/Tmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/Tmp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/banner.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/i18n/messages.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/templates/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/resources/junit-platform.properties" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/resources/junit-platform.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/TestUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -78,37 +52,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GatewayApp.executor": "Run",
-    "Application.MicroserviceApp.executor": "Run",
-    "JUnit.All in exercise.executor": "Coverage",
-    "JUnit.ClientControllerIT.deleteExistingClient.executor": "Run",
-    "JUnit.ClientMapperTest.fail.executor": "Run",
-    "JUnit.ClientRepositoryTest.executor": "Run",
-    "JUnit.ClientResourceIT.getAllClients.executor": "Run",
-    "Maven. [test].executor": "Run",
-    "Maven. [validate].executor": "Run",
-    "Maven.exercise [-P\"tls,dev\"].executor": "Run",
-    "Maven.exercise [compile].executor": "Run",
-    "Maven.exercise [test].executor": "Run",
-    "Maven.exercise [validate].executor": "Run",
-    "Maven.exercise.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dev",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/dev/ex/microservice/src/main/java/com/github/joao_felisberto/microservice",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GatewayApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MicroserviceApp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in exercise.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ClientControllerIT.deleteExistingClient.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientMapperTest.fail.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClientResourceIT.getAllClients.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [-P\&quot;tls,dev\&quot;].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.exercise.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/dev/ex/microservice/src/main/java/com/github/joao_felisberto/microservice&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\ex\microservice\src\main\java\com\github\joao_felisberto\microservice" />
