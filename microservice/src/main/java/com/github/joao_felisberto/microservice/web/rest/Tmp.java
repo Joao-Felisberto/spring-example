@@ -7,11 +7,17 @@ import com.github.joao_felisberto.microservice.service.criteria.ClientCriteria;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.ErrorResponseException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -19,7 +25,6 @@ import java.util.List;
 @Transactional
 public class Tmp {
 
-    private final RestTemplate restTemplate = new RestTemplate();
     private static final Logger LOG = LoggerFactory.getLogger(Tmp.class);
     private final ClientQueryService clientQueryService;
 
@@ -37,8 +42,30 @@ public class Tmp {
      */
     @PostMapping("/shortcut")
     public ResponseEntity<ClientDTO> shortcut(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
-        return restTemplate.postForEntity("https://localhost:8081/api/clients", clientDTO, ClientDTO.class);
-//        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            final URI uri = new URI("https://localhost:8081/api/client");
+            final ClientDTO res = RestClient.create()
+                .post()
+                .uri(uri)
+                .body(clientDTO)
+                .retrieve()
+                .onStatus(HttpStatusCode::isError, (request, response) -> {
+                    final ProblemDetail detail = ProblemDetail.forStatus(response.getStatusCode());
+                    detail.setInstance(uri);
+                    detail.setTitle("Error creating Client");
+                    detail.setProperty("request", request);
+                    detail.setProperty("response", response);
+
+                    throw new ErrorResponseException(response.getStatusCode(), detail, null);
+                })
+                .body(ClientDTO.class);
+
+            return new ResponseEntity<>(res, HttpStatus.OK);
+        } catch (ErrorResponseException e) {
+            return new ResponseEntity<>(e.getStatusCode());
+        } catch (URISyntaxException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/api/client/filter")
