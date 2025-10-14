@@ -1,6 +1,5 @@
 package com.github.joao_felisberto.microservice.web.rest;
 
-import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
@@ -47,11 +46,13 @@ public class ClientController implements ClientApiDelegate {
 
     private final ClientRepository clientRepository;
     private final AddressRepository addressRepository;
+    private final ClientMapper clientMapper;
 
     @Autowired
-    public ClientController(ClientRepository clientRepository, AddressRepository addressRepository) {
+    public ClientController(ClientRepository clientRepository, AddressRepository addressRepository, ClientMapper clientMapper) {
         this.clientRepository = clientRepository;
         this.addressRepository = addressRepository;
+        this.clientMapper = clientMapper;
     }
 
     /**
@@ -65,21 +66,20 @@ public class ClientController implements ClientApiDelegate {
 //    @PostMapping("")
     @Override
     public ResponseEntity<ClientDTO> postClient(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
-        final Client client = ClientMapper.INSTANCE.clientDTOToClient(clientDTO);
+        final Client client = clientMapper.clientDTOToClient(clientDTO);
 
         if (client.getId() != null) {
             LOG.error("A new client cannot already have an ID");
             throw new BadRequestAlertException("A new client cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
-        final Address addressRes = addressRepository.save(client.getAddress());
-
-        // fixme does this exfiltrate data since relationships are ill encoded in POJO?
+        addressRepository.save(client.getAddress());
         final Client clientRes = clientRepository.save(client);
+        LOG.info("Created Client with id {}", client.getId());
         try {
             return ResponseEntity.created(new URI("/api/clients/" + client.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, client.getId().toString()))
-                .body(ClientMapper.INSTANCE.clientToClientDTO(clientRes));
+                .body(clientMapper.clientToClientDTO(clientRes));
         } catch (URISyntaxException e) {
             LOG.error("Malformed URI: '{}'", "/api/clients/" + client.getId());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -98,7 +98,7 @@ public class ClientController implements ClientApiDelegate {
     public ResponseEntity<Void> deleteClient(@PathVariable("id") Long id) {
         LOG.debug("REST request to delete Client: {}", id);
         clientRepository.deleteById(id);
-        clientRepository.flush();
+        LOG.info("Deleted Client with id {}", id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
@@ -112,7 +112,7 @@ public class ClientController implements ClientApiDelegate {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        final ClientDTO client = ClientMapper.INSTANCE.clientToClientDTO(clientRes.orElseThrow());
+        final ClientDTO client = clientMapper.clientToClientDTO(clientRes.orElseThrow());
 
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
@@ -124,7 +124,7 @@ public class ClientController implements ClientApiDelegate {
 
         return new ResponseEntity<>(
             clientRepository.findAll().stream()
-                .map(ClientMapper.INSTANCE::clientToClientDTO)
+                .map(clientMapper::clientToClientDTO)
                 .toList(),
             HttpStatus.OK
         );
@@ -137,7 +137,7 @@ public class ClientController implements ClientApiDelegate {
 
         return new ResponseEntity<>(
             clientRepository.findAllByNameLike(name).stream()
-                .map(ClientMapper.INSTANCE::clientToClientDTO)
+                .map(clientMapper::clientToClientDTO)
                 .toList(),
             HttpStatus.OK
         );

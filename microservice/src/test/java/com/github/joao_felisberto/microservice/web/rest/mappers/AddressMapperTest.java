@@ -5,15 +5,20 @@ import com.github.joao_felisberto.microservice.domain.mappers.AddressMapper;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.github.joao_felisberto.microservice.TestUtil.createAddress;
 import static com.github.joao_felisberto.microservice.TestUtil.createAddressDTO;
 
 class AddressMapperTest {
+
+    @Autowired
+    private AddressMapper addressMapper;
+
     @Test
     void testAddressToDTOMap() {
         final Address original = createAddress();
-        final AddressDTO converted = AddressMapper.INSTANCE.addressToAddressDTO(original);
+        final AddressDTO converted = addressMapper.addressToAddressDTO(original);
 
         Assertions.assertEquals(original.getCountry().ordinal(), converted.getCountry().intValue());
         Assertions.assertEquals(original.getCity(), converted.getCity());
@@ -27,7 +32,7 @@ class AddressMapperTest {
     @Test
     void testAddressDTOToAddressMap() {
         final AddressDTO original = createAddressDTO();
-        final Address converted = AddressMapper.INSTANCE.addressDTOToAddress(original);
+        final Address converted = addressMapper.addressDTOToAddress(original);
 
         Assertions.assertEquals(original.getCountry().intValue(), converted.getCountry().ordinal());
         Assertions.assertEquals(original.getCity(), converted.getCity());

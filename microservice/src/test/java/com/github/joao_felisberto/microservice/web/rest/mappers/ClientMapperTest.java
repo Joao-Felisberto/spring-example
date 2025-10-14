@@ -8,6 +8,7 @@ import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
@@ -16,10 +17,13 @@ import static com.github.joao_felisberto.microservice.TestUtil.createClientDTO;
 
 class ClientMapperTest {
 
+    @Autowired
+    private ClientMapper clientMapper;
+
     @Test
     void testClientToDTOMap() {
         final Client original = createClient();
-        final ClientDTO converted = ClientMapper.INSTANCE.clientToClientDTO(original);
+        final ClientDTO converted = clientMapper.clientToClientDTO(original);
 
         Assertions.assertEquals(original.getName(), converted.getName());
         Assertions.assertEquals(original.getNif(), converted.getNif());
@@ -43,7 +47,7 @@ class ClientMapperTest {
         final CountryCode[] countries = CountryCode.values();
 
         for (CountryCode c : countries) {
-            final BigDecimal converted = ClientMapper.INSTANCE.map(c);
+            final BigDecimal converted = clientMapper.map(c);
             Assertions.assertEquals(converted.intValue(), c.ordinal());
         }
     }
@@ -51,7 +55,7 @@ class ClientMapperTest {
     @Test
     void testClientDTOToClientMap() {
         final ClientDTO original = createClientDTO();
-        final Client converted = ClientMapper.INSTANCE.clientDTOToClient(original);
+        final Client converted = clientMapper.clientDTOToClient(original);
 
         Assertions.assertEquals(original.getName(), converted.getName());
         Assertions.assertEquals(original.getNif(), converted.getNif());
@@ -75,7 +79,7 @@ class ClientMapperTest {
         final BigDecimal max = BigDecimal.valueOf(CountryCode.values().length);
 
         for (BigDecimal i = new BigDecimal(0); i.compareTo(max) < 0; i = i.add(new BigDecimal(1))) {
-            final CountryCode converted = ClientMapper.INSTANCE.map(i);
+            final CountryCode converted = clientMapper.map(i);
             Assertions.assertEquals(i.intValue(), converted.ordinal());
         }
     }

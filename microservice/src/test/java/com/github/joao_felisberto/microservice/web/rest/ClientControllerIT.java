@@ -45,6 +45,12 @@ class ClientControllerIT {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Autowired
+    private Cloner cloner;
+
+    @Autowired
+    private ClientMapper clientMapper;
+
 //    @Autowired
 //    private EntityManager em;
 
@@ -87,36 +93,36 @@ class ClientControllerIT {
         final ClientDTO validClient = createClientDTO();
 
         final ClientDTO[] invalidClients = {
-            Cloner.INSTANCE.clone(validClient).name(null),
-            Cloner.INSTANCE.clone(validClient).nif(null),
-            Cloner.INSTANCE.clone(validClient).address(null),
-            Cloner.INSTANCE.clone(validClient).phoneNumber(null),
-            Cloner.INSTANCE.clone(validClient).phoneCountryCode(null),
+            cloner.clone(validClient).name(null),
+            cloner.clone(validClient).nif(null),
+            cloner.clone(validClient).address(null),
+            cloner.clone(validClient).phoneNumber(null),
+            cloner.clone(validClient).phoneCountryCode(null),
 
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).city(null)),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).country(null)),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).postcode(null)),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).stateOrProvince(null)),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetOne(null)),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetTwo(null)),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress(null)),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).city(null)),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).country(null)),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).postcode(null)),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).stateOrProvince(null)),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).streetOne(null)),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).streetTwo(null)),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress(null)),
 
             // ---
 
-            Cloner.INSTANCE.clone(validClient).name(""),
-            Cloner.INSTANCE.clone(validClient).nif(""),
+            cloner.clone(validClient).name(""),
+            cloner.clone(validClient).nif(""),
 
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).city("")),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).postcode("")),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).stateOrProvince("")),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetOne("")),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).streetTwo("")),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress("")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).city("")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).postcode("")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).stateOrProvince("")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).streetOne("")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).streetTwo("")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress("")),
 
             // todo proper email fuzzing
 
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress("a")),
-            Cloner.INSTANCE.clone(validClient).address(Cloner.INSTANCE.clone(validClient.getAddress()).emailAddress("a@")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress("a")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress("a@")),
         };
 
         for (final ClientDTO invalidClient : invalidClients) {
@@ -143,7 +149,7 @@ class ClientControllerIT {
     void deleteExistingClient() throws Exception {
         final long clientDBSizeBeforeCreate = clientRepository.count();
         final ClientDTO clientDTO = createClientDTO();
-        final Client client = ClientMapper.INSTANCE.clientDTOToClient(clientDTO);
+        final Client client = clientMapper.clientDTOToClient(clientDTO);
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);
@@ -190,7 +196,7 @@ class ClientControllerIT {
     void findExistingClientByNIF() throws Exception {
         final long clientDBSizeBeforeCreate = clientRepository.count();
         final ClientDTO clientDTO = createClientDTO();
-        final Client client = ClientMapper.INSTANCE.clientDTOToClient(clientDTO);
+        final Client client = clientMapper.clientDTOToClient(clientDTO);
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);
@@ -254,12 +260,12 @@ class ClientControllerIT {
         Assertions.assertEquals(0, clientRepository.count());
 
         final List<Client> cs = Arrays.asList(
-            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("a")),
-            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("b")),
-            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("c")),
-            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("d")),
-            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("e")),
-            ClientMapper.INSTANCE.clientDTOToClient(createDistinctClientDTO("f"))
+            clientMapper.clientDTOToClient(createDistinctClientDTO("a")),
+            clientMapper.clientDTOToClient(createDistinctClientDTO("b")),
+            clientMapper.clientDTOToClient(createDistinctClientDTO("c")),
+            clientMapper.clientDTOToClient(createDistinctClientDTO("d")),
+            clientMapper.clientDTOToClient(createDistinctClientDTO("e")),
+            clientMapper.clientDTOToClient(createDistinctClientDTO("f"))
         );
 
         addressRepository.saveAll(cs.stream().map(Client::getAddress).toList());
@@ -281,6 +287,6 @@ class ClientControllerIT {
             .collect(Collectors.toSet());
 
         Assertions.assertEquals(cs.size(), returnedClients.size());
-        cs.forEach(c -> Assertions.assertTrue(returnedClients.contains(ClientMapper.INSTANCE.clientToClientDTO(c))));
+        cs.forEach(c -> Assertions.assertTrue(returnedClients.contains(clientMapper.clientToClientDTO(c))));
     }
 }

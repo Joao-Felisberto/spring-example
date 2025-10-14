@@ -19,6 +19,9 @@ public class ClientRepositoryTest {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Autowired
+    private ClientMapper clientMapper;
+
 //    @Autowired
 //    public ClientRepositoryTest(ClientRepository clientRepository, AddressRepository addressRepository) {
 //        this.clientRepository = clientRepository;
@@ -35,7 +38,7 @@ public class ClientRepositoryTest {
 
     @Test
     public void testFindExistingClientByNIF() throws Exception {
-        final Client client = ClientMapper.INSTANCE.clientDTOToClient(createClientDTO());
+        final Client client = clientMapper.clientDTOToClient(createClientDTO());
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);
@@ -48,7 +51,7 @@ public class ClientRepositoryTest {
 
     @Test
     public void testFindNonExistingClientByNIF() throws Exception {
-        final Client client = ClientMapper.INSTANCE.clientDTOToClient(createClientDTO());
+        final Client client = clientMapper.clientDTOToClient(createClientDTO());
 
         addressRepository.saveAndFlush(client.getAddress());
         clientRepository.saveAndFlush(client);

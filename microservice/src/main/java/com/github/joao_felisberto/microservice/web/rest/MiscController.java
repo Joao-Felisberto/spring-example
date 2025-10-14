@@ -2,34 +2,33 @@ package com.github.joao_felisberto.microservice.web.rest;
 
 import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.service.ClientQueryService;
+import com.github.joao_felisberto.microservice.service.MiscService;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import com.github.joao_felisberto.microservice.service.criteria.ClientCriteria;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.ErrorResponseException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClient;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/")
 @Transactional
-public class Tmp {
+public class MiscController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Tmp.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MiscController.class);
     private final ClientQueryService clientQueryService;
+    private final MiscService miscService;
 
-    public Tmp(ClientQueryService clientQueryService) {
+    public MiscController(ClientQueryService clientQueryService, MiscService miscService) {
         this.clientQueryService = clientQueryService;
+        this.miscService = miscService;
     }
 
     /**
@@ -43,22 +42,7 @@ public class Tmp {
     @PostMapping("/shortcut")
     public ResponseEntity<ClientDTO> shortcut(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
         try {
-            final URI uri = new URI("https://localhost:8081/api/client");
-            final ClientDTO res = RestClient.create()
-                .post()
-                .uri(uri)
-                .body(clientDTO)
-                .retrieve()
-                .onStatus(HttpStatusCode::isError, (request, response) -> {
-                    final ProblemDetail detail = ProblemDetail.forStatus(response.getStatusCode());
-//                    detail.setInstance(uri);
-//                    detail.setTitle("Error creating Client");
-//                    detail.setProperty("request", request);
-//                    detail.setProperty("response", response);
-
-                    throw new ErrorResponseException(response.getStatusCode(), detail, null);
-                })
-                .body(ClientDTO.class);
+            final ClientDTO res = miscService.createClientWithHTTPSCall(clientDTO);
 
             return new ResponseEntity<>(res, HttpStatus.OK);
         } catch (ErrorResponseException e) {
@@ -69,10 +53,10 @@ public class Tmp {
     }
 
     @GetMapping("/api/client/filter")
-    public ResponseEntity<List<Client>> getAllClients(ClientCriteria criteria) {
+    public ResponseEntity<List<Client>> filterClients(ClientCriteria criteria) {
         LOG.debug("REST request to get Clients by criteria: {}", criteria);
 
         List<Client> entityList = clientQueryService.findByCriteria(criteria);
-        return ResponseEntity.ok().body(entityList);
+        return new ResponseEntity<>(entityList, HttpStatus.OK);
     }
 }

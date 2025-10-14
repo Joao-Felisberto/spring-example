@@ -6,11 +6,13 @@ import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.control.DeepClone;
-import org.mapstruct.factory.Mappers;
 
-@Mapper(mappingControl = DeepClone.class)
+@Mapper(
+    mappingControl = DeepClone.class,
+    componentModel = "spring"
+)
 public interface Cloner {
-    Cloner INSTANCE = Mappers.getMapper(Cloner.class);
+    // Cloner INSTANCE = Mappers.getMapper(Cloner.class);
 
     Client clone(Client client);
 
