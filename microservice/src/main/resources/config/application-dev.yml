@@ -33,6 +33,8 @@ management:
       probability: 1.0 # report 100% of traces
 
 spring:
+  config:
+    import=optional:consul:
   devtools:
     restart:
       enabled: true

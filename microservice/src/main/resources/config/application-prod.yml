@@ -39,6 +39,7 @@ spring:
       enabled: false
   cloud:
     consul:
+      enabled: true
       discovery:
         prefer-ip-address: true
       host: localhost

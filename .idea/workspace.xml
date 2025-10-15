@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/util/Cloner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/ClientQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/ClientQueryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/Tmp.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/Tmp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/TestUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose/docker-compose-ssl-no_microservice.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose/docker-compose-ssl-no_microservice.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/config/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/config/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/config/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -52,37 +52,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GatewayApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MicroserviceApp.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in exercise.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.ClientControllerIT.deleteExistingClient.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientMapperTest.fail.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientResourceIT.getAllClients.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [-P\&quot;tls,dev\&quot;].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/ex/microservice/src/main/java/com/github/joao_felisberto/microservice&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GatewayApp.executor": "Run",
+    "Application.MicroserviceApp.executor": "Run",
+    "Docker.docker-compose/docker-compose-ssl-no_microservice.yml.microservice-postgresql: Compose Deployment.executor": "Run",
+    "JUnit.All in exercise.executor": "Coverage",
+    "JUnit.ClientControllerIT.deleteExistingClient.executor": "Run",
+    "JUnit.ClientControllerIT.executor": "Run",
+    "JUnit.ClientControllerTest.deleteClient.executor": "Run",
+    "JUnit.ClientControllerTest.executor": "Run",
+    "JUnit.ClientControllerTest.getClientByExistingNIF.executor": "Run",
+    "JUnit.ClientControllerTest.getClientByNonExistingNIF.executor": "Run",
+    "JUnit.ClientControllerTest.listClients.executor": "Run",
+    "JUnit.ClientControllerTest.postClient.executor": "Run",
+    "JUnit.ClientControllerTest.postClientWithId.executor": "Run",
+    "JUnit.ClientCriteriaTest.executor": "Run",
+    "JUnit.ClientMapperTest.fail.executor": "Run",
+    "JUnit.ClientQueryServiceTest.createSpecificationCriteria.executor": "Run",
+    "JUnit.ClientQueryServiceTest.createSpecificationNullCriteria.executor": "Run",
+    "JUnit.ClientQueryServiceTest.findByCriteria.executor": "Run",
+    "JUnit.ClientRepositoryTest.executor": "Run",
+    "JUnit.ClientResourceIT.getAllClients.executor": "Run",
+    "JUnit.MiscControllerTest.executor": "Run",
+    "JUnit.MiscControllerTest.filterClients.executor": "Run",
+    "JUnit.MiscControllerTest.shortcutFound.executor": "Run",
+    "JUnit.MiscServiceTest.createClientWithHTTPSCall.executor": "Run",
+    "Maven. [test].executor": "Run",
+    "Maven. [validate].executor": "Run",
+    "Maven.exercise [-P\"tls,dev\"].executor": "Run",
+    "Maven.exercise [compile].executor": "Run",
+    "Maven.exercise [test].executor": "Run",
+    "Maven.exercise [validate].executor": "Run",
+    "Maven.exercise.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/dev/ex/microservice/src/main/java/com/github/joao_felisberto/microservice",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\ex\microservice\src\main\java\com\github\joao_felisberto\microservice" />
@@ -94,8 +113,19 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dev\ex\.mvn" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.github.joao_felisberto.microservice.domain.mappers" />
       <recent name="com.github.joao_felisberto.microservice.repository" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.github.joao_felisberto.microservice.service" />
+      <recent name="com.github.joao_felisberto.microservice.web.rest" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.github.joao_felisberto.microservice.service.criteria" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -109,29 +139,18 @@
       <command value="mvn -P&quot;tls,dev&quot;" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ClientMapperTest.fail">
-    <configuration name="GatewayApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.gateway.GatewayApp" />
-      <module name="gateway" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.github.joao_felisberto.gateway.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MicroserviceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.MicroserviceApp" />
+  <component name="RunManager" selected="Docker.docker-compose/docker-compose-ssl-no_microservice.yml.microservice-postgresql: Compose Deployment">
+    <configuration name="ClientControllerIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.github.joao_felisberto.microservice.*" />
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.web.rest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.web.rest" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.web.rest.ClientControllerIT" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,33 +171,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientMapperTest.fail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ClientCriteriaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.github.joao_felisberto.microservice.web.rest.mappers.*" />
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.service.criteria.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.web.rest.mappers" />
-      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.web.rest.mappers.ClientMapperTest" />
-      <option name="METHOD_NAME" value="fail" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.service.criteria" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.service.criteria.ClientCriteriaTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ClientQueryServiceTest.findByCriteria" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.github.joao_felisberto.microservice.repository.*" />
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.repository.ClientRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.service" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.service.ClientQueryServiceTest" />
+      <option name="METHOD_NAME" value="findByCriteria" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -194,20 +213,37 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose/docker-compose-ssl-no_microservice.yml.microservice-postgresql: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="microservice-postgresql" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose/docker-compose-ssl-no_microservice.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Application.GatewayApp" />
-      <item itemvalue="Application.MicroserviceApp" />
-      <item itemvalue="JUnit.ClientMapperTest.fail" />
+      <item itemvalue="Docker.docker-compose/docker-compose-ssl-no_microservice.yml.microservice-postgresql: Compose Deployment" />
+      <item itemvalue="JUnit.ClientControllerIT" />
       <item itemvalue="JUnit.ClientControllerIT.deleteExistingClient" />
-      <item itemvalue="JUnit.ClientRepositoryTest" />
+      <item itemvalue="JUnit.ClientCriteriaTest" />
+      <item itemvalue="JUnit.ClientQueryServiceTest.findByCriteria" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ClientMapperTest.fail" />
-        <item itemvalue="JUnit.ClientRepositoryTest" />
+        <item itemvalue="Docker.docker-compose/docker-compose-ssl-no_microservice.yml.microservice-postgresql: Compose Deployment" />
+        <item itemvalue="JUnit.ClientControllerIT" />
         <item itemvalue="JUnit.ClientControllerIT.deleteExistingClient" />
-        <item itemvalue="Application.GatewayApp" />
-        <item itemvalue="Application.MicroserviceApp" />
+        <item itemvalue="JUnit.ClientQueryServiceTest.findByCriteria" />
+        <item itemvalue="JUnit.ClientCriteriaTest" />
       </list>
     </recent_temporary>
   </component>

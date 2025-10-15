@@ -103,6 +103,7 @@ spring:
     name: microservice
   cloud:
     consul:
+      enabled: false
       discovery:
         healthCheckPath: /management/health
         instanceId: microservice:${spring.application.instance-id:${random.value}}
