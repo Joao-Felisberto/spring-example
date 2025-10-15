@@ -1,4 +1,4 @@
-package com.github.joao_felisberto.microservice.util;
+package com.github.joao_felisberto.microservice.domain.mappers;
 
 import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.Client;
@@ -12,7 +12,6 @@ import org.mapstruct.control.DeepClone;
     componentModel = "spring"
 )
 public interface Cloner {
-    // Cloner INSTANCE = Mappers.getMapper(Cloner.class);
 
     Client clone(Client client);
 

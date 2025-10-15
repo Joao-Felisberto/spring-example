@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 
 @Mapper(componentModel = "spring")
 public interface AddressMapper {
-    // AddressMapper INSTANCE = Mappers.getMapper(AddressMapper.class);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "clients", ignore = true)

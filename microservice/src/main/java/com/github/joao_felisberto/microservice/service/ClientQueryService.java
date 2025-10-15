@@ -47,19 +47,6 @@ public class ClientQueryService extends QueryService<Client> {
     }
 
     /**
-     * Return the number of matching entities in the database.
-     *
-     * @param criteria The object which holds all the filters, which the entities should match.
-     * @return the number of matching entities.
-     */
-    @Transactional(readOnly = true)
-    public long countByCriteria(ClientCriteria criteria) {
-        LOG.debug("count by criteria : {}", criteria);
-        final Specification<Client> specification = createSpecification(criteria);
-        return clientRepository.count(specification);
-    }
-
-    /**
      * Function to convert {@link ClientCriteria} to a {@link Specification}
      *
      * @param criteria The object which holds all the filters, which the entities should match.

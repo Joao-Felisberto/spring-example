@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
-    // ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "countryCode", source = "clientDTO.phoneCountryCode")

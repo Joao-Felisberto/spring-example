@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import tech.jhipster.web.util.HeaderUtil;
@@ -95,7 +94,7 @@ public class ClientController implements ClientApiDelegate {
      */
 //    @DeleteMapping("/{id}")
     @Override
-    public ResponseEntity<Void> deleteClient(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteClient(Long id) {
         LOG.debug("REST request to delete Client: {}", id);
         clientRepository.deleteById(id);
         LOG.info("Deleted Client with id {}", id);
@@ -104,7 +103,7 @@ public class ClientController implements ClientApiDelegate {
 
     //    @GetMapping("/{nif}")
     @Override
-    public ResponseEntity<ClientDTO> getClientByNIF(@PathVariable("nif") String nif) {
+    public ResponseEntity<ClientDTO> getClientByNIF(String nif) {
         LOG.debug("REST request for Client with NIF: {}", nif);
 
         final Optional<Client> clientRes = clientRepository.findBynif(nif);

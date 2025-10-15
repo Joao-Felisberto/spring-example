@@ -40,7 +40,7 @@ public class MiscController {
      * @return The added client
      */
     @PostMapping("/shortcut")
-    public ResponseEntity<ClientDTO> shortcut(@Valid @RequestBody ClientDTO clientDTO) /*throws URISyntaxException*/ {
+    public ResponseEntity<ClientDTO> shortcut(@Valid @RequestBody ClientDTO clientDTO) {
         try {
             final ClientDTO res = miscService.createClientWithHTTPSCall(clientDTO);
 
@@ -56,7 +56,7 @@ public class MiscController {
     public ResponseEntity<List<Client>> filterClients(ClientCriteria criteria) {
         LOG.debug("REST request to get Clients by criteria: {}", criteria);
 
-        List<Client> entityList = clientQueryService.findByCriteria(criteria);
+        final List<Client> entityList = clientQueryService.findByCriteria(criteria);
         return new ResponseEntity<>(entityList, HttpStatus.OK);
     }
 }

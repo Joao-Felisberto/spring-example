@@ -8,7 +8,7 @@ import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mapstruct.factory.Mappers;
 
 import java.math.BigDecimal;
 
@@ -17,8 +17,7 @@ import static com.github.joao_felisberto.microservice.TestUtil.createClientDTO;
 
 class ClientMapperTest {
 
-    @Autowired
-    private ClientMapper clientMapper;
+    private ClientMapper clientMapper = Mappers.getMapper(ClientMapper.class);
 
     @Test
     void testClientToDTOMap() {

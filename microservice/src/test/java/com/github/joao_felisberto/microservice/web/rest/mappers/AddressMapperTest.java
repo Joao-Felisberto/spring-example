@@ -5,15 +5,14 @@ import com.github.joao_felisberto.microservice.domain.mappers.AddressMapper;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mapstruct.factory.Mappers;
 
 import static com.github.joao_felisberto.microservice.TestUtil.createAddress;
 import static com.github.joao_felisberto.microservice.TestUtil.createAddressDTO;
 
 class AddressMapperTest {
 
-    @Autowired
-    private AddressMapper addressMapper;
+    private final AddressMapper addressMapper = Mappers.getMapper(AddressMapper.class);
 
     @Test
     void testAddressToDTOMap() {
