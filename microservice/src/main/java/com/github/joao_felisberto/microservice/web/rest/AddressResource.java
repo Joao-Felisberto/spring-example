@@ -5,11 +5,6 @@ import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import com.github.joao_felisberto.microservice.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,6 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * REST controller for managing {@link com.github.joao_felisberto.microservice.domain.Address}.
@@ -62,7 +63,7 @@ public class AddressResource {
     /**
      * {@code PUT  /addresses/:id} : Updates an existing address.
      *
-     * @param id the id of the address to save.
+     * @param id      the id of the address to save.
      * @param address the address to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated address,
      * or with status {@code 400 (Bad Request)} if the address is not valid,
@@ -95,7 +96,7 @@ public class AddressResource {
     /**
      * {@code PATCH  /addresses/:id} : Partial updates given fields of an existing address, field will ignore if it is null
      *
-     * @param id the id of the address to save.
+     * @param id      the id of the address to save.
      * @param address the address to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated address,
      * or with status {@code 400 (Bad Request)} if the address is not valid,
@@ -103,7 +104,7 @@ public class AddressResource {
      * or with status {@code 500 (Internal Server Error)} if the address couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
-    @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    @PatchMapping(value = "/{id}", consumes = {"application/json", "application/merge-patch+json"})
     public ResponseEntity<Address> partialUpdateAddress(
         @PathVariable(value = "id", required = false) final Long id,
         @NotNull @RequestBody Address address
@@ -132,8 +133,8 @@ public class AddressResource {
                 if (address.getPostcode() != null) {
                     existingAddress.setPostcode(address.getPostcode());
                 }
-                if (address.getStateOrProvince() != null) {
-                    existingAddress.setStateOrProvince(address.getStateOrProvince());
+                if (address.getStateProvince() != null) {
+                    existingAddress.setStateProvince(address.getStateProvince());
                 }
                 if (address.getStreetOne() != null) {
                     existingAddress.setStreetOne(address.getStreetOne());

@@ -43,7 +43,7 @@ public class Address implements Serializable {
 
     @NotNull
     @Column(name = "state_or_province", nullable = false)
-    private String stateOrProvince;
+    private String stateProvince;
 
     @NotNull
     @Column(name = "street_one", nullable = false)
@@ -61,29 +61,6 @@ public class Address implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = {"phoneNumber", "address"}, allowSetters = true)
     private Set<Client> clients = new HashSet<>();
-
-//    public static Address fromDTO(AddressDTO dto) {
-//        return new Address()
-//            .city(dto.getCity())
-//            .country(CountryCode.fromBigDecimalIndex(dto.getCountry()))
-//            .postcode(dto.getPostcode())
-//            .stateOrProvince(dto.getStateOrProvince())
-//            .streetOne(dto.getStreetOne())
-//            .streetTwo(dto.getStreetTwo())
-//            .emailAddress(dto.getEmailAddress());
-//    }
-//
-//    public AddressDTO toDTO() {
-//        return new AddressDTO(
-//            this.city,
-//            new BigDecimal(this.country.ordinal()),
-//            this.postcode,
-//            this.stateOrProvince,
-//            this.streetOne,
-//            this.streetTwo,
-//            this.emailAddress
-//        );
-//    }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -139,17 +116,17 @@ public class Address implements Serializable {
         this.postcode = postcode;
     }
 
-    public String getStateOrProvince() {
-        return this.stateOrProvince;
+    public String getStateProvince() {
+        return this.stateProvince;
     }
 
-    public Address stateOrProvince(String stateOrProvince) {
-        this.setStateOrProvince(stateOrProvince);
+    public Address stateProvince(String stateProvince) {
+        this.setStateProvince(stateProvince);
         return this;
     }
 
-    public void setStateOrProvince(String stateOrProvince) {
-        this.stateOrProvince = stateOrProvince;
+    public void setStateProvince(String stateProvince) {
+        this.stateProvince = stateProvince;
     }
 
     public String getStreetOne() {
@@ -249,7 +226,7 @@ public class Address implements Serializable {
             ", city='" + getCity() + "'" +
             ", country='" + getCountry() + "'" +
             ", postcode='" + getPostcode() + "'" +
-            ", stateOrProvince='" + getStateOrProvince() + "'" +
+            ", stateProvince='" + getStateProvince() + "'" +
             ", streetOne='" + getStreetOne() + "'" +
             ", streetTwo='" + getStreetTwo() + "'" +
             ", emailAddress='" + getEmailAddress() + "'" +

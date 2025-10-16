@@ -51,8 +51,8 @@ class ClientControllerTest {
     @Test
     void postClient(CapturedOutput output) {
         // todo: is this allowed?
-        //      on one hand: using something we're mocking
-        //      on the other: manual cloning is bad and would be abundant in tests
+        //      Cloner: using something we're mocking
+        //      Manual: manual cloning is bad and would be abundant in tests
         final ClientDTO clientDTO = createClientDTO();
         final Client client = clientDTOToClient(clientDTO);
         final Long id = 1L;
@@ -70,10 +70,46 @@ class ClientControllerTest {
             () -> clientController.postClient(clientDTO)
         );
 
-        verify(addressRepository, times(1)).save(client.getAddress());
-        verify(clientRepository, times(1)).save(client);
-        verify(clientMapper, times(1)).clientDTOToClient(clientDTO);
-        verify(clientMapper, times(1)).clientToClientDTO(client);
+        verify(addressRepository).save(client.getAddress());
+        verify(addressRepository).findSameAddress(client.getAddress());
+        verify(clientRepository).save(client);
+        verify(clientMapper).clientDTOToClient(clientDTO);
+        verify(clientMapper).clientToClientDTO(client);
+
+        Assertions.assertTrue(output.getOut().contains(String.format("Created Client with id %d", id)));
+
+        Assertions.assertEquals(HttpStatus.CREATED, res.getStatusCode());
+        Assertions.assertEquals(clientDTO, res.getBody());
+    }
+
+    @Test
+    void postClientWithDuplicateAddress(CapturedOutput output) {
+        // todo: is this allowed?
+        //      Cloner: using something we're mocking
+        //      Manual: manual cloning is bad and would be abundant in tests
+        final ClientDTO clientDTO = createClientDTO();
+        final Client client = clientDTOToClient(clientDTO);
+        final Long id = 1L;
+        Assertions.assertNull(client.getId());
+
+        when(clientMapper.clientDTOToClient(clientDTO)).thenReturn(client);
+        when(clientMapper.clientToClientDTO(client)).thenReturn(clientDTO);
+        when(addressRepository.findSameAddress(client.getAddress())).thenReturn(Optional.of(client.getAddress()));
+        when(clientRepository.save(client)).thenAnswer(i -> {
+            final Client c = i.getArgument(0, Client.class);
+            c.setId(id);
+            return c;
+        });
+
+        final ResponseEntity<ClientDTO> res = Assertions.assertDoesNotThrow(
+            () -> clientController.postClient(clientDTO)
+        );
+
+        verify(addressRepository, times(0)).save(client.getAddress());
+        verify(addressRepository).findSameAddress(client.getAddress());
+        verify(clientRepository).save(client);
+        verify(clientMapper).clientDTOToClient(clientDTO);
+        verify(clientMapper).clientToClientDTO(client);
 
         Assertions.assertTrue(output.getOut().contains(String.format("Created Client with id %d", id)));
 
@@ -107,7 +143,7 @@ class ClientControllerTest {
 
         clientController.deleteClient(clientID);
 
-        verify(clientRepository, times(1)).deleteById(clientID);
+        verify(clientRepository).deleteById(clientID);
 
         Assertions.assertTrue(output.getOut().contains(String.format("Deleted Client with id %d", clientID)));
         Assertions.assertEquals("", output.getErr());
@@ -311,7 +347,7 @@ class ClientControllerTest {
         address.setCity(addressDTO.getCity());
         address.setCountry(CountryCode.values()[addressDTO.getCountry().intValue()]);
         address.setPostcode(addressDTO.getPostcode());
-        address.setStateOrProvince(addressDTO.getStateOrProvince());
+        address.setStateProvince(addressDTO.getStateProvince());
         address.setStreetOne(addressDTO.getStreetOne());
         address.setStreetTwo(addressDTO.getStreetTwo());
         address.setEmailAddress(addressDTO.getEmailAddress());

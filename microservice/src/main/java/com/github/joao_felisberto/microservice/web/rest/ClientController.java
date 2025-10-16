@@ -1,5 +1,6 @@
 package com.github.joao_felisberto.microservice.web.rest;
 
+import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
@@ -72,7 +73,13 @@ public class ClientController implements ClientApiDelegate {
             throw new BadRequestAlertException("A new client cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
-        addressRepository.save(client.getAddress());
+        final Address addr = client.getAddress();
+        final Optional<Address> addrDB = addressRepository.findSameAddress(addr);
+        addrDB.ifPresentOrElse(
+            address -> addr.setId(address.getId()),
+            () -> addressRepository.save(client.getAddress())
+        );
+
         final Client clientRes = clientRepository.save(client);
         LOG.info("Created Client with id {}", client.getId());
         try {

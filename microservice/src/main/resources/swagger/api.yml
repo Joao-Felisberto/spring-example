@@ -172,7 +172,7 @@ components:
           type: string
           x-field-extra-annotation: >-
             @NotEmpty
-        stateOrProvince:
+        stateProvince:
           description: State or province
           type: string
           x-field-extra-annotation: >-
@@ -197,7 +197,7 @@ components:
         - city
         - country
         - postcode
-        - stateOrProvince
+        - stateProvince
         - streetOne
         - streetTwo
         - emailAddress

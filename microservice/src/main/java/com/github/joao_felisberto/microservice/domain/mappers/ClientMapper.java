@@ -13,6 +13,9 @@ public interface ClientMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "countryCode", source = "clientDTO.phoneCountryCode")
+    @Mapping(target = "address.id", ignore = true)
+    @Mapping(target = "address.clients", ignore = true)
+    @Mapping(target = "address.removeClient", ignore = true)
     Client clientDTOToClient(ClientDTO clientDTO);
 
     @Mapping(target = "phoneCountryCode", source = "client.countryCode")

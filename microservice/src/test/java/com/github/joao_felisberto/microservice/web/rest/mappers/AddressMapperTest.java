@@ -24,7 +24,7 @@ class AddressMapperTest {
         Assertions.assertEquals(original.getStreetOne(), converted.getStreetOne());
         Assertions.assertEquals(original.getStreetTwo(), converted.getStreetTwo());
         Assertions.assertEquals(original.getPostcode(), converted.getPostcode());
-        Assertions.assertEquals(original.getStateOrProvince(), converted.getStateOrProvince());
+        Assertions.assertEquals(original.getStateProvince(), converted.getStateProvince());
         Assertions.assertEquals(original.getEmailAddress(), converted.getEmailAddress());
     }
 
@@ -38,7 +38,7 @@ class AddressMapperTest {
         Assertions.assertEquals(original.getStreetOne(), converted.getStreetOne());
         Assertions.assertEquals(original.getStreetTwo(), converted.getStreetTwo());
         Assertions.assertEquals(original.getPostcode(), converted.getPostcode());
-        Assertions.assertEquals(original.getStateOrProvince(), converted.getStateOrProvince());
+        Assertions.assertEquals(original.getStateProvince(), converted.getStateProvince());
         Assertions.assertEquals(original.getEmailAddress(), converted.getEmailAddress());
     }
 }

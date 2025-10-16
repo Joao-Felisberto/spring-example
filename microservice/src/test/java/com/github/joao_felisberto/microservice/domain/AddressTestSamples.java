@@ -14,7 +14,7 @@ public class AddressTestSamples {
             .id(1L)
             .city("city1")
             .postcode("postcode1")
-            .stateOrProvince("stateOrProvince1")
+            .stateProvince("stateOrProvince1")
             .streetOne("streetOne1")
             .streetTwo("streetTwo1")
             .emailAddress("emailAddress1");
@@ -25,7 +25,7 @@ public class AddressTestSamples {
             .id(2L)
             .city("city2")
             .postcode("postcode2")
-            .stateOrProvince("stateOrProvince2")
+            .stateProvince("stateOrProvince2")
             .streetOne("streetOne2")
             .streetTwo("streetTwo2")
             .emailAddress("emailAddress2");
@@ -36,7 +36,7 @@ public class AddressTestSamples {
             .id(longCount.incrementAndGet())
             .city(UUID.randomUUID().toString())
             .postcode(UUID.randomUUID().toString())
-            .stateOrProvince(UUID.randomUUID().toString())
+            .stateProvince(UUID.randomUUID().toString())
             .streetOne(UUID.randomUUID().toString())
             .streetTwo(UUID.randomUUID().toString())
             .emailAddress(UUID.randomUUID().toString());

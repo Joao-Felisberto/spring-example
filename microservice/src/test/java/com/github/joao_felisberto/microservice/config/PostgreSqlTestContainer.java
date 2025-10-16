@@ -1,5 +1,8 @@
 package com.github.joao_felisberto.microservice.config;
 
+import org.testcontainers.containers.JdbcDatabaseContainer;
+
+/*
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.JdbcDatabaseContainer;
@@ -7,9 +10,9 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
 
 import java.util.Collections;
-
+*/
 public class PostgreSqlTestContainer implements SqlTestContainer {
-/*
+
     @Override
     public JdbcDatabaseContainer<?> getTestContainer() {
         return null;
@@ -24,8 +27,8 @@ public class PostgreSqlTestContainer implements SqlTestContainer {
     public void afterPropertiesSet() throws Exception {
 
     }
- */
 
+/*
     private static final Logger LOG = LoggerFactory.getLogger(PostgreSqlTestContainer.class);
 
     private PostgreSQLContainer<?> postgreSQLContainer;
@@ -55,5 +58,5 @@ public class PostgreSqlTestContainer implements SqlTestContainer {
     public JdbcDatabaseContainer<?> getTestContainer() {
         return postgreSQLContainer;
     }
-
+*/
 }

@@ -49,27 +49,6 @@ public class Client implements Serializable {
     @JsonIgnoreProperties(value = {"clients"}, allowSetters = true)
     private Address address;
 
-//    public static Client fromDTO(ClientDTO dto) {
-//        // todo shall this be enforced or can we ignore non-null values?
-//        // id must be null for the database
-//        return new Client()
-//            .name(dto.getName())
-//            .nif(dto.getNif())
-//            .phoneNumber(dto.getPhoneNumber().longValue())
-//            .countryCode(CountryCode.fromBigDecimalIndex(dto.getPhoneCountryCode()))
-//            .address(Address.fromDTO(dto.getAddress()));
-//    }
-//
-//    public ClientDTO toDTO() {
-//        return new ClientDTO(
-//            this.name,
-//            this.nif,
-//            this.address.toDTO(),
-//            new BigDecimal(this.phoneNumber),
-//            new BigDecimal(this.countryCode.ordinal())
-//        );
-//    }
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {

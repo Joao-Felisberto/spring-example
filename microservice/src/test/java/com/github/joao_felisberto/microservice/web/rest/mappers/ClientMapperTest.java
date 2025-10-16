@@ -37,7 +37,7 @@ class ClientMapperTest {
         Assertions.assertEquals(originalAddr.getStreetOne(), convertedAddr.getStreetOne());
         Assertions.assertEquals(originalAddr.getStreetTwo(), convertedAddr.getStreetTwo());
         Assertions.assertEquals(originalAddr.getPostcode(), convertedAddr.getPostcode());
-        Assertions.assertEquals(originalAddr.getStateOrProvince(), convertedAddr.getStateOrProvince());
+        Assertions.assertEquals(originalAddr.getStateProvince(), convertedAddr.getStateProvince());
         Assertions.assertEquals(originalAddr.getEmailAddress(), convertedAddr.getEmailAddress());
     }
 
@@ -69,7 +69,7 @@ class ClientMapperTest {
         Assertions.assertEquals(originalAddr.getStreetOne(), convertedAddr.getStreetOne());
         Assertions.assertEquals(originalAddr.getStreetTwo(), convertedAddr.getStreetTwo());
         Assertions.assertEquals(originalAddr.getPostcode(), convertedAddr.getPostcode());
-        Assertions.assertEquals(originalAddr.getStateOrProvince(), convertedAddr.getStateOrProvince());
+        Assertions.assertEquals(originalAddr.getStateProvince(), convertedAddr.getStateProvince());
         Assertions.assertEquals(originalAddr.getEmailAddress(), convertedAddr.getEmailAddress());
     }
 

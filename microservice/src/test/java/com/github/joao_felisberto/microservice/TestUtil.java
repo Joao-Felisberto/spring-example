@@ -73,7 +73,7 @@ public class TestUtil {
             .city("a")
             .country(CountryCode.PORTUGAL)
             .postcode("a")
-            .stateOrProvince("a")
+            .stateProvince("a")
             .streetOne("a")
             .streetTwo("a")
             .emailAddress("a");

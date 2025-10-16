@@ -1,10 +1,10 @@
 --liquibase formatted sql
---changeset "João Felisberto":2025093010000-1
+--changeset "João Felisberto":20250930134800-1
 ALTER TABLE client ADD phone_number BIGINT;
 ALTER TABLE client ADD phone_country_code VARCHAR(255);
 
 --liquibase formatted sql
---changeset "João Felisberto":2025093010000-2
+--changeset "João Felisberto":20250930134800-2
 UPDATE client
 SET
     phone_country_code = (SELECT country_code FROM phone_number WHERE phone_number.id = client.phone_number_id),
@@ -13,7 +13,7 @@ WHERE
     client.phone_number_id IS NOT NULL;
 
 --liquibase formatted sql
---changeset "João Felisberto":2025093010000-3
+--changeset "João Felisberto":20250930134800-3
 ALTER TABLE client ADD CHECK(phone_country_code IS NOT NULL);
 ALTER TABLE client ADD CHECK(phone_number IS NOT NULL);
  -- Why is this not valid????
@@ -23,7 +23,7 @@ ALTER TABLE client ADD CHECK(phone_number IS NOT NULL);
  --ALTER TABLE client MODIFY phone_number BIGINT NOT NULL;
 
 --liquibase formatted sql
---changeset "João Felisberto":2025093010000-4
+--changeset "João Felisberto":20250930134800-4
 ALTER TABLE client DROP CONSTRAINT IF EXISTS FK_CLIENT__PHONE_NUMBER_ID;
 DROP TABLE phone_number;
  -- Same issue as above

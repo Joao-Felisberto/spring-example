@@ -1,29 +1,29 @@
 package com.github.joao_felisberto.microservice.web.rest;
 
-import static com.github.joao_felisberto.microservice.domain.AddressAsserts.*;
-import static com.github.joao_felisberto.microservice.web.rest.TestUtil.createUpdateProxyForBean;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.hasItem;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.joao_felisberto.microservice.IntegrationTest;
 import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
 import com.github.joao_felisberto.microservice.repository.AddressRepository;
 import jakarta.persistence.EntityManager;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicLong;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicLong;
+
+import static com.github.joao_felisberto.microservice.domain.AddressAsserts.*;
+import static com.github.joao_felisberto.microservice.web.rest.TestUtil.createUpdateProxyForBean;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Integration tests for the {@link AddressResource} REST controller.
@@ -78,7 +78,7 @@ class AddressResourceIT {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -87,7 +87,7 @@ class AddressResourceIT {
             .city(DEFAULT_CITY)
             .country(DEFAULT_COUNTRY)
             .postcode(DEFAULT_POSTCODE)
-            .stateOrProvince(DEFAULT_STATE_OR_PROVINCE)
+            .stateProvince(DEFAULT_STATE_OR_PROVINCE)
             .streetOne(DEFAULT_STREET_ONE)
             .streetTwo(DEFAULT_STREET_TWO)
             .emailAddress(DEFAULT_EMAIL_ADDRESS);
@@ -95,7 +95,7 @@ class AddressResourceIT {
 
     /**
      * Create an updated entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -104,7 +104,7 @@ class AddressResourceIT {
             .city(UPDATED_CITY)
             .country(UPDATED_COUNTRY)
             .postcode(UPDATED_POSTCODE)
-            .stateOrProvince(UPDATED_STATE_OR_PROVINCE)
+            .stateProvince(UPDATED_STATE_OR_PROVINCE)
             .streetOne(UPDATED_STREET_ONE)
             .streetTwo(UPDATED_STREET_TWO)
             .emailAddress(UPDATED_EMAIL_ADDRESS);
@@ -215,7 +215,7 @@ class AddressResourceIT {
     void checkStateOrProvinceIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        address.setStateOrProvince(null);
+        address.setStateProvince(null);
 
         // Create the Address, which fails.
 
@@ -339,7 +339,7 @@ class AddressResourceIT {
             .city(UPDATED_CITY)
             .country(UPDATED_COUNTRY)
             .postcode(UPDATED_POSTCODE)
-            .stateOrProvince(UPDATED_STATE_OR_PROVINCE)
+            .stateProvince(UPDATED_STATE_OR_PROVINCE)
             .streetOne(UPDATED_STREET_ONE)
             .streetTwo(UPDATED_STREET_TWO)
             .emailAddress(UPDATED_EMAIL_ADDRESS);
@@ -420,7 +420,7 @@ class AddressResourceIT {
 
         partialUpdatedAddress
             .postcode(UPDATED_POSTCODE)
-            .stateOrProvince(UPDATED_STATE_OR_PROVINCE)
+            .stateProvince(UPDATED_STATE_OR_PROVINCE)
             .streetOne(UPDATED_STREET_ONE)
             .streetTwo(UPDATED_STREET_TWO)
             .emailAddress(UPDATED_EMAIL_ADDRESS);
@@ -455,7 +455,7 @@ class AddressResourceIT {
             .city(UPDATED_CITY)
             .country(UPDATED_COUNTRY)
             .postcode(UPDATED_POSTCODE)
-            .stateOrProvince(UPDATED_STATE_OR_PROVINCE)
+            .stateProvince(UPDATED_STATE_OR_PROVINCE)
             .streetOne(UPDATED_STREET_ONE)
             .streetTwo(UPDATED_STREET_TWO)
             .emailAddress(UPDATED_EMAIL_ADDRESS);

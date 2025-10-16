@@ -26,7 +26,7 @@
   <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
   <include file="config/liquibase/changelog/20250924150407_added_entity_constraints_Client.xml"
            relativeToChangelogFile="false"/>
-  <include file="config/liquibase/changelog/20253009134800_removed_entity_PhoneNumber.sql"
+  <include file="config/liquibase/changelog/20250930134800_removed_entity_PhoneNumber.sql"
            relativeToChangelogFile="false"/>
   <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
   <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
