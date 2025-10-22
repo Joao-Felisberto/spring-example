@@ -1,7 +1,6 @@
-package com.github.joao_felisberto.microservice.web.rest.mappers;
+package com.github.joao_felisberto.microservice.domain.mappers;
 
 import com.github.joao_felisberto.microservice.domain.Address;
-import com.github.joao_felisberto.microservice.domain.mappers.AddressMapper;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

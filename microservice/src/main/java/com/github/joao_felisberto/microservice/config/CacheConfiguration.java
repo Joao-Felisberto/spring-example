@@ -16,7 +16,8 @@ import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.serviceregistry.Registration;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import tech.jhipster.config.JHipsterConstants;
@@ -84,7 +85,8 @@ public class CacheConfiguration {
             // In development, everything goes through 127.0.0.1, with a different port
             if (env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT))) {
                 LOG.debug(
-                    "Application is running with the \"dev\" profile, Hazelcast " + "cluster will only work with localhost instances"
+                    "Application is running with the \"dev\" profile, Hazelcast " +
+                        "cluster will only work with localhost instances"
                 );
 
                 config.getNetworkConfig().setPort(serverProperties.getPort() + 5701);

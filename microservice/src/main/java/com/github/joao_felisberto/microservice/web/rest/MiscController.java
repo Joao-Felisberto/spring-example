@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URISyntaxException;
 import java.util.List;
 
+/**
+ * Controller for miscellaneous endpoints
+ */
 @RestController
 @RequestMapping("/")
 @Transactional
@@ -26,18 +29,25 @@ public class MiscController {
     private final ClientQueryService clientQueryService;
     private final MiscService miscService;
 
+    /**
+     * Constructor for the MiscController
+     *
+     * @param clientQueryService the service to query clients by criteria
+     * @param miscService        the service of this controller
+     */
     public MiscController(ClientQueryService clientQueryService, MiscService miscService) {
         this.clientQueryService = clientQueryService;
         this.miscService = miscService;
     }
 
     /**
-     * A shortcut to create a client
+     * {@code `/shortcut`}: A shortcut to create a client
      * Created to prove a correct SSL implementation, since there is no use case for a microservice calling
      * itself over HTTPS, like load balancing.
      *
      * @param clientDTO The client to add
-     * @return The added client
+     * @return The added client with HTTP status {@link HttpStatus#OK} if everything succeeded,
+     * {@link HttpStatus#INTERNAL_SERVER_ERROR} otherwise.
      */
     @PostMapping("/shortcut")
     public ResponseEntity<ClientDTO> shortcut(@Valid @RequestBody ClientDTO clientDTO) {
@@ -52,6 +62,14 @@ public class MiscController {
         }
     }
 
+    /**
+     * {@code /api/client/filter}:  Query clients by provided criteria.
+     * <p>
+     * See <a href=https://www.jhipster.tech/entities-filtering/#public-interface>the jhipster documentation</a> for the syntax rules
+     *
+     * @param criteria The filter that the clients should match
+     * @return All clients that match the criteria
+     */
     @GetMapping("/api/client/filter")
     public ResponseEntity<List<Client>> filterClients(ClientCriteria criteria) {
         LOG.debug("REST request to get Clients by criteria: {}", criteria);

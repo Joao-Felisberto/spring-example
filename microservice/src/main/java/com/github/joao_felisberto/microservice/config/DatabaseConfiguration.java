@@ -1,23 +1,24 @@
 package com.github.joao_felisberto.microservice.config;
 
-import java.sql.SQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.h2.H2ConsoleProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tech.jhipster.config.JHipsterConstants;
 import tech.jhipster.config.h2.H2ConfigurationHelper;
 
+import java.sql.SQLException;
+
 @Configuration
-@EnableJpaRepositories({ "com.github.joao_felisberto.microservice.repository" })
+@EnableJpaRepositories({"com.github.joao_felisberto.microservice.repository"})
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 @EnableTransactionManagement
 @EnableConfigurationProperties(H2ConsoleProperties.class)
@@ -25,11 +26,8 @@ public class DatabaseConfiguration {
 
     private static final Logger LOG = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
-    private final Environment env;
-
-    public DatabaseConfiguration(Environment env) {
-        this.env = env;
-    }
+    @Value("${server.port}")
+    private Integer port;
 
     /**
      * Open the TCP port for the H2 database, so it is available remotely.
@@ -41,13 +39,12 @@ public class DatabaseConfiguration {
     @Profile(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
     @ConditionalOnProperty(prefix = "spring.h2.console", name = "enabled", havingValue = "true")
     public Object h2TCPServer() throws SQLException {
-        String port = getValidPortForH2();
-        LOG.debug("H2 database is available on port {}", port);
-        return H2ConfigurationHelper.createServer(port);
+        String h2Port = getValidPortForH2();
+        LOG.debug("H2 database is available on port {}", h2Port);
+        return H2ConfigurationHelper.createServer(h2Port);
     }
 
     private String getValidPortForH2() {
-        int port = Integer.parseInt(env.getProperty("server.port"));
         if (port < 10000) {
             port = 10000 + port;
         } else {

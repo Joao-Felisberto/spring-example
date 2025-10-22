@@ -5,29 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db4a6d-cf7e-47aa-9493-6a0c1d7077a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/microservice/src/main/resources/config/liquibase/changelog/20251015170400_add_constraints.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/MapperConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/CountryCodeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/mappers/ClonerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/mappers/CountryCodeMapperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/MicroserviceApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/MicroserviceApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/aop/logging/LoggingAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/aop/logging/LoggingAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/CacheConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/CacheConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/DatabaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/DatabaseConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SpringDocConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/config/SpringDocConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Address.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/enumeration/CountryCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/enumeration/CountryCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/AddressMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/AddressMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/ClientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/ClientMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/Cloner.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/domain/mappers/Cloner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/AddressRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/AddressResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/AddressResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/repository/ClientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/MiscService.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/service/MiscService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/AddressResource.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/config/application-prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/config/liquibase/changelog/20253009134800_removed_entity_PhoneNumber.sql" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/config/liquibase/changelog/20250930134800_removed_entity_PhoneNumber.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/config/liquibase/changelog/20253009134800_removed_entity_PhoneNumber.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/config/liquibase/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/config/liquibase/master.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/resources/swagger/api.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/TestUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/config/PostgreSqlTestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/config/PostgreSqlTestContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/AddressAsserts.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/AddressAsserts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/AddressTestSamples.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/AddressTestSamples.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/AddressResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/AddressResourceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/AddressMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/AddressMapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/ClientMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/ClientMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/ClientResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/MiscController.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/main/java/com/github/joao_felisberto/microservice/web/rest/MiscController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/AddressResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/ClientResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/AddressMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/mappers/AddressMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/web/rest/mappers/ClientMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/mappers/ClientMapperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,59 +74,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GatewayApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MicroserviceApp.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose/docker-compose-ssl-no_microservice.yml.microservice-postgresql: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.All in exercise.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.ClientControllerIT.deleteExistingClient.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerIT.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.deleteClient.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.getClientByExistingNIF.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.getClientByNonExistingNIF.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.listClients.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.postClient.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.postClientWithDuplicateAddress.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientControllerTest.postClientWithId.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientCriteriaTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientMapperTest.fail.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientQueryServiceTest.createSpecificationCriteria.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientQueryServiceTest.createSpecificationNullCriteria.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientQueryServiceTest.findByCriteria.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ClientResourceIT.getAllClients.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MiscControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MiscControllerTest.filterClients.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MiscControllerTest.shortcutFound.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.MiscServiceTest.createClientWithHTTPSCall.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [-P\&quot;tls,dev\&quot;].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise [validate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.exercise.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.run microservice.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev/ex/microservice/src/main/java/com/github/joao_felisberto/microservice&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GatewayApp.executor": "Run",
+    "Application.MicroserviceApp.executor": "Run",
+    "Docker.docker-compose/docker-compose-ssl-no_microservice.yml.microservice-postgresql: Compose Deployment.executor": "Run",
+    "JUnit.All in exercise.executor": "Coverage",
+    "JUnit.ClientControllerIT.deleteExistingClient.executor": "Run",
+    "JUnit.ClientControllerIT.executor": "Run",
+    "JUnit.ClientControllerTest.deleteClient.executor": "Run",
+    "JUnit.ClientControllerTest.executor": "Run",
+    "JUnit.ClientControllerTest.getClientByExistingNIF.executor": "Run",
+    "JUnit.ClientControllerTest.getClientByNonExistingNIF.executor": "Run",
+    "JUnit.ClientControllerTest.listClients.executor": "Run",
+    "JUnit.ClientControllerTest.postClient.executor": "Run",
+    "JUnit.ClientControllerTest.postClientWithDuplicateAddress.executor": "Run",
+    "JUnit.ClientControllerTest.postClientWithId.executor": "Run",
+    "JUnit.ClientCriteriaTest.executor": "Run",
+    "JUnit.ClientMapperTest.fail.executor": "Run",
+    "JUnit.ClientQueryServiceTest.createSpecificationCriteria.executor": "Run",
+    "JUnit.ClientQueryServiceTest.createSpecificationNullCriteria.executor": "Run",
+    "JUnit.ClientQueryServiceTest.findByCriteria.executor": "Run",
+    "JUnit.ClientRepositoryTest.executor": "Run",
+    "JUnit.ClientResourceIT.getAllClients.executor": "Run",
+    "JUnit.ClonerTest.executor": "Run",
+    "JUnit.ClonerTest.testCloneClientDTO.executor": "Run",
+    "JUnit.MiscControllerTest.executor": "Run",
+    "JUnit.MiscControllerTest.filterClients.executor": "Run",
+    "JUnit.MiscControllerTest.shortcutFound.executor": "Run",
+    "JUnit.MiscServiceTest.createClientWithHTTPSCall.executor": "Run",
+    "Maven. [test].executor": "Run",
+    "Maven. [validate].executor": "Run",
+    "Maven.exercise [-P\"tls,dev\"].executor": "Run",
+    "Maven.exercise [compile].executor": "Run",
+    "Maven.exercise [test].executor": "Run",
+    "Maven.exercise [validate].executor": "Run",
+    "Maven.exercise.executor": "Run",
+    "Maven.run microservice.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/dev/ex/microservice/src/test/java/com/github/joao_felisberto/microservice/domain/mappers",
+    "last_opened_file_path": "C:/dev/ex/microservice/src/main/java/com/github/joao_felisberto/microservice",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\dev\ex\microservice\src\main\java\com\github\joao_felisberto\microservice" />
@@ -141,6 +149,7 @@
       <recent name="com.github.joao_felisberto.microservice.repository" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.github.joao_felisberto.microservice.domain.mappers" />
       <recent name="com.github.joao_felisberto.microservice.service" />
       <recent name="com.github.joao_felisberto.microservice.web.rest" />
     </key>
@@ -159,23 +168,7 @@
       <command value="mvn -P&quot;tls,dev&quot;" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ClientControllerIT">
-    <configuration name="MicroserviceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.MicroserviceApp" />
-      <module name="microservice" />
-      <option name="PROGRAM_PARAMETERS" value="-D&quot;spring.profiles.active=dev&quot;" />
-      <shortenClasspath name="NONE" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.github.joao_felisberto.microservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ClonerTest">
     <configuration name="ClientControllerIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice" />
       <extension name="coverage">
@@ -206,22 +199,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ClientControllerTest.postClient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="microservice" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.github.joao_felisberto.microservice.web.rest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.web.rest" />
-      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.web.rest.ClientControllerTest" />
-      <option name="METHOD_NAME" value="postClient(org.springframework.boot.test.system.CapturedOutput)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ClientControllerTest.postClientWithDuplicateAddress" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="microservice" />
       <extension name="coverage">
@@ -233,6 +210,37 @@
       <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.web.rest" />
       <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.web.rest.ClientControllerTest" />
       <option name="METHOD_NAME" value="postClientWithDuplicateAddress(org.springframework.boot.test.system.CapturedOutput)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClonerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.domain.mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.domain.mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.domain.mappers.ClonerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClonerTest.testCloneClientDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.joao_felisberto.microservice.domain.mappers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.joao_felisberto.microservice.domain.mappers" />
+      <option name="MAIN_CLASS_NAME" value="com.github.joao_felisberto.microservice.domain.mappers.ClonerTest" />
+      <option name="METHOD_NAME" value="testCloneClientDTO" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -290,20 +298,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.MicroserviceApp" />
+      <item itemvalue="JUnit.ClonerTest" />
+      <item itemvalue="JUnit.ClonerTest.testCloneClientDTO" />
       <item itemvalue="JUnit.ClientControllerIT" />
       <item itemvalue="JUnit.ClientControllerTest" />
-      <item itemvalue="JUnit.ClientControllerTest.postClient" />
       <item itemvalue="JUnit.ClientControllerTest.postClientWithDuplicateAddress" />
       <item itemvalue="Maven.run microservice" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ClonerTest" />
+        <item itemvalue="JUnit.ClonerTest.testCloneClientDTO" />
         <item itemvalue="JUnit.ClientControllerIT" />
         <item itemvalue="JUnit.ClientControllerTest" />
         <item itemvalue="JUnit.ClientControllerTest.postClientWithDuplicateAddress" />
-        <item itemvalue="JUnit.ClientControllerTest.postClient" />
-        <item itemvalue="Application.MicroserviceApp" />
       </list>
     </recent_temporary>
   </component>

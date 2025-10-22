@@ -1,25 +1,27 @@
 package com.github.joao_felisberto.microservice.domain.enumeration;
 
 /**
- * The CountryCode enumeration.
+ * The enumeration of all available country codes.
+ * The country codes are stored as just the code, no '+' sign.
+ *
  */
 public enum CountryCode {
     PORTUGAL("351"),
     SPAIN("350"),
     UNITED_STATES("1");
 
-    private final String value;
+    private final String code;
 
-    CountryCode(String value) {
-        this.value = value;
+    CountryCode(String code) {
+        this.code = code;
     }
 
-    public String getValue() {
-        return value;
+    /**
+     * Getter for the country code
+     *
+     * @return the country code
+     */
+    public String getCode() {
+        return code;
     }
-
-//    public static CountryCode fromBigDecimalIndex(BigDecimal bigI) {
-//        final int i = bigI.intValue();
-//        return values()[i];
-//    }
 }

@@ -1,9 +1,7 @@
-package com.github.joao_felisberto.microservice.web.rest.mappers;
+package com.github.joao_felisberto.microservice.domain.mappers;
 
 import com.github.joao_felisberto.microservice.domain.Address;
 import com.github.joao_felisberto.microservice.domain.Client;
-import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
-import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.service.api.dto.AddressDTO;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import org.junit.jupiter.api.Assertions;
@@ -42,16 +40,6 @@ class ClientMapperTest {
     }
 
     @Test
-    void testCountryCodeToBigDecimal() {
-        final CountryCode[] countries = CountryCode.values();
-
-        for (CountryCode c : countries) {
-            final BigDecimal converted = clientMapper.map(c);
-            Assertions.assertEquals(converted.intValue(), c.ordinal());
-        }
-    }
-
-    @Test
     void testClientDTOToClientMap() {
         final ClientDTO original = createClientDTO();
         final Client converted = clientMapper.clientDTOToClient(original);
@@ -71,15 +59,5 @@ class ClientMapperTest {
         Assertions.assertEquals(originalAddr.getPostcode(), convertedAddr.getPostcode());
         Assertions.assertEquals(originalAddr.getStateProvince(), convertedAddr.getStateProvince());
         Assertions.assertEquals(originalAddr.getEmailAddress(), convertedAddr.getEmailAddress());
-    }
-
-    @Test
-    void testBigDecimalToCountryCode() {
-        final BigDecimal max = BigDecimal.valueOf(CountryCode.values().length);
-
-        for (BigDecimal i = new BigDecimal(0); i.compareTo(max) < 0; i = i.add(new BigDecimal(1))) {
-            final CountryCode converted = clientMapper.map(i);
-            Assertions.assertEquals(i.intValue(), converted.ordinal());
-        }
     }
 }
