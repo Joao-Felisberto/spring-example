@@ -2,7 +2,6 @@ package com.github.joao_felisberto.microservice.service;
 
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
 import org.springframework.stereotype.Service;
 import org.springframework.web.ErrorResponseException;
 import org.springframework.web.client.RestClient;
@@ -24,7 +23,7 @@ public class MiscService {
      *
      * @param clientDTO the client to create
      * @return the created client
-     * @throws URISyntaxException     when the URI of the client creation endpoint is incorrect. Should never happen
+     * @throws URISyntaxException     when the URI of the client creation endpoint is incorrect. Should be unreachable
      * @throws ErrorResponseException when the client creation returned an error status code. See {@link com.github.joao_felisberto.microservice.web.rest.ClientController#postClient(ClientDTO)}
      */
     public ClientDTO createClientWithHTTPSCall(ClientDTO clientDTO) throws URISyntaxException, ErrorResponseException {
@@ -35,13 +34,7 @@ public class MiscService {
             .body(clientDTO)
             .retrieve()
             .onStatus(HttpStatusCode::isError, (request, response) -> {
-                final ProblemDetail detail = ProblemDetail.forStatus(response.getStatusCode());
-//                    detail.setInstance(uri);
-//                    detail.setTitle("Error creating Client");
-//                    detail.setProperty("request", request);
-//                    detail.setProperty("response", response);
-
-                throw new ErrorResponseException(response.getStatusCode(), detail, null);
+                throw new ErrorResponseException(response.getStatusCode(), null);
             })
             .body(ClientDTO.class);
     }

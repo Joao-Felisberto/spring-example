@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockedConstruction;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.system.CapturedOutput;
@@ -22,12 +23,15 @@ import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static com.github.joao_felisberto.microservice.TestUtil.createClientDTO;
 import static com.github.joao_felisberto.microservice.TestUtil.createDistinctClientDTO;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -78,15 +82,12 @@ class ClientControllerTest {
 
         Assertions.assertTrue(output.getOut().contains(String.format("Created Client with id %d", id)));
 
-        Assertions.assertEquals(HttpStatus.CREATED, res.getStatusCode());
-        Assertions.assertEquals(clientDTO, res.getBody());
+        assertEquals(HttpStatus.CREATED, res.getStatusCode());
+        assertEquals(clientDTO, res.getBody());
     }
 
     @Test
     void postClientWithDuplicateAddress(CapturedOutput output) {
-        // todo: is this allowed?
-        //      Cloner: using something we're mocking
-        //      Manual: manual cloning is bad and would be abundant in tests
         final ClientDTO clientDTO = createClientDTO();
         final Client client = clientDTOToClient(clientDTO);
         final Long id = 1L;
@@ -113,8 +114,8 @@ class ClientControllerTest {
 
         Assertions.assertTrue(output.getOut().contains(String.format("Created Client with id %d", id)));
 
-        Assertions.assertEquals(HttpStatus.CREATED, res.getStatusCode());
-        Assertions.assertEquals(clientDTO, res.getBody());
+        assertEquals(HttpStatus.CREATED, res.getStatusCode());
+        assertEquals(clientDTO, res.getBody());
     }
 
     @Test
@@ -131,9 +132,48 @@ class ClientControllerTest {
             BadRequestAlertException.class,
             () -> clientController.postClient(clientDTO)
         );
-        Assertions.assertEquals("idexists", thrown.getErrorKey());
+        assertEquals("idexists", thrown.getErrorKey());
 
         Assertions.assertTrue(output.getOut().contains("A new client cannot already have an ID"));
+    }
+
+    @Test
+    void postClientWithInternalURIError(CapturedOutput output) {
+        final ClientDTO clientDTO = createClientDTO();
+        final Client client = clientDTOToClient(clientDTO);
+        final Long id = 1L;
+        Assertions.assertNull(client.getId());
+
+        when(clientMapper.clientDTOToClient(clientDTO)).thenReturn(client);
+        when(clientRepository.save(client)).thenAnswer(i -> {
+            final Client c = i.getArgument(0, Client.class);
+            c.setId(id);
+            return c;
+        });
+
+        try (MockedConstruction<URI> mockURI = mockConstruction(
+            URI.class,
+            withSettings().defaultAnswer(invocation -> {
+                throw new URISyntaxException("a", "a");
+            })
+        )) {
+
+            final ResponseEntity<ClientDTO> res = Assertions.assertDoesNotThrow(
+                () -> clientController.postClient(clientDTO)
+            );
+
+            Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, res.getStatusCode());
+            Assertions.assertNull(res.getBody());
+        }
+
+        verify(addressRepository).save(client.getAddress());
+        verify(addressRepository).findSameAddress(client.getAddress());
+        verify(clientRepository).save(client);
+        verify(clientRepository).delete(client);
+        verify(clientMapper).clientDTOToClient(clientDTO);
+
+        Assertions.assertTrue(output.getOut().contains(String.format("Created Client with id %d", id)));
+        Assertions.assertTrue(output.getOut().contains(String.format("Malformed URI: '/api/clients/%d'", id)));
     }
 
     @Test
@@ -146,7 +186,7 @@ class ClientControllerTest {
         verify(clientRepository).deleteById(clientID);
 
         Assertions.assertTrue(output.getOut().contains(String.format("Deleted Client with id %d", clientID)));
-        Assertions.assertEquals("", output.getErr());
+        assertEquals("", output.getErr());
     }
 
     @Test
@@ -164,8 +204,8 @@ class ClientControllerTest {
             () -> clientController.getClientByNIF(client.getNif())
         );
 
-        Assertions.assertEquals(HttpStatus.OK, res.getStatusCode());
-        Assertions.assertEquals(clientDTO, res.getBody());
+        assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(clientDTO, res.getBody());
     }
 
     @Test
@@ -182,7 +222,7 @@ class ClientControllerTest {
             () -> clientController.getClientByNIF(client.getNif())
         );
 
-        Assertions.assertEquals(HttpStatus.NOT_FOUND, res.getStatusCode());
+        assertEquals(HttpStatus.NOT_FOUND, res.getStatusCode());
         Assertions.assertNull(res.getBody());
     }
 
@@ -210,8 +250,8 @@ class ClientControllerTest {
             () -> clientController.listClients()
         );
 
-        Assertions.assertEquals(HttpStatus.OK, res.getStatusCode());
-        Assertions.assertEquals(dtos, res.getBody());
+        assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(dtos, res.getBody());
     }
 
     @Test
@@ -234,8 +274,8 @@ class ClientControllerTest {
             () -> clientController.listClients()
         );
 
-        Assertions.assertEquals(HttpStatus.OK, res.getStatusCode());
-        Assertions.assertEquals(dtos, res.getBody());
+        assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(dtos, res.getBody());
     }
 
     @Test
@@ -246,9 +286,9 @@ class ClientControllerTest {
             () -> clientController.listClients()
         );
 
-        Assertions.assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(HttpStatus.OK, res.getStatusCode());
         Assertions.assertNotNull(res.getBody());
-        Assertions.assertEquals(0, res.getBody().size());
+        assertEquals(0, res.getBody().size());
     }
 
     @Test
@@ -276,8 +316,8 @@ class ClientControllerTest {
             () -> clientController.getClientsByName(name)
         );
 
-        Assertions.assertEquals(HttpStatus.OK, res.getStatusCode());
-        Assertions.assertEquals(dtos, res.getBody());
+        assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(dtos, res.getBody());
     }
 
     @Test
@@ -301,8 +341,8 @@ class ClientControllerTest {
             () -> clientController.getClientsByName(name)
         );
 
-        Assertions.assertEquals(HttpStatus.OK, res.getStatusCode());
-        Assertions.assertEquals(dtos, res.getBody());
+        assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(dtos, res.getBody());
     }
 
     @Test
@@ -314,9 +354,9 @@ class ClientControllerTest {
             () -> clientController.getClientsByName(name)
         );
 
-        Assertions.assertEquals(HttpStatus.OK, res.getStatusCode());
+        assertEquals(HttpStatus.OK, res.getStatusCode());
         Assertions.assertNotNull(res.getBody());
-        Assertions.assertEquals(0, res.getBody().size());
+        assertEquals(0, res.getBody().size());
     }
 
     private Client clientDTOToClient(ClientDTO clientDTO) {

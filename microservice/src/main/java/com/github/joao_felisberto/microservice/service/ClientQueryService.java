@@ -8,6 +8,7 @@ import com.github.joao_felisberto.microservice.service.criteria.ClientCriteria;
 import jakarta.persistence.criteria.JoinType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,7 @@ public class ClientQueryService extends QueryService<Client> {
 
     private final ClientRepository clientRepository;
 
+    @Autowired
     public ClientQueryService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }

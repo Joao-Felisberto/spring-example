@@ -1,7 +1,11 @@
 package com.github.joao_felisberto.microservice.service.criteria;
 
+import com.github.joao_felisberto.microservice.domain.enumeration.CountryCode;
 import org.assertj.core.api.Condition;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import tech.jhipster.service.filter.LongFilter;
+import tech.jhipster.service.filter.StringFilter;
 
 import java.util.Objects;
 import java.util.function.BiFunction;
@@ -75,14 +79,33 @@ class ClientCriteriaTest {
         assertThat(clientCriteria).hasToString("ClientCriteria{}");
     }
 
+    @Test
+    void equalsVerifier() {
+        final ClientCriteria clientCriteria = new ClientCriteria();
+
+        Assertions.assertTrue(clientCriteria.equals(clientCriteria));
+        Assertions.assertFalse(clientCriteria.equals(null));
+        Assertions.assertFalse(clientCriteria.equals("I am not a ClientCriteria!"));
+
+        final ClientCriteriaBuilder other = new ClientCriteriaBuilder(clientCriteria);
+
+        Assertions.assertFalse(clientCriteria.equals(other.distinct(false).get()));
+        Assertions.assertFalse(clientCriteria.equals(other.isAddress(2L).get()));
+        Assertions.assertFalse(clientCriteria.equals(other.isPhone(2L).get()));
+        Assertions.assertFalse(clientCriteria.equals(other.isCountry(CountryCode.UNITED_STATES).get()));
+        Assertions.assertFalse(clientCriteria.equals(other.isNIF("DIFFERENT").get()));
+        Assertions.assertFalse(clientCriteria.equals(other.isName("DIFFERENT").get()));
+        Assertions.assertFalse(clientCriteria.equals(other.isID(2L).get()));
+    }
+
     private static void setAllFilters(ClientCriteria clientCriteria) {
-        clientCriteria.id();
-        clientCriteria.name();
-        clientCriteria.nif();
-        clientCriteria.countryCode();
-        clientCriteria.phoneNumber();
-        clientCriteria.addressId();
-        clientCriteria.distinct();
+        clientCriteria.setId(new LongFilter());
+        clientCriteria.setName(new StringFilter());
+        clientCriteria.setNif(new StringFilter());
+        clientCriteria.setCountryCode(new ClientCriteria.CountryCodeFilter());
+        clientCriteria.setPhoneNumber(new LongFilter());
+        clientCriteria.setAddressId(new LongFilter());
+        clientCriteria.setDistinct(true);
     }
 
     private static Condition<ClientCriteria> criteriaFiltersAre(Function<Object, Boolean> condition) {
@@ -111,5 +134,74 @@ class ClientCriteriaTest {
                     condition.apply(criteria.getDistinct(), copy.getDistinct()),
             "every filter matches"
         );
+    }
+
+    private class ClientCriteriaBuilder {
+        private ClientCriteria clientCriteria;
+
+        public ClientCriteriaBuilder() {
+            clientCriteria = new ClientCriteria();
+        }
+
+        public ClientCriteriaBuilder(ClientCriteria clientCriteria) {
+            this.clientCriteria = new ClientCriteria(clientCriteria);
+        }
+
+        public ClientCriteria get() {
+            return this.clientCriteria;
+        }
+
+        public ClientCriteriaBuilder isID(Long id) {
+            this.clientCriteria.setId(
+                (LongFilter) new LongFilter()
+                    .setEquals(id)
+            );
+            return this;
+        }
+
+        public ClientCriteriaBuilder isName(String name) {
+            this.clientCriteria.setName(
+                (StringFilter) new StringFilter()
+                    .setEquals(name)
+            );
+            return this;
+        }
+
+        public ClientCriteriaBuilder isNIF(String nif) {
+            this.clientCriteria.setNif(
+                (StringFilter) new StringFilter()
+                    .setEquals(nif)
+            );
+            return this;
+        }
+
+        public ClientCriteriaBuilder isCountry(CountryCode countryCode) {
+            this.clientCriteria.setCountryCode(
+                (ClientCriteria.CountryCodeFilter) new ClientCriteria.CountryCodeFilter()
+                    .setEquals(countryCode)
+            );
+            return this;
+        }
+
+        public ClientCriteriaBuilder isPhone(Long phone) {
+            this.clientCriteria.setPhoneNumber(
+                (LongFilter) new LongFilter()
+                    .setEquals(phone)
+            );
+            return this;
+        }
+
+        public ClientCriteriaBuilder isAddress(Long id) {
+            this.clientCriteria.setAddressId(
+                (LongFilter) new LongFilter()
+                    .setEquals(id)
+            );
+            return this;
+        }
+
+        public ClientCriteriaBuilder distinct(Boolean distinct) {
+            this.clientCriteria.setDistinct(distinct);
+            return this;
+        }
     }
 }

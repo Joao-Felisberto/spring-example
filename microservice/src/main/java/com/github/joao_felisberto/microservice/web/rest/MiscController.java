@@ -1,11 +1,13 @@
 package com.github.joao_felisberto.microservice.web.rest;
 
 import com.github.joao_felisberto.microservice.domain.Client;
+import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.service.ClientQueryService;
 import com.github.joao_felisberto.microservice.service.MiscService;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
 import com.github.joao_felisberto.microservice.service.criteria.ClientCriteria;
 import jakarta.validation.Valid;
+import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,8 @@ import java.util.List;
 public class MiscController {
 
     private static final Logger LOG = LoggerFactory.getLogger(MiscController.class);
+    private final ClientMapper clientMapper = Mappers.getMapper(ClientMapper.class);
+
     private final ClientQueryService clientQueryService;
     private final MiscService miscService;
 
@@ -71,10 +75,13 @@ public class MiscController {
      * @return All clients that match the criteria
      */
     @GetMapping("/api/client/filter")
-    public ResponseEntity<List<Client>> filterClients(ClientCriteria criteria) {
-        LOG.debug("REST request to get Clients by criteria: {}", criteria);
+    public ResponseEntity<List<ClientDTO>> filterClients(ClientCriteria criteria) {
+        LOG.info("REST request to get Clients by criteria: {}", criteria);
 
-        final List<Client> entityList = clientQueryService.findByCriteria(criteria);
-        return new ResponseEntity<>(entityList, HttpStatus.OK);
+        final List<Client> res = clientQueryService.findByCriteria(criteria);
+        return new ResponseEntity<>(
+            res.stream().map(clientMapper::clientToClientDTO).toList(),
+            HttpStatus.OK
+        );
     }
 }

@@ -88,13 +88,6 @@ public class ClientCriteria implements Serializable, Criteria {
         return Optional.ofNullable(id);
     }
 
-    public LongFilter id() {
-        if (id == null) {
-            setId(new LongFilter());
-        }
-        return id;
-    }
-
     public void setId(LongFilter id) {
         this.id = id;
     }
@@ -105,13 +98,6 @@ public class ClientCriteria implements Serializable, Criteria {
 
     public Optional<StringFilter> optionalName() {
         return Optional.ofNullable(name);
-    }
-
-    public StringFilter name() {
-        if (name == null) {
-            setName(new StringFilter());
-        }
-        return name;
     }
 
     public void setName(StringFilter name) {
@@ -126,13 +112,6 @@ public class ClientCriteria implements Serializable, Criteria {
         return Optional.ofNullable(nif);
     }
 
-    public StringFilter nif() {
-        if (nif == null) {
-            setNif(new StringFilter());
-        }
-        return nif;
-    }
-
     public void setNif(StringFilter nif) {
         this.nif = nif;
     }
@@ -143,13 +122,6 @@ public class ClientCriteria implements Serializable, Criteria {
 
     public Optional<CountryCodeFilter> optionalCountryCode() {
         return Optional.ofNullable(countryCode);
-    }
-
-    public CountryCodeFilter countryCode() {
-        if (countryCode == null) {
-            setCountryCode(new CountryCodeFilter());
-        }
-        return countryCode;
     }
 
     public void setCountryCode(CountryCodeFilter countryCode) {
@@ -164,13 +136,6 @@ public class ClientCriteria implements Serializable, Criteria {
         return Optional.ofNullable(phoneNumber);
     }
 
-    public LongFilter phoneNumber() {
-        if (phoneNumber == null) {
-            setPhoneNumber(new LongFilter());
-        }
-        return phoneNumber;
-    }
-
     public void setPhoneNumber(LongFilter phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -183,13 +148,6 @@ public class ClientCriteria implements Serializable, Criteria {
         return Optional.ofNullable(addressId);
     }
 
-    public LongFilter addressId() {
-        if (addressId == null) {
-            setAddressId(new LongFilter());
-        }
-        return addressId;
-    }
-
     public void setAddressId(LongFilter addressId) {
         this.addressId = addressId;
     }
@@ -200,13 +158,6 @@ public class ClientCriteria implements Serializable, Criteria {
 
     public Optional<Boolean> optionalDistinct() {
         return Optional.ofNullable(distinct);
-    }
-
-    public Boolean distinct() {
-        if (distinct == null) {
-            setDistinct(true);
-        }
-        return distinct;
     }
 
     public void setDistinct(Boolean distinct) {

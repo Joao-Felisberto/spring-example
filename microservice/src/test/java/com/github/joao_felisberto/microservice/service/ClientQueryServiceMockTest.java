@@ -1,16 +1,16 @@
 package com.github.joao_felisberto.microservice.service;
 
 import com.github.joao_felisberto.microservice.domain.Client;
+import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.criteria.ClientCriteria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
+import org.mapstruct.factory.Mappers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -20,9 +20,11 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 
-@RunWith(MockitoJUnitRunner.class)
+// @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
-class ClientQueryServiceTest {
+class ClientQueryServiceMockTest {
+
+    private static final ClientMapper clientMapper = Mappers.getMapper(ClientMapper.class);
 
     @Mock
     private ClientRepository clientRepository;
@@ -69,6 +71,27 @@ class ClientQueryServiceTest {
     @Test
     void createSpecificationCriteria() {
         final ClientCriteria clientCriteria = new ClientCriteria();
+
+        try (final MockedStatic<Specification> specification = mockStatic(Specification.class)) {
+
+            final Specification<Client> res = clientQueryService.createSpecification(clientCriteria);
+
+            specification.verify(
+                () -> Specification.allOf(null, null, null, null, null, null, null)
+            );
+            specification.verify(
+                () -> Specification.where(null),
+                times(0)
+            );
+
+            Assertions.assertEquals(Specification.where(null), res);
+        }
+    }
+
+    @Test
+    void createSpecificationCriteriaFalseDistinct() {
+        final ClientCriteria clientCriteria = new ClientCriteria();
+        clientCriteria.setDistinct(false);
 
         try (final MockedStatic<Specification> specification = mockStatic(Specification.class)) {
 

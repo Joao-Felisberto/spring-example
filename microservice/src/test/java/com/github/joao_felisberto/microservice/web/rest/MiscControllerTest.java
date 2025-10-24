@@ -1,6 +1,5 @@
 package com.github.joao_felisberto.microservice.web.rest;
 
-import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.service.ClientQueryService;
 import com.github.joao_felisberto.microservice.service.MiscService;
 import com.github.joao_felisberto.microservice.service.api.dto.ClientDTO;
@@ -86,7 +85,7 @@ class MiscControllerTest {
 
         when(clientQueryService.findByCriteria(clientCriteria)).thenReturn(new ArrayList<>());
 
-        final ResponseEntity<List<Client>> res = miscController.filterClients(clientCriteria);
+        final ResponseEntity<List<ClientDTO>> res = miscController.filterClients(clientCriteria);
 
         Assertions.assertNotNull(res.getBody());
         Assertions.assertEquals(0, res.getBody().size());

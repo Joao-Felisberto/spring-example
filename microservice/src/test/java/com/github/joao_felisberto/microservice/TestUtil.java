@@ -32,7 +32,7 @@ public class TestUtil {
     public static ClientDTO createDistinctClientDTO(String string) {
         return new ClientDTO(
             string,
-            "1",
+            string,
             new AddressDTO(
                 string,
                 new BigDecimal(CountryCode.PORTUGAL.ordinal()),
@@ -43,7 +43,25 @@ public class TestUtil {
                 String.format("%s@%s.pt", string, string)
             ),
             new BigDecimal(CountryCode.PORTUGAL.ordinal()),
-            new BigDecimal(1)
+            new BigDecimal(CountryCode.PORTUGAL.ordinal())
+        );
+    }
+
+    public static ClientDTO createDistinctClientDTO(String string, CountryCode countryCode) {
+        return new ClientDTO(
+            string,
+            string,
+            new AddressDTO(
+                string,
+                new BigDecimal(countryCode.ordinal()),
+                string,
+                string,
+                string,
+                string,
+                String.format("%s@%s.pt", string, string)
+            ),
+            new BigDecimal(countryCode.ordinal()),
+            new BigDecimal(countryCode.ordinal())
         );
     }
 

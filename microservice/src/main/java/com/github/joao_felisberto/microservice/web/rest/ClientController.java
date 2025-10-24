@@ -88,6 +88,7 @@ public class ClientController implements ClientApiDelegate {
                 .body(clientMapper.clientToClientDTO(clientRes));
         } catch (URISyntaxException e) {
             LOG.error("Malformed URI: '{}'", "/api/clients/" + client.getId());
+            clientRepository.delete(client);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

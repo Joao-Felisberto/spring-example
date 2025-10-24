@@ -210,7 +210,7 @@ public class Client implements Serializable {
      * @return this client after the change
      */
     public Client phoneNumber(Long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.setPhoneNumber(phoneNumber);
         return this;
     }
 
@@ -221,7 +221,7 @@ public class Client implements Serializable {
      * @return this client after the change
      */
     public Client countryCode(CountryCode countryCode) {
-        this.countryCode = countryCode;
+        this.setCountryCode(countryCode);
         return this;
     }
 

@@ -23,18 +23,6 @@ class ClientTest {
         assertThat(client1).isNotEqualTo(client2);
     }
 
-//    @Test
-//    void phoneNumberTest() {
-//        Client client = getClientRandomSampleGenerator();
-//        PhoneNumber phoneNumberBack = getPhoneNumberRandomSampleGenerator();
-//
-//        client.setPhoneNumber(phoneNumberBack);
-//        assertThat(client.getPhoneNumber()).isEqualTo(phoneNumberBack);
-//
-//        client.phoneNumber(null);
-//        assertThat(client.getPhoneNumber()).isNull();
-//    }
-
     @Test
     void addressTest() {
         Client client = getClientRandomSampleGenerator();

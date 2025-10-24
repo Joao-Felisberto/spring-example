@@ -1,13 +1,15 @@
 package com.github.joao_felisberto.microservice.domain;
 
-import static com.github.joao_felisberto.microservice.domain.AddressTestSamples.*;
-import static com.github.joao_felisberto.microservice.domain.ClientTestSamples.*;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.joao_felisberto.microservice.web.rest.TestUtil;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.jupiter.api.Test;
+
+import static com.github.joao_felisberto.microservice.domain.AddressTestSamples.*;
+import static com.github.joao_felisberto.microservice.domain.ClientTestSamples.getClientRandomSampleGenerator;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class AddressTest {
 
@@ -45,5 +47,17 @@ class AddressTest {
         address.setClients(new HashSet<>());
         assertThat(address.getClients()).doesNotContain(clientBack);
         assertThat(clientBack.getAddress()).isNull();
+    }
+
+    @Test
+    void setClientsFromNull() {
+        final Address address = getAddressRandomSampleGenerator();
+        address.setClients(null);
+        Assertions.assertNull(address.getClients());
+
+        final Set<Client> newClientSet = new HashSet<>();
+        address.setClients(newClientSet);
+        Assertions.assertNotNull(address.getClients());
+        Assertions.assertEquals(newClientSet, address.getClients());
     }
 }
