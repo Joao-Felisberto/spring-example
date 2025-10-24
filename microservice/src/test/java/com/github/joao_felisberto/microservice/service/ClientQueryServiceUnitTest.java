@@ -25,17 +25,6 @@ import static com.github.joao_felisberto.microservice.TestUtil.createDistinctCli
 
 
 @SpringBootTest
-
-//@DataJpaTest
-
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
-
-//@DataJpaTest
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
-//@TestPropertySource(properties = {
-//    "spring.liquibase.enabled = false"
-//})
 class ClientQueryServiceUnitTest {
 
     @Autowired
@@ -76,7 +65,7 @@ class ClientQueryServiceUnitTest {
 
     @Test
     @Transactional
-    void testFilterClientsEndpointObj() {
+    void testFilterClientsObj() {
         final long cid = clients.get(0).getId();
         final long aid = clients.get(0).getAddress().getId();
         final Map<ClientCriteria, int[]> requestResponseMap = Map.of(

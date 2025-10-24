@@ -2,16 +2,21 @@ package com.github.joao_felisberto.microservice.repository;
 
 import com.github.joao_felisberto.microservice.domain.Client;
 import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
-import static com.github.joao_felisberto.microservice.TestUtil.createClientDTO;
+import static com.github.joao_felisberto.microservice.TestUtil.createDistinctClientDTO;
 
-public class ClientRepositoryTest {
+@SpringBootTest
+class ClientRepositoryTest {
+
+    private final ClientMapper clientMapper = Mappers.getMapper(ClientMapper.class);
 
     @Autowired
     private ClientRepository clientRepository;
@@ -19,29 +24,20 @@ public class ClientRepositoryTest {
     @Autowired
     private AddressRepository addressRepository;
 
-    @Autowired
-    private ClientMapper clientMapper;
-
-//    @Autowired
-//    public ClientRepositoryTest(ClientRepository clientRepository, AddressRepository addressRepository) {
-//        this.clientRepository = clientRepository;
-//        this.addressRepository = addressRepository;
-//    }
-
-    @BeforeEach
-    void cleanDB() {
-        addressRepository.deleteAll();
-        addressRepository.flush();
+    @AfterEach
+    void tearDown() {
         clientRepository.deleteAll();
         clientRepository.flush();
+        addressRepository.deleteAll();
+        addressRepository.flush();
     }
 
     @Test
-    public void testFindExistingClientByNIF() throws Exception {
-        final Client client = clientMapper.clientDTOToClient(createClientDTO());
+    void testFindExistingClientByNIF() {
+        final Client client = clientMapper.clientDTOToClient(createDistinctClientDTO("a"));
 
-        addressRepository.saveAndFlush(client.getAddress());
-        clientRepository.saveAndFlush(client);
+        addressRepository.save(client.getAddress());
+        clientRepository.save(client);
 
         final Optional<Client> retrieved = clientRepository.findBynif(client.getNif());
         Assertions.assertTrue(retrieved.isPresent());
@@ -50,13 +46,13 @@ public class ClientRepositoryTest {
     }
 
     @Test
-    public void testFindNonExistingClientByNIF() throws Exception {
-        final Client client = clientMapper.clientDTOToClient(createClientDTO());
+    void testFindNonExistingClientByNIF() {
+        final Client client = clientMapper.clientDTOToClient(createDistinctClientDTO("b"));
 
-        addressRepository.saveAndFlush(client.getAddress());
-        clientRepository.saveAndFlush(client);
+        addressRepository.save(client.getAddress());
+        clientRepository.save(client);
 
-        final Optional<Client> retrieved = clientRepository.findBynif(client.getNif());
+        final Optional<Client> retrieved = clientRepository.findBynif("INVALID NIF");
         Assertions.assertTrue(retrieved.isEmpty());
     }
 }

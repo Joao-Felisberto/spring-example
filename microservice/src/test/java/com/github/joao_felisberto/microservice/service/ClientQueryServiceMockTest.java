@@ -1,13 +1,11 @@
 package com.github.joao_felisberto.microservice.service;
 
 import com.github.joao_felisberto.microservice.domain.Client;
-import com.github.joao_felisberto.microservice.domain.mappers.ClientMapper;
 import com.github.joao_felisberto.microservice.repository.ClientRepository;
 import com.github.joao_felisberto.microservice.service.criteria.ClientCriteria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mapstruct.factory.Mappers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
@@ -20,11 +18,8 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 
-// @RunWith(MockitoJUnitRunner.class)
 @ExtendWith(MockitoExtension.class)
 class ClientQueryServiceMockTest {
-
-    private static final ClientMapper clientMapper = Mappers.getMapper(ClientMapper.class);
 
     @Mock
     private ClientRepository clientRepository;
@@ -41,9 +36,6 @@ class ClientQueryServiceMockTest {
         final List<Client> res = clientQueryService.findByCriteria(clientCriteria);
 
         verify(clientRepository, times(1)).findAll(Specification.where(null));
-
-        // todo how to verify a method of the same class?
-        // verify(clientQueryService, times(1)).createSpecification(clientCriteria);
 
         Assertions.assertEquals(0, res.size());
     }

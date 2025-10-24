@@ -1,0 +1,1145 @@
+{
+	"info": {
+		"_postman_id": "eb35f110-52f0-4fa0-9a7f-c74ce5d6b0b2",
+		"name": "Spring Exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48360751",
+		"_collection_link": "https://joao-felisberto-5807097.postman.co/workspace/Jo%C3%A3o-Felisberto's-Workspace~22e3fd51-f3b1-43ae-8d7a-1a1303aa7fb6/collection/48360751-eb35f110-52f0-4fa0-9a7f-c74ce5d6b0b2?action=share&source=collection_link&creator=48360751"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"id_token\", pm.response.json().id_token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"password\":\"admin\",\"username\":\"admin\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Is Authenticated",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var jwtSecret = await pm.vault.get('jwt_secret')\r",
+									"\r",
+									"// JWT generation script adapted from\r",
+									"// https://www.postman.com/postman/postman-team-collections/request/tt7mz5e/jwt-signed-with-base64-encoding?tab=scripts\r",
+									"\r",
+									"// Set headers for JWT\r",
+									"var header = {\r",
+									"  \"alg\": \"HS512\"\r",
+									"}\r",
+									"\r",
+									"// Prepare timestamp in seconds\r",
+									"var currentTimestamp = Math.floor(Date.now() / 1000)\r",
+									"\r",
+									"var data = {\r",
+									"  \"sub\": \"admin\",\r",
+									"  \"exp\": currentTimestamp + 30,\r",
+									"  \"auth\": \"ROLE_ADMIN ROLE_USER\",\r",
+									"  \"iat\": currentTimestamp,\r",
+									"  \"userId\": 1\r",
+									"}\r",
+									"\r",
+									"function base64url(source) {\r",
+									"    // Encode in classical base64\r",
+									"    encodedSource = CryptoJS.enc.Base64.stringify(source)\r",
+									"    \r",
+									"    // Remove padding equal characters\r",
+									"    encodedSource = encodedSource.replace(/=+$/, '')\r",
+									"    \r",
+									"    // Replace characters according to base64url specifications\r",
+									"    encodedSource = encodedSource.replace(/\\+/g, '-')\r",
+									"    encodedSource = encodedSource.replace(/\\//g, '_')\r",
+									"    \r",
+									"    return encodedSource\r",
+									"}\r",
+									"\r",
+									"// encode header\r",
+									"var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header))\r",
+									"var encodedHeader = base64url(stringifiedHeader)\r",
+									"\r",
+									"// encode data\r",
+									"var stringifiedData = CryptoJS.enc.Utf8.parse(JSON.stringify(data))\r",
+									"var encodedData = base64url(stringifiedData)\r",
+									"\r",
+									"// build token\r",
+									"var token = `${encodedHeader}.${encodedData}`\r",
+									"\r",
+									"// sign token\r",
+									"var signature = CryptoJS.HmacSHA512(token, jwtSecret)\r",
+									"signature = base64url(signature)\r",
+									"var signedToken = `${token}.${signature}`\r",
+									"\r",
+									"pm.environment.set('jwt_signed', signedToken)\r",
+									"console.log('Signed and encoded JWT', signedToken)"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "Create client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": 42,\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create client by calling itself",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": 42,\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/shortcut",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"shortcut"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": 42,\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateOrProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client/1",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all clients",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": 42,\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateOrProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by NIF",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": 42,\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateOrProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client/42",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by approx name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": 42,\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateOrProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client/name?name=or",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "or"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Clients",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microservice_path}}/api/client/filter?name.equals=or",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "name.equals",
+									"value": "or"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "Create valid client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"validResponse = {",
+									"    \"name\": \"a\",",
+									"    \"nif\": \"42\",",
+									"    \"address\": {",
+									"        \"city\": \"a\",",
+									"        \"country\": 0,",
+									"        \"postcode\": \"a\",",
+									"        \"stateProvince\": \"a\",",
+									"        \"streetOne\": \"a\",",
+									"        \"streetTwo\": \"a\",",
+									"        \"emailAddress\": \"a@a.a\"",
+									"    },",
+									"    \"phone_number\": 1,",
+									"    \"phone_country_code\": 0",
+									"}",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    const responseJson = pm.response.json();",
+									"    console.info(responseJson)",
+									"    pm.expect(responseJson).to.eql(validResponse);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": \"42\",\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create invalid client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Helper to sort fieldErrors array by all properties",
+									"function sortFieldErrors(arr) {",
+									"    return arr.slice().sort((a, b) => {",
+									"        if (a.field !== b.field) return a.field.localeCompare(b.field);",
+									"        if (a.message !== b.message) return a.message.localeCompare(b.message);",
+									"        if (a.objectName !== b.objectName) return a.objectName.localeCompare(b.objectName);",
+									"        return 0;",
+									"    });",
+									"}",
+									"",
+									"pm.test(\"Status code is BAD_REQUEST\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct error object\", function () {",
+									"    const expected = {",
+									"    \"type\": \"https://www.jhipster.tech/problem/constraint-violation\",",
+									"    \"title\": \"Method argument not valid\",",
+									"    \"status\": 400,",
+									"    \"instance\": \"/api/client\",",
+									"    \"message\": \"error.validation\",",
+									"    \"path\": \"/api/client\",",
+									"    \"fieldErrors\": [",
+									"        {",
+									"            \"field\": \"name\",",
+									"            \"message\": \"must not be empty\",",
+									"            \"objectName\": \"client\"",
+									"        },",
+									"        {",
+									"            \"field\": \"name\",",
+									"            \"message\": \"must not be null\",",
+									"            \"objectName\": \"client\"",
+									"        }",
+									"    ]",
+									"};",
+									"",
+									"    const actual = pm.response.json();",
+									"    delete actual.detail",
+									"",
+									"    // Clone and sort fieldErrors in both objects",
+									"    const expectedSorted = _.cloneDeep(expected);",
+									"    const actualSorted = _.cloneDeep(actual);",
+									"",
+									"    expectedSorted.fieldErrors = sortFieldErrors(expectedSorted.fieldErrors);",
+									"    actualSorted.fieldErrors = sortFieldErrors(actualSorted.fieldErrors);",
+									"",
+									"    pm.expect(actualSorted).to.eql(expectedSorted);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": null,\r\n    \"nif\": \"42\",\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete non-existent client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is NO_CONTENT\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									"",
+									"pm.test(\"Body is empty\", function () {",
+									"    response = pm.response.body",
+									"    pm.expect(response).to.eql(undefined);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{microservice_path}}/api/client/-1",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete client with invalid id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is BAD_REQUEST\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is empty\", function () {",
+									"    response = pm.response.body",
+									"    pm.expect(response).to.eql(undefined);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{microservice_path}}/api/client/very_invalid_id",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"very_invalid_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find client by non-existing NIF",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is NOT_FOUND\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"pm.test(\"Body is empty\", function () {",
+									"    response = pm.response.body",
+									"    pm.expect(response).to.eql(undefined);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{microservice_path}}/api/client/very_invalid_id",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"very_invalid_id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List clients",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const authentication = pm.require('@joao-felisberto-5807097/authentication');\r",
+									"const jwtSecret = await pm.vault.get(authentication.JWT_SECRET_VAR_NAME)\r",
+									"authentication.refreshJWTIfNeeded(jwtSecret)\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {
+									"@joao-felisberto-5807097/authentication": {
+										"id": "0199c7f7-7d3a-7788-bb70-201a05b529d5"
+									}
+								},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*",
+									"validResponse = {",
+									"    \"name\": \"a\",",
+									"    \"nif\": \"42\",",
+									"    \"address\": {",
+									"        \"city\": \"a\",",
+									"        \"country\": 0,",
+									"        \"postcode\": \"a\",",
+									"        \"stateOrProvince\": \"a\",",
+									"        \"streetOne\": \"a\",",
+									"        \"streetTwo\": \"a\",",
+									"        \"emailAddress\": \"a@a.a\"",
+									"    },",
+									"    \"phone_number\": 1,",
+									"    \"phone_country_code\": 0",
+									"}",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    var responseJson = pm.response.json();",
+									"    pm.expect(responseJson).to.eql(validResponse);",
+									"});",
+									"*/",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    // todo: make actual predictable list",
+									"    var responseJson = pm.response.json().length;",
+									"    pm.expect(responseJson).to.greaterThan(0)",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{id_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"a\",\r\n    \"nif\": \"42\",\r\n    \"address\": {\r\n        \"city\": \"a\",\r\n        \"country\": 0,\r\n        \"postcode\": \"a\",\r\n        \"stateOrProvince\": \"a\",\r\n        \"streetOne\": \"a\",\r\n        \"streetTwo\": \"a\",\r\n        \"emailAddress\": \"a@a.a\"\r\n    },\r\n    \"phone_number\": 1,\r\n    \"phone_country_code\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{microservice_path}}/api/client",
+							"host": [
+								"{{microservice_path}}"
+							],
+							"path": [
+								"api",
+								"client"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_endpoint",
+			"value": ""
+		}
+	]
+}

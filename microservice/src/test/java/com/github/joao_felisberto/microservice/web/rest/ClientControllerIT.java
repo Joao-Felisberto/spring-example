@@ -34,49 +34,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ClientControllerIT {
     private static final String ENTITY_API_URL = "/api/client";
 
-    // from https://codefool.tumblr.com/post/15288874550/list-of-valid-and-invalid-email-addresses
-    private static final List<String> validEmails = List.of(
-        "email@example.com",
-        "firstname.lastname@example.com",
-        "email@subdomain.example.com",
-        "firstname+lastname@example.com",
-        "email@123.123.123.123",
-        "email@[123.123.123.123]",
-        "\"email\"@example.com",
-        "1234567890@example.com",
-        "email@example-one.com",
-        "_______@example.com",
-        "email@example.name",
-        "email@example.museum",
-        "email@example.co.jp",
-        "firstname-lastname@example.com",
-        "much.\"more\\ unusual\"@example.com",
-        "very.unusual.\"@\".unusual.com@example.com",
-        "very.\"(),:;<>[]\".VERY.\"very@\\\\\\ \\\"very\".unusual@strange.example.com"
-    );
-    private static final List<String> invalidEmails = List.of(
-        "plainaddress",
-        "#@%^%#$@#$@#.com",
-        "@example.com",
-        "Joe Smith <email@example.com>",
-        "email.example.com",
-        "email@example@example.com",
-        ".email@example.com",
-        "email.@example.com",
-        "email..email@example.com",
-        "あいうえお@example.com",
-        "email@example.com (Joe Smith)",
-        "email@example",
-        "email@-example.com",
-        "email@example.web",
-        "email@111.222.333.44444",
-        "email@example..com",
-        "Abc..123@example.com",
-        "\"(),:;<>[\\]@example.com",
-        "just\"not\"right@example.com",
-        "this\\ is\"really\"not\\\\allowed@example.com"
-    );
-
     @Autowired
     private ObjectMapper om;
 
@@ -259,6 +216,7 @@ class ClientControllerIT {
 
             cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress("a")),
             cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress("a@")),
+            cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress("@a")),
         };
 
         for (final ClientDTO invalidClient : invalidClients) {
@@ -280,71 +238,6 @@ class ClientControllerIT {
         }
     }
 
-//    @Test
-//    @Transactional
-//    void createClientFuzzEmail() throws Exception {
-//        final long databaseSizeBeforeCreate = clientRepository.count();
-//        final ClientDTO validClient = createClientDTO();
-//
-//        final Stream<ClientDTO> invalidClients =
-//            invalidEmails.stream().map(email ->
-//                cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress(email))
-//            );
-//
-//        invalidClients.forEach(invalidClient -> {
-//            final ClientDTO returnedClient;
-//            try {
-//                returnedClient = om.readValue(
-//                    restClientMockMvc
-//                        .perform(MockMvcRequestBuilders.post(ENTITY_API_URL)
-//                            .contentType(MediaType.APPLICATION_JSON)
-//                            .content(om.writeValueAsBytes(invalidClient))
-//                        )
-////                        .andExpect(MockMvcResultMatchers.status().isBadRequest())
-//                        .andReturn()
-//                        .getResponse()
-//                        .getContentAsString(),
-//                    ClientDTO.class
-//                );
-//            } catch (Exception e) {
-//                throw new RuntimeException(e);
-//            }
-//
-//            Assertions.assertEquals(databaseSizeBeforeCreate, clientRepository.count(),
-//                String.format("Email << %s >> should have been denied!", invalidClient.getAddress().getEmailAddress()));
-//            Assertions.assertEquals(NULL_CLIENT, returnedClient,
-//                String.format("Email << %s >> should have been denied!", invalidClient.getAddress().getEmailAddress()));
-//
-//        });
-//
-//        final List<ClientDTO> validClients = validEmails.stream()
-//            .map(email ->
-//                cloner.clone(validClient).address(cloner.clone(validClient.getAddress()).emailAddress(email))
-//            )
-//            .toList();
-//
-//        int i = 1;
-//        for (ClientDTO client : validClients) {
-//            final ClientDTO returnedClient = om.readValue(
-//                restClientMockMvc
-//                    .perform(MockMvcRequestBuilders.post(ENTITY_API_URL)
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(om.writeValueAsBytes(client))
-//                    )
-
-    /// /                    .andExpect(MockMvcResultMatchers.status().isOk())
-//                    .andReturn()
-//                    .getResponse()
-//                    .getContentAsString(),
-//                ClientDTO.class
-//            );
-//
-//            Assertions.assertEquals(databaseSizeBeforeCreate + i++, clientRepository.count(),
-//                String.format("Email << %s >> should have been allowed!", client.getAddress().getEmailAddress()));
-//            Assertions.assertEquals(client, returnedClient,
-//                String.format("Email << %s >> should have been allowed!", client.getAddress().getEmailAddress()));
-//        }
-//    }
     @Test
     @Transactional
     void deleteExistingClient() throws Exception {

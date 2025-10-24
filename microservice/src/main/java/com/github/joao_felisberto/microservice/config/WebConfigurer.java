@@ -1,9 +1,8 @@
 package com.github.joao_felisberto.microservice.config;
 
-import jakarta.servlet.*;
+import jakarta.servlet.ServletContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.web.server.*;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -63,7 +62,7 @@ public class WebConfigurer implements ServletContextInitializer {
     private boolean h2ConsoleIsEnabled(Environment env) {
         return (
             env.acceptsProfiles(Profiles.of(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)) &&
-            "true".equals(env.getProperty("spring.h2.console.enabled"))
+                "true".equals(env.getProperty("spring.h2.console.enabled"))
         );
     }
 

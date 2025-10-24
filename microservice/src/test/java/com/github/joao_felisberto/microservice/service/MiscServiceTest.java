@@ -23,8 +23,6 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class MiscServiceTest {
-//    private final MiscService miscService = new MiscService();
-
     @Mock
     private RestClient.RequestBodyUriSpec mockUriSpec;
 
@@ -113,8 +111,6 @@ class MiscServiceTest {
                 throw new URISyntaxException("a", "a");
             })
         )) {
-
-            // fixme: why does this not work? Throws NPE
             Assertions.assertThrows(
                 URISyntaxException.class,
                 () -> miscService.createClientWithHTTPSCall(input)
